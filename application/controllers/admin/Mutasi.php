@@ -29,13 +29,9 @@ class Mutasi extends CI_Controller
         check_not_login();
 
         $nip = $this->session->userdata('nip');
-
         $data['mutasi'] = $this->master_m->get_data_mutasi_personal($nip); 
-
         $data['pegawai'] = $this->master_m->get_data_pegawai_personal($nip); 
-
         $data['belum_dibaca'] = $this->master_m->hitung_belum_dibaca($nip);
-
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat_pegawai($nip); 
         $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip); 
 
@@ -55,13 +51,9 @@ class Mutasi extends CI_Controller
         $nip = $this->session->userdata('nip');
 
         $data['mutasi'] = $this->master_m->get_data_mutasi_personal($nip); 
-
         $data['pegawai'] = $this->master_m->get_data_pegawai_personal_nonpns($nip); 
-
         $data['belum_dibaca'] = $this->master_m->hitung_belum_dibaca($nip);
-
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat_pegawai($nip); 
-
         $data['title'] = " Mutasi ";
 
         $this->load->view('template/header_nonpns',$data);

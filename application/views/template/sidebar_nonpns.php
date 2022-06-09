@@ -65,15 +65,7 @@
               </p>
             </a>
           </li>
-          
-          <li class="nav-item">
-            <a href="<?php echo base_url('nonpns/Diklat') ?>" class="nav-link">
-              <i class="nav-icon fas fa-id-card-alt"></i>
-              <p>
-                Diklat
-              </p>
-            </a>
-          </li>
+
           <li class="nav-item">
             <a href="<?php echo base_url('nonpns/Berkas') ?>" class="nav-link">
               <i class="nav-icon fas fa-photo-video"></i>
@@ -82,6 +74,28 @@
               </p>
             </a>
           </li>
+          
+
+
+          <li class="nav-header">SERTIFIKAT KOMPETENSI</li>
+        
+          <li class="nav-item">
+            <a href="<?php echo base_url('nonpns/Kompetensi') ?>" class="nav-link">
+              <i class="nav-icon fas fa-file-medical"></i>
+              <p>
+                STR/SIP
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('nonpns/Diklat') ?>" class="nav-link">
+              <i class="nav-icon far fa-file-alt"></i>
+              <p>
+                Diklat
+              </p>
+            </a>
+          </li>
+          
 
           <li class="nav-header">MUTASI RUANG</li>
           <li class="nav-item">
@@ -96,15 +110,28 @@
             </a>
           </li>
 
-          <li class="nav-header">DIKLAT / KOMPETENSI</li>
+         
+          <li class="nav-header">PERLU PERPANJANG</li>
+           <li class="nav-item">
+            <a href="<?php echo base_url('pns/Kompetensi/kompetensi_expired') ?>" class="nav-link">
+              <i class="nav-icon fas fa-file-medical"></i>
+              <p>
+                STR/SIP
+              </p>
+                  <!-- <?php if ($kompetensi_bulan_ini != null) {?>
+                  <span class="right badge badge-danger"><?php echo $kompetensi_bulan_ini; ?> STR/SIP </span>
+                  <?php }else{} ?> -->
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="<?php echo base_url('nonpns/Diklat/diklat_perpanjang') ?>" class="nav-link">
-              <i class="nav-icon fas fa-award"></i>
+              <i class="nav-icon far fa-file-alt"></i>
               <p>
-                Perlu Perpanjang
+                Diklat
               </p>
                   <?php if ($diklat_bulan_ini != null) {?>
-                  <span class="right badge badge-danger"><?php echo $diklat_bulan_ini; ?> Diklat</span>
+                  <span class="right badge badge-danger"><?php echo $diklat_bulan_ini; ?> Diklat </span>
                   <?php }else{} ?>
             </a>
           </li>

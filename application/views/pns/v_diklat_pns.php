@@ -98,9 +98,9 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
 
 
                    <?php } ?>
@@ -135,7 +135,7 @@
                 </div>
 
                 <div class="modal-body">
-                <form method="POST" action="<?php echo base_url('pns/Diklat/update_diklat_expired') ?>">
+                <form method="POST" action="<?php echo base_url('pns/Diklat/update_diklat_expired') ?>" enctype="multipart/form-data">
 
                     <div class="row">
                     <div class="col-md-12">
@@ -144,6 +144,12 @@
                       <input type="hidden" name="id_diklat" value="<?php echo $us->id_diklat; ?>" >
                       <input type="date" name="berlaku_sampai" class="form-control" value="<?php echo $us->berlaku_sampai; ?>" required>
                     </div>
+
+                    <label>File Sertifikat</label>
+                    <input type="file" name="file" class="form-control" accept=".pdf, .jpg, .jpeg, .png">
+
+                    <div class="mt-1">
+                    <span class="text-secondary">File yang diupload harus dalam format : .pdf, .jpg, .jpeg, .png</span>
 
                     </div>
                     </div>

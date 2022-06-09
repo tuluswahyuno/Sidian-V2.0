@@ -10,11 +10,8 @@ class Diklat extends CI_Controller
         $nip = $this->session->userdata('nip');
 
         $data['diklat'] = $this->master_m->get_data_diklat_personal($nip); 
-
         $data['belum_dibaca'] = $this->master_m->hitung_belum_dibaca($nip);
-
         $data['pegawai'] = $this->master_m->get_data_pegawai_personal($nip); 
-
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat_pegawai($nip); 
         $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip); 
 
@@ -33,14 +30,10 @@ class Diklat extends CI_Controller
         $nip = $this->session->userdata('nip');
 
         $data['pegawai'] = $this->master_m->get_data_pegawai_personal($nip); 
-
         $data['belum_dibaca'] = $this->master_m->hitung_belum_dibaca($nip);
-
         $data['diklat'] = $this->master_m->get_data_diklat_pegawai($nip); 
-
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat_pegawai($nip);
         $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip);  
-
         $data['title'] = " Data Diklat Perlu Perpanjang ";
 
         $this->load->view('template/header_pns',$data);
@@ -57,6 +50,29 @@ class Diklat extends CI_Controller
         $update_at          = date('Y-m-d H:i:s');
 
         date_default_timezone_set('Asia/Jakarta');
+
+        $file     = $_FILES['file']['name'];
+            if ($file){
+                $config ['upload_path']     =   './uploads/diklat';
+                $config ['allowed_types']   =   'jpg|jpeg|png|pdf|doc|docx|xls|xlsx';
+
+                $this->load->library('upload', $config); 
+
+                if($this->upload->do_upload('file')){
+
+                    $uploadfile = $this->master_m->get7($id)->row();
+
+                    if($uploadfile->file != null)
+                    {
+                     $taget_file = './uploads/diklat/'.$uploadfile->file;
+                     unlink($taget_file);
+                    }
+                    $file=$this->upload->data('file_name');
+                    $this->db->set('file', $file);
+                }else{
+                    echo $this->upload->display_errors();
+                }
+            }
 
         $data = array(
             'berlaku_sampai'    => $berlaku_sampai,

@@ -54,6 +54,8 @@
               <th>Nama Kampus</th>
               <th>Jurusan</th>
               <th>Th Lulus</th>
+              <th>No Ijazah</th>
+              <th>Pend Terakhir</th>
               <th>Ijazah</th>
               <th>Transkrip</th>
               <th style="text-align: center;">Action</th>
@@ -72,6 +74,22 @@
                 <td><?php echo $us->nama_sekolah ?></td>
                 <td><?php echo $us->jurusan ?></td>
                 <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tgl_lulus))  ?></td>
+                <td><?php echo $us->no_ijazah ?></td>
+                <td style="text-align: center;">
+
+                  <?php
+                    if ($us->pterakhir == "0") { ?>
+
+                     <span class='badge badge-danger'>Tidak</span>
+
+                   <?php } else { ?>
+
+                     <span class='badge badge-success'>Ya</span>
+
+
+                   <?php } ?>
+                    
+                </td>
 
                 <td style="text-align: center;">
                    <?php
@@ -163,12 +181,30 @@
                     <label>Jurusan</label>
                     <input type="text" name="jurusan" class="form-control" placeholder="Masukkan Jurusan" required>
                     </div>
+                    </div>
 
+                    <div class="col-md-4">
+                    <div class="form-group">
+                    <label>No Ijazah</label>
+                    <input type="text" name="no_ijazah" class="form-control" placeholder="Masukkan No Ijazah" required>
+                    </div>
+                    </div>
+
+                    <div class="col-md-4">
                     <div class="form-group">
                     <label>Tanggal Lulus</label>
                     <input type="date" name="tgl_lulus" class="form-control" placeholder="Masukkan Tgl Lulus" required>
                     </div>
+                    </div>
                     
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Pend Terakhir</label>
+                          <select class="form-control" name="pterakhir" required>
+                            <option value="0">Tidak</option>
+                            <option value="1">Ya</option>
+                          </select>
+                        </div>
                     </div>
 
                     <div class="col-md-6">
@@ -247,13 +283,32 @@
                     <label>Jurusan</label>
                     <input type="text" name="jurusan" class="form-control" value="<?php echo $us->jurusan; ?>" required>
                     </div>
+                    </div>
 
+                    <div class="col-md-4">
+                    <div class="form-group">
+                    <label>No Ijazah</label>
+                    <input type="text" name="no_ijazah" class="form-control" value="<?php echo $us->no_ijazah; ?>" required>
+                    </div>
+                    </div>
+
+                    <div class="col-md-4">
                     <div class="form-group">
                     <label>Tanggal Lulus</label>
                     <input type="date" name="tgl_lulus" class="form-control" value="<?php echo $us->tgl_lulus; ?>" required>
                     </div>
-                    
                     </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Pend Terakhir</label>
+                          <select class="form-control" name="pterakhir" required>
+                            <option value="0">Tidak</option>
+                            <option value="1">Ya</option>
+                          </select>
+                        </div>
+                    </div>
+                    
 
                     <div class="col-md-6">
                     <div class="form-group">

@@ -13,7 +13,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo base_url('pns/Dashboard') ?>">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url('nonpns/Dashboard') ?>">Dashboard</a></li>
               <li class="breadcrumb-item active">Data Kompetensi</li>
             </ol>
           </div>
@@ -178,7 +178,7 @@
 
             
 
-                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('pns/Kompetensi/delete_data/').$us->id_kompetensi ?>"><i class="fas fa-trash"></i> Hapus</a>
+                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('nonpns/Kompetensi/delete_data/').$us->id_kompetensi ?>"><i class="fas fa-trash"></i> Hapus</a>
 
                 </td>
 
@@ -195,38 +195,28 @@
           </table>
 
           <!-- MODAL UPDATE DATA -->
-          <?php 
+          <!-- <?php 
           $no = 0;
-          foreach ($kompetensi as $us) : $no++; ?>
-          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="editmodal<?php echo $us->id_kompetensi; ?>" class="modal fade">
+          foreach ($diklat as $us) : $no++; ?>
+          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="editmodal<?php echo $us->id_user; ?>" class="modal fade">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Update Data Kompetensi</h5>
+                  <h5 class="modal-title">Update Data Diklat</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
 
                 <div class="modal-body">
-                <form method="POST" action="<?php echo base_url('pns/Kompetensi/update_kompetensi_expired') ?>" enctype="multipart/form-data">
+                <form method="POST" action="<?php echo base_url('nonpns/Diklat/update_diklat_expired') ?>">
 
                     <div class="row">
                     <div class="col-md-12">
                     <div class="form-group">
                     <label>Berlaku Sampai</label>
-                    <input type="hidden" name="id_kompetensi" value="<?php echo $us->id_kompetensi; ?>" >
-                    <input type="date" name="tgl_expired" class="form-control" value="<?php echo $us->tgl_expired; ?>" required>
-                    </div>
-
-
-                    <label>File</label>
-                    <input type="file" name="file" class="form-control" accept=".pdf, .jpg, .jpeg, .png">
-
-                    <div class="mt-1">
-                    <span class="text-secondary">File yang diupload harus dalam format : .pdf, .jpg, .jpeg, .png</span>
-
-
+                      <input type="hidden" name="id_diklat" value="<?php echo $us->id_diklat; ?>" >
+                      <input type="date" name="berlaku_sampai" class="form-control" value="<?php echo $us->berlaku_sampai; ?>" required>
                     </div>
 
                     </div>
@@ -243,7 +233,7 @@
               </div>
             </div>
           </div>
-          <?php endforeach; ?>
+          <?php endforeach; ?> -->
           <!-- AKHIR MODAL UPDATE DATA -->
 
         </div>

@@ -15,9 +15,9 @@ class Kompetensi extends CI_Controller
         $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip); 
         $data['title'] = " Sertifikat Kompetensi ";
 
-        $this->load->view('template/header_pns',$data);
-        $this->load->view('template/sidebar_pns',$data);
-        $this->load->view('pns/v_data_kompetensi',$data);
+        $this->load->view('template/header_nonpns',$data);
+        $this->load->view('template/sidebar_nonpns',$data);
+        $this->load->view('nonpns/v_data_kompetensi',$data);
         $this->load->view('template/footer');
     }
 
@@ -60,8 +60,9 @@ class Kompetensi extends CI_Controller
 
         $this->master_m->insert_data($data,'data_kompetensi');
         $this->session->set_flashdata('flash', 'Ditambahkan');
-        redirect('pns/Kompetensi'); 
+        redirect('nonpns/Kompetensi'); 
     }
+
 
 
     public function update_data()
@@ -116,7 +117,7 @@ class Kompetensi extends CI_Controller
         $this->master_m->update_data('data_kompetensi',$data,$where);
 
         $this->session->set_flashdata('flash', 'Diupdate');
-        redirect('pns/Kompetensi');
+        redirect('nonpns/Kompetensi');
     }
 
 
@@ -134,63 +135,11 @@ class Kompetensi extends CI_Controller
         $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip); 
         $data['title'] = " Kompetensi Perlu Perpanjang ";
 
-        $this->load->view('template/header_pns',$data);
-        $this->load->view('template/sidebar_pns',$data);
-        $this->load->view('pns/v_kompetensi_expired',$data);
+        $this->load->view('template/header_nonpns',$data);
+        $this->load->view('template/sidebar_nonpns',$data);
+        $this->load->view('nonpns/v_kompetensi_expired',$data);
         $this->load->view('template/footer');
     }
-
-
-    public function update_kompetensi_expired()
-    {
-        $id                     = $this->input->post('id_kompetensi');
-        $tgl_expired            = $this->input->post('tgl_expired');
-        $update_at              = date('Y-m-d H:i:s');
-
-        date_default_timezone_set('Asia/Jakarta');
-
-        $file     = $_FILES['file']['name'];
-            if ($file){
-                $config ['upload_path']     =   './uploads/kompetensi';
-                $config ['allowed_types']   =   'jpg|jpeg|png|pdf|doc|docx|xls|xlsx';
-
-                $this->load->library('upload', $config); 
-
-                if($this->upload->do_upload('file')){
-
-                    $uploadfile = $this->master_m->get_file_kompetensi($id)->row();
-
-                    if($uploadfile->file != null)
-                    {
-                     $taget_file = './uploads/kompetensi/'.$uploadfile->file;
-                     unlink($taget_file);
-                    }
-                    $file=$this->upload->data('file_name');
-                    $this->db->set('file', $file);
-                }else{
-                    echo $this->upload->display_errors();
-                }
-            }
-
-        $data = array(
-            'tgl_expired'       => $tgl_expired,
-            'update_at'         => date('Y-m-d H:i:s')
-        );
-
-        $where = array(
-            'id_kompetensi' => $id
-        );
-
-
-        $this->master_m->update_data('data_kompetensi',$data,$where);
-
-        $this->session->set_flashdata('flash', 'Diupdate');
-        redirect('pns/Kompetensi/kompetensi_expired');
-    }
-
-
-
-    
 
 
 
@@ -209,7 +158,7 @@ class Kompetensi extends CI_Controller
 
         $this->master_m->delete_data($where, 'data_kompetensi');
         $this->session->set_flashdata('flash', 'Dihapus');
-        redirect('pns/Kompetensi');
+        redirect('nonpns/Kompetensi');
     }
 
 }

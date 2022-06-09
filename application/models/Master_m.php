@@ -402,6 +402,14 @@ class Master_m extends CI_Model
     }
 
 
+    
+     public function get_data_gaji_berkala($nip)
+    {
+        $query = $this->db->query("SELECT * FROM data_gajiberkala WHERE nip='$nip';");
+        return $query->result();
+    }
+
+
     public function get_data_diklat_personal($nip)
     {
         $query = $this->db->query("SELECT * FROM data_diklat WHERE nip='$nip';");

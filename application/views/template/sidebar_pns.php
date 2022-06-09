@@ -63,7 +63,15 @@
             <a href="<?php echo base_url('pns/Pangkat') ?>" class="nav-link">
               <i class="nav-icon fas fa-user-tie"></i>
               <p>
-                Kepangkatan
+                Riwayat Pangkat
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('pns/GajiBerkala') ?>" class="nav-link">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <p>
+                Riwayat Gaji Berkala
               </p>
             </a>
           </li>
@@ -115,7 +123,7 @@
           </li>
 
           
-           <li class="nav-header">CUTI TAHUNAN</li>
+           <li class="nav-header">LAYANAN</li>
           <li class="nav-item">
             <a href="<?php echo base_url('pns/Cuti') ?>" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -125,6 +133,25 @@
                   <!-- <?php if ($diklat_bulan_ini != null) {?>
                   <span class="right badge badge-danger"><?php echo $diklat_bulan_ini; ?> Diklat</span>
                   <?php }else{} ?> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('admin/Mutasi/mutasiruang') ?>" class="nav-link">
+              <i class="nav-icon fas fa-hospital"></i>              
+              <p>
+                Mutasi Ruang
+              </p>
+              <?php if ($belum_dibaca != null) {?>
+                  <span class="right badge badge-danger"><?php echo $belum_dibaca; ?> Surat</span>
+                  <?php }else{} ?>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('admin/Bankdata/datapns') ?>" class="nav-link">
+              <i class="nav-icon fas fa-database"></i>
+              <p>
+                Bank Data
+              </p>
             </a>
           </li>
 
@@ -157,28 +184,8 @@
          
 
 
-          <li class="nav-header">MUTASI RUANG</li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('admin/Mutasi/mutasiruang') ?>" class="nav-link">
-              <i class="nav-icon fas fa-hospital"></i>              
-              <p>
-                Mutasi Ruang
-              </p>
-              <?php if ($belum_dibaca != null) {?>
-                  <span class="right badge badge-danger"><?php echo $belum_dibaca; ?> Surat</span>
-                  <?php }else{} ?>
-            </a>
-          </li>
-
-          <li class="nav-header">BANK DATA</li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('admin/Bankdata/datapns') ?>" class="nav-link">
-              <i class="nav-icon fas fa-database"></i>
-              <p>
-                Bank Data
-              </p>
-            </a>
-          </li>
+         
+          
 
         
 

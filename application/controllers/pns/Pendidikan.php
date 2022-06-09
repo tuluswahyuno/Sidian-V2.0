@@ -34,6 +34,8 @@ class Pendidikan extends CI_Controller
             $nama_sekolah  = $this->input->post('nama_sekolah');
             $jurusan       = $this->input->post('jurusan');
             $tgl_lulus     = $this->input->post('tgl_lulus');
+            $no_ijazah     = $this->input->post('no_ijazah');
+            $pterakhir     = $this->input->post('pterakhir');
 
             $ijazah        = $_FILES['ijazah']['name'];
             if ($ijazah=''){}else{
@@ -72,6 +74,8 @@ class Pendidikan extends CI_Controller
                 'nama_sekolah'  => $nama_sekolah,
                 'jurusan'       => $jurusan,
                 'tgl_lulus'     => $tgl_lulus,
+                'no_ijazah'     => $no_ijazah,
+                'pterakhir'     => $pterakhir,
                 'ijazah'        => $ijazah,
                 'transkrip'     => $transkrip,
             );

@@ -31,13 +31,9 @@ class Bankdata extends CI_Controller
         check_not_login();
 
         $nip = $this->session->userdata('nip');
-
         $data['bankdata'] = $this->master_m->get_data('bankdata')->result();
-
         $data['pegawai'] = $this->master_m->get_data_pegawai_personal($nip); 
-
         $data['belum_dibaca'] = $this->master_m->hitung_belum_dibaca($nip);
-
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat_pegawai($nip); 
         $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip); 
         
