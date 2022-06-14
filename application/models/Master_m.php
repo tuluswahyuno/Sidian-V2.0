@@ -114,6 +114,12 @@ class Master_m extends CI_Model
         return $query;
     }
 
+    public function get11($id)
+    {
+        $query = $this->db->get_where('data_gajiberkala', array('id_gajiberkala' => $id), null, null);
+        return $query;
+    }
+
 
     public function get_file_kompetensi($id)
     {
@@ -405,7 +411,8 @@ class Master_m extends CI_Model
     
      public function get_data_gaji_berkala($nip)
     {
-        $query = $this->db->query("SELECT * FROM data_gajiberkala WHERE nip='$nip';");
+        // $query = $this->db->query("SELECT * FROM data_gajiberkala WHERE nip='$nip';");
+        $query = $this->db->query("SELECT * FROM pangkat p, data_gajiberkala dp where p.id_masterpangkat = dp.pangkat and dp.nip = $nip;");
         return $query->result();
     }
 

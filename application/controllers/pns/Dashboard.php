@@ -194,6 +194,54 @@ class Dashboard extends CI_Controller
     }
 
 
+    public function update_foto_detail()
+    {
+            $nip            = $this->input->post('nip');
+            $update_at     = date('Y-m-d H:i:s');
+
+            date_default_timezone_set('Asia/Jakarta');
+
+            $foto     = $_FILES['foto']['name'];
+            if ($foto){
+                $config ['upload_path']     =   './uploads/foto';
+                $config ['allowed_types']   =   'jpg|jpeg|png|pdf|doc|docx|xls|xlsx';
+
+                $this->load->library('upload', $config); 
+
+                if($this->upload->do_upload('foto')){
+
+                    $uploadfile = $this->master_m->get10($nip)->row();
+
+                    if($uploadfile->foto != null)
+                    {
+                     $taget_file = './uploads/foto/'.$uploadfile->foto;
+                     unlink($taget_file);
+                    }
+                    $foto=$this->upload->data('file_name');
+                    $this->db->set('foto', $foto);
+                }else{
+                    echo $this->upload->display_errors();
+                }
+            }
+
+
+            $data = array(
+                'update_at'     => date('Y-m-d H:i:s')
+            );
+
+            $where = array(
+                'nip' => $nip
+            );
+
+
+            $this->master_m->update_data('data_pegawai',$data,$where);
+
+            $this->session->set_flashdata('flash', 'Diupdate');
+
+            redirect('admin/Datapegawai/detail_pegawai/'.$nip);
+    }
+
+
     
 
 }

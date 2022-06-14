@@ -306,7 +306,7 @@
   <!-- /.content-wrapper -->
 
 
-				<!-- MODAL UPDATE FOTO -->
+		<!-- MODAL UPDATE FOTO -->
           <div aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1" role="dialog" id="update-foto" class="modal fade">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -344,6 +344,6 @@
               </div>
             </div>
           </div>
-          <!-- AKHIR MODAL MODAL UPDATE FOTO -->
+        <!-- AKHIR MODAL MODAL UPDATE FOTO -->
 
 

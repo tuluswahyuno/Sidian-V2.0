@@ -44,7 +44,7 @@
 
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambah-data">
-            <i class="fas fa-plus-square"> </i> Tambah Data Pangkat</a>
+            <i class="fas fa-plus-square"> </i> Tambah Data Gaji Berkala</a>
           </button>
 
          
@@ -53,7 +53,10 @@
               <th>#</th>
               <th>Pangkat/Golongan</th>
               <th>No Surat</th>
-              <th>TMT</th>
+              <th>TMT KBG</th>
+              <th>KGB Mendatang</th>
+              <th>Gaji Lama</th>
+              <th>Gaji Baru</th>
               <th>File SK KGB</th>
               <th style="text-align: center;">Action</th>
             </thead>
@@ -70,7 +73,17 @@
                 <td><?php echo $us->nama_pangkat ?></td>
                 <td><?php echo $us->no_surat ?></td>
                 <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tmt))  ?></td>
-                
+                <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->kgb_mendatang))  ?></td>
+                <td>
+                  <span class="badge badge-warning">
+                  <?php echo "Rp. ".number_format($us->gaji_lama) ?></td>
+                  </span>
+                <td>
+                  <span class="badge badge-success">
+                  <?php echo "Rp. ".number_format($us->gaji_baru) ?>
+                  </span>
+                </td>
+
                 <td style="text-align: center;">
                    <?php
                     if ($us->file == NULL) { ?>
@@ -82,10 +95,7 @@
                      <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/gajiberkala/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
 
                      <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/gajiberkala/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
-
-
                    <?php } ?>
-
                  </td>
 
                  <td style="text-align: center;">
@@ -107,11 +117,11 @@
           </table>
 
           <!-- MODAL TAMBAH DATA -->
-          <!-- <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="tambah-data" class="modal fade">
-            <div class="modal-dialog modal-lg" role="document">
+          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="tambah-data" class="modal fade">
+            <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Tambah Data Pangkat Golongan</h5>
+                  <h5 class="modal-title">Tambah Data Riwayat Gaji Berkala</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -122,7 +132,7 @@
 
                     <div class="row">
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                     <div class="form-group">
                         <label>Pangkat Golongan</label>
                         <select name="pangkat" class="select2pangkat form-control input-lg select2-single">
@@ -134,64 +144,55 @@
 
                     <div class="col-md-6">
                     <div class="form-group">
-                    <label>TMT Pangkat Golongan</label>
-                    <input type="date" name="tmt" class="form-control" placeholder="Masukkan TMT Pangkat" required>
-                    </div>
-                    </div>
-
-                    <div class="col-md-3">
-                    <div class="form-group">
-                    <label>Masa Kerja Gol Tahun</label>
-                    <input type="text" name="tahun" class="form-control" placeholder="Berapa Tahun (Angka)" required>
-                    </div>
-                    </div>
-
-                    <div class="col-md-3">
-                    <div class="form-group">
-                    <label>Masa Kerja Gol Bulan</label>
-                    <input type="text" name="bulan" class="form-control" placeholder="Berapa Bulan (Angka)" required>
-                    </div>
-                    </div>
-
-                    
-
-                    <div class="col-md-3">
-                    <div class="form-group">
-                    <label>No SK</label>
+                    <label>No Surat</label>
                     <input type="text" name="no_surat" class="form-control" placeholder="Nomor SK" required>
                     </div>
                     </div>
+                   
 
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                     <div class="form-group">
-                    <label>Tanggal SK</label>
+                    <label>Tanggal Surat</label>
                     <input type="date" name="tgl_surat" class="form-control" placeholder="Tanggal SK" required>
                     </div>
                     </div>
 
-                    
-
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                     <div class="form-group">
-                    <label>No Pertek BKN</label>
-                    <input type="text" name="no_bkn" class="form-control" placeholder="Nomor Pertek BKN" required>
+                    <label>Gaji Lama</label>
+                    <input type="text" name="gaji_lama" class="form-control" placeholder="Gaji Lama" required>
+                    </div>
+                    </div>
+                   
+
+                   <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Gaji Baru</label>
+                    <input type="text" name="gaji_baru" class="form-control" placeholder="Gaji Baru" required>
                     </div>
                     </div>
 
-                    <div class="col-md-3">
+
+                    <div class="col-md-6">
                     <div class="form-group">
-                    <label>Tanggal Pertek BKN</label>
-                    <input type="date" name="tgl_bkn" class="form-control" placeholder="Tanggal Pertek BKN" required>
+                    <label>TMT KGB</label>
+                    <input type="date" name="tmt" class="form-control" required>
                     </div>
                     </div>
 
                     <div class="col-md-6">
+                    <div class="form-group">
+                    <label>KGB Akan Datang</label>
+                    <input type="date" name="kgb_mendatang" class="form-control" required>
+                    </div>
+                    </div>
+                    
+
+                    <div class="col-md-12">   
                     <label>File SK (Surat Keputusan)</label>
                     <input type="file" name="file" class="form-control" accept=".pdf, .jpg, .jpeg, .png" required>
-                    </div>
+                    
 
-
-                    <div class="col-md-12">
                       <div class="mt-1">
                       <span class="text-secondary">File yang diupload harus dalam format : .pdf, .jpg, .jpeg, .png</span>
                       </div>
@@ -210,20 +211,20 @@
                 </form>
               </div>
             </div>
-          </div> -->
+          </div>
           <!-- AKHIR MODAL TAMBAH DATA -->
 
 
 
           <!-- MODAL UPDATE DATA -->
-          <!-- <?php 
+          <?php 
           $no = 0;
-          foreach ($pangkat as $us) : $no++; ?>
+          foreach ($gajiberkala as $us) : $no++; ?>
           <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="editmodal<?php echo $us->id_gajiberkala; ?>" class="modal fade">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Update Data Pangkat Golongan</h5>
+                  <h5 class="modal-title">Update Data KGB</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -233,80 +234,74 @@
                 <form method="POST" action="<?php echo base_url('pns/GajiBerkala/update_gajiberkala') ?>" enctype="multipart/form-data">
 
                     <div class="row">
+
+                    <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Pangkat Golongan</label>
+                      <input type="hidden" name="id_gajiberkala" class="form-control" value="<?php echo $us->id_gajiberkala; ?>">
+                      <input type="hidden" name="nip" class="form-control" value="<?php echo $us->nip; ?>">
+                      <select name="pangkat" class="select2pangkat form-control input-lg select2-single">
+                      <option value="<?php echo $us->id_masterpangkat; ?>"><?php echo $us->nama_pangkat; ?></option>
+                      <option value=""></option>
+                      </select>
+                    </div>
+                    </div>
+
                     <div class="col-md-6">
-
                     <div class="form-group">
-                       <label>Petugas</label>
-                       <input type="hidden" name="id_gajiberkala" class="form-control" value="<?php echo $us->id_gajiberkala; ?>">
-                       <input type="hidden" name="nip" class="form-control" value="<?php echo $us->nip; ?>">
-                       <select name="pangkat" class="select2pangkat form-control input-lg select2-single">
-                        <option value="<?php echo $us->id_masterpangkat; ?>"><?php echo $us->nama_pangkat; ?></option>
-                         <option value=""></option>
-                       </select>
-                    </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-                    <div class="form-group">
-                    <label>TMT Pangkat Golongan</label>
-                    <input type="date" name="tmt" class="form-control" value="<?php echo $us->tmt; ?>" required>
-                    </div>
-                    </div>
-
-                    <div class="col-md-3">
-                    <div class="form-group">
-                    <label>Masa Kerja Gol Tahun</label>
-                    <input type="text" name="tahun" class="form-control" value="<?php echo $us->tahun; ?>" required>
-                    </div>
-                    </div>
-
-                    <div class="col-md-3">
-                    <div class="form-group">
-                    <label>Masa Kerja Gol Bulan</label>
-                    <input type="text" name="bulan" class="form-control" value="<?php echo $us->bulan; ?>" required>
-                    </div>
-                    </div>
-
-                    
-                    <div class="col-md-3">
-                    <div class="form-group">
-                    <label>No SK</label>
+                    <label>No Surat</label>
                     <input type="text" name="no_surat" class="form-control" value="<?php echo $us->no_surat; ?>" required>
                     </div>
                     </div>
+                   
 
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                     <div class="form-group">
-                    <label>Tanggal SK</label>
+                    <label>Tanggal Surat</label>
                     <input type="date" name="tgl_surat" class="form-control" value="<?php echo $us->tgl_surat; ?>" required>
                     </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                     <div class="form-group">
-                    <label>No Pertek BKN</label>
-                    <input type="text" name="no_bkn" class="form-control" value="<?php echo $us->no_bkn; ?>" required>
+                    <label>Gaji Lama</label>
+                    <input type="text" name="gaji_lama" class="form-control" value="<?php echo $us->gaji_lama; ?>" required>
+                    </div>
+                    </div>
+                   
+
+                   <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Gaji Baru</label>
+                    <input type="text" name="gaji_baru" class="form-control" value="<?php echo $us->gaji_baru; ?>" required>
                     </div>
                     </div>
 
-                    <div class="col-md-3">
+
+                    <div class="col-md-6">
                     <div class="form-group">
-                    <label>Tanggal Pertek BKN</label>
-                    <input type="date" name="tgl_bkn" class="form-control" value="<?php echo $us->tgl_bkn; ?>" required>
+                    <label>TMT KGB</label>
+                    <input type="date" name="tmt" class="form-control" value="<?php echo $us->tmt; ?>"required>
                     </div>
                     </div>
 
                     <div class="col-md-6">
+                    <div class="form-group">
+                    <label>KGB Akan Datang</label>
+                    <input type="date" name="kgb_mendatang" class="form-control" value="<?php echo $us->kgb_mendatang; ?>"required>
+                    </div>
+                    </div>
+                    
+
+                    <div class="col-md-12">   
                     <label>File SK (Surat Keputusan)</label>
                     <input type="file" name="file" class="form-control" accept=".pdf, .jpg, .jpeg, .png">
-                    </div>
+                    
 
-                    <div class="col-md-12">
-                      <div class="mt-1">
-                      <span class="text-secondary">File yang diupload harus dalam format : .pdf, .jpg, .jpeg, .png</span>
-                      </div>
+                    <div class="mt-1">
+                    <span class="text-secondary">File yang diupload harus dalam format : .pdf, .jpg, .jpeg, .png</span>
                     </div>
+                    </div> 
 
                     
                     </div>
@@ -322,88 +317,94 @@
               </div>
             </div>
           </div>
-        <?php endforeach; ?> -->
+        <?php endforeach; ?>
           <!-- AKHIR MODAL UPDATE DATA -->
 
 
         <!-- MODAL DETAIL DATA -->
-        <!-- <?php 
+        <?php 
         $no = 0;
-        foreach ($pangkat as $us) : $no++; ?>
+        foreach ($gajiberkala as $us) : $no++; ?>
         <div aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1" role="dialog" id="detailmodal<?php echo $us->id_gajiberkala; ?>" class="modal fade">
-          <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Detail Data Pangkat Golongan</h5>
+                <h5 class="modal-title">Detail Data KGB</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
 
               <div class="modal-body">
-              <form method="POST" action="<?php echo base_url('pns/GajiBerkala/update_gajiberkala') ?>">
+              <form method="POST" action="#">
 
-                  <div class="row">
-                  <div class="col-md-6">
+               <div class="row">
 
-                  <div class="form-group">
-                  <label>Pangkat Golongan</label>
-                  <input type="text" name="pangkat" class="form-control" value="<?php echo $us->nama_pangkat; ?>" readonly>
-                  </div>
+                    <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Pangkat Golongan</label>
+                      <input type="text" name="no_surat" class="form-control" value="<?php echo $us->nama_pangkat; ?>" readonly>
+                    </div>
+                    </div>
 
-                  <div class="form-group">
-                  <label>TMT Pangkat Golongan</label>
-                  <input type="date" name="tmt" class="form-control" value="<?php echo $us->tmt; ?>" readonly>
-                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                    <label>No Surat</label>
+                    <input type="text" name="no_surat" class="form-control" value="<?php echo $us->no_surat; ?>" readonly>
+                    </div>
+                    </div>
+                   
 
-                  <div class="form-group">
-                  <label>Masa Kerja Golongan Tahun (Angka)</label>
-                  <input type="text" name="tahun" class="form-control" value="<?php echo $us->tahun; ?>" readonly>
-                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Tanggal Surat</label>
+                    <input type="date" name="tgl_surat" class="form-control" value="<?php echo $us->tgl_surat; ?>" readonly>
+                    </div>
+                    </div>
 
-                  <div class="form-group">
-                  <label>Masa Kerja Golongan Bulan (Angka)</label>
-                  <input type="text" name="bulan" class="form-control" value="<?php echo $us->bulan; ?>" readonly>
-                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Gaji Lama</label>
+                    <input type="text" name="gaji_lama" class="form-control" value="<?php echo "Rp. ".number_format($us->gaji_lama); ?>" readonly>
+                    </div>
+                    </div>
+                   
 
-                  </div>
-                  <div class="col-md-6">
+                   <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Gaji Baru</label>
+                    <input type="text" name="gaji_baru" class="form-control" value="<?php echo "Rp. ".number_format($us->gaji_baru); ?>" readonly>
+                    </div>
+                    </div>
 
-                  <div class="form-group">
-                  <label>No SK</label>
-                  <input type="text" name="no_surat" class="form-control" value="<?php echo $us->no_surat; ?>" readonly>
-                  </div>
 
-                  <div class="form-group">
-                  <label>Tanggal SK</label>
-                  <input type="date" name="tgl_surat" class="form-control" value="<?php echo $us->tgl_surat; ?>" readonly>
-                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                    <label>TMT KGB</label>
+                    <input type="date" name="tmt" class="form-control" value="<?php echo $us->tmt; ?>"readonly>
+                    </div>
+                    </div>
 
-                  <div class="form-group">
-                  <label>No Pertek BKN</label>
-                  <input type="text" name="no_bkn" class="form-control" value="<?php echo $us->no_bkn; ?>" readonly>
-                  </div>
-
-                  <div class="form-group">
-                  <label>Tanggal Pertek BKN</label>
-                  <input type="date" name="tgl_bkn" class="form-control" value="<?php echo $us->tgl_bkn; ?>" readonly>
-                  </div>
-
-                  </div>
-                  </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                    <label>KGB Akan Datang</label>
+                    <input type="date" name="kgb_mendatang" class="form-control" value="<?php echo $us->kgb_mendatang; ?>"readonly>
+                    </div>
+                    </div>
+                    
+                    </div>   
 
                 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
               </div>
               
               </form>
             </div>
           </div>
         </div>
-      <?php endforeach; ?> -->
+      <?php endforeach; ?>
         <!-- AKHIR MODAL DETAIL DATA -->
          
 

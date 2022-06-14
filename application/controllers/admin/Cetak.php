@@ -10,6 +10,8 @@ class Cetak extends CI_Controller{
 
 	{
 
+		check_not_login();
+
 		$data['title'] = "Cetak Berdasarkan Filter Data";
 
 		$data['profesi'] = $this->db->get('profesi')->result(); 

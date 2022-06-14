@@ -88,12 +88,12 @@
   <!-- /.navbar -->
 
 
-  <!-- MODAL TAMBAH DATA -->
+  <!-- MODAL Ganti Password -->
           <div aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1" role="dialog" id="gantipassword" class="modal fade">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Tambah Data Berkas</h5>
+                  <h5 class="modal-title">Ganti Password</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -108,7 +108,7 @@
                         <input type="password" name="email" class="form-control" placeholder="Password" required>
                         <div class="input-group-append">
                           <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
+                            <span class="fas fa-lock"></span>
                           </div>
                         </div>
                       </div>
@@ -143,7 +143,7 @@
               </div>
             </div>
           </div>
-          <!-- AKHIR MODAL TAMBAH DATA -->
+          <!-- AKHIR MODAL Ganti Password -->
 
 
   

@@ -96,7 +96,7 @@ class Datapegawai extends CI_Controller
 
     public function update_diklat()
     {
-        $id_diklat            = $this->input->post('id_diklat');
+        $id_diklat          = $this->input->post('id_diklat');
         $berlaku_sampai     = $this->input->post('berlaku_sampai');
         $update_at          = date('Y-m-d H:i:s');
 
