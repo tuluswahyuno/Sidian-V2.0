@@ -106,6 +106,8 @@ class Pendidikan extends CI_Controller
             $nama_sekolah  = $this->input->post('nama_sekolah');
             $jurusan       = $this->input->post('jurusan');
             $tgl_lulus     = $this->input->post('tgl_lulus');
+            $no_ijazah     = $this->input->post('no_ijazah');
+            $pterakhir     = $this->input->post('pterakhir');
             $update_at          = date('Y-m-d H:i:s');
 
             date_default_timezone_set('Asia/Jakarta');
@@ -162,6 +164,8 @@ class Pendidikan extends CI_Controller
                 'nama_sekolah'  => $nama_sekolah,
                 'jurusan'       => $jurusan,
                 'tgl_lulus'     => $tgl_lulus,
+                'no_ijazah'     => $no_ijazah,
+                'pterakhir'     => $pterakhir,
                 'update_at'     => date('Y-m-d H:i:s')
             );
 
@@ -195,6 +199,8 @@ class Pendidikan extends CI_Controller
             $nama_sekolah  = $this->input->post('nama_sekolah');
             $jurusan       = $this->input->post('jurusan');
             $tgl_lulus     = $this->input->post('tgl_lulus');
+            $no_ijazah     = $this->input->post('no_ijazah');
+            $pterakhir     = $this->input->post('pterakhir');
 
             $ijazah        = $_FILES['ijazah']['name'];
             if ($ijazah=''){}else{
@@ -233,6 +239,8 @@ class Pendidikan extends CI_Controller
                 'nama_sekolah'  => $nama_sekolah,
                 'jurusan'       => $jurusan,
                 'tgl_lulus'     => $tgl_lulus,
+                'no_ijazah'     => $no_ijazah,
+                'pterakhir'     => $pterakhir,
                 'ijazah'        => $ijazah,
                 'transkrip'     => $transkrip,
             );
@@ -266,6 +274,8 @@ class Pendidikan extends CI_Controller
             $nama_sekolah  = $this->input->post('nama_sekolah');
             $jurusan       = $this->input->post('jurusan');
             $tgl_lulus     = $this->input->post('tgl_lulus');
+            $no_ijazah     = $this->input->post('no_ijazah');
+            $pterakhir     = $this->input->post('pterakhir');
             $update_at          = date('Y-m-d H:i:s');
 
             date_default_timezone_set('Asia/Jakarta');
@@ -322,6 +332,8 @@ class Pendidikan extends CI_Controller
                 'nama_sekolah'  => $nama_sekolah,
                 'jurusan'       => $jurusan,
                 'tgl_lulus'     => $tgl_lulus,
+                'no_ijazah'     => $no_ijazah,
+                'pterakhir'     => $pterakhir,
                 'update_at'     => date('Y-m-d H:i:s')
             );
 

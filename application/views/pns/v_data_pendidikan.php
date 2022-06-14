@@ -55,7 +55,7 @@
               <th>Jurusan</th>
               <th>Th Lulus</th>
               <th>No Ijazah</th>
-              <th>Pend Terakhir</th>
+              <!-- <th>Pend Terakhir</th> -->
               <th>Ijazah</th>
               <th>Transkrip</th>
               <th style="text-align: center;">Action</th>
@@ -70,12 +70,26 @@
 
               <tr>
                 <td style="text-align: center;"><?php echo $no++; ?></td>
-                <td><?php echo $us->pendidikan ?></td>
+                <td><?php echo $us->pendidikan ?><br>
+
+                  <?php
+                    if ($us->pterakhir == "0") { ?>
+
+                     <span class='badge badge-warning'>Bukan Pend Terakhir</span>
+
+                   <?php } else { ?>
+
+                     <span class='badge badge-success'>Pendidikan Terakhir</span>
+
+
+                   <?php } ?>
+
+                </td>
                 <td><?php echo $us->nama_sekolah ?></td>
                 <td><?php echo $us->jurusan ?></td>
                 <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tgl_lulus))  ?></td>
                 <td><?php echo $us->no_ijazah ?></td>
-                <td style="text-align: center;">
+                <!-- <td style="text-align: center;">
 
                   <?php
                     if ($us->pterakhir == "0") { ?>
@@ -89,13 +103,13 @@
 
                    <?php } ?>
                     
-                </td>
+                </td> -->
 
                 <td style="text-align: center;">
                    <?php
                     if ($us->ijazah == NULL) { ?>
 
-                     <span class='badge badge-danger'>No File</span>
+                     <span class='badge badge-danger'>Tidak Ada File</span>
 
                    <?php } else { ?>
 
@@ -303,6 +317,11 @@
                         <div class="form-group">
                           <label>Pend Terakhir</label>
                           <select class="form-control" name="pterakhir" required>
+                            <option value="<?php echo $us->pterakhir; ?>">
+                                <?php
+                                  if ($us->pterakhir == "0") { echo "Tidak"; } else {echo "Ya";} 
+                                ?>
+                              </option>
                             <option value="0">Tidak</option>
                             <option value="1">Ya</option>
                           </select>
