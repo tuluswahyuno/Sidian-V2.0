@@ -43,8 +43,8 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>NIP</th>
               <th>Nama Pegawai</th>
+              <th>Gender / Usia</th>
               <th>Pangkat</th>
               <th>Jabatan</th>
               <th>Masa Kerja</th>
@@ -62,8 +62,36 @@
               <tr>
                 <td><?php echo $no++; ?></td>
                 <!-- <td ><span class="badge badge-success"><?php echo $us->nip ?></span></td> -->
-                <td ><?php echo $us->nip ?></td>
-                <td ><?php echo $us->nama_lengkap ?></td>
+                <td ><?php echo $us->nama_lengkap ?><br>
+                  <span class="badge badge-success"><?php echo "NIP : ".$us->nip ?></span>
+                </td>
+                <td style="text-align: center;">
+                <?php echo $us->gender ?><br>
+                <hr style='margin-bottom:0;margin-top:0'>
+                  <?php 
+                  
+                  $tmt = $us->tgl_lahir;
+
+                  if($tmt != '0000-00-00') {
+
+                  $bday = new DateTime($tmt); // Your date of birth
+                  $today = new Datetime(date('m.d.y'));
+                  $diff = $today->diff($bday);
+                  
+                  printf("<span class='badge badge-primary'>%d Tahun, %d Bulan </span>", $diff->y, $diff->m, $diff->d);
+
+                  printf("\n");
+
+                     // echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-warning'>TL : $us->tgl_lahir</span>";
+
+                  }else{
+
+                      echo "<span class='badge badge-danger'>Tgl Lahir Belum Diisi</span>";
+                  }
+
+                  
+                   ?>
+                </td>
                 <td ><?php echo $us->nama_pangkat ?></td>
                 <td ><?php echo $us->nama_jabatan ?></td>
                 <td style="text-align: center;">

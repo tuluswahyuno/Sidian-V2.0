@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2>Data Diklat2</h2>
+            <h2>Diklat Expired</h2>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?php echo base_url('admin/Dashboard') ?>">Dashboard</a></li>
-              <li class="breadcrumb-item active">Data Diklat</li>
+              <li class="breadcrumb-item active">Diklat Expired</li>
             </ol>
           </div>
         </div>
@@ -38,7 +38,6 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>NIP</th>
               <th>Nama Pegawai</th>
               <th>Nama Diklat</th>
               <th>Expired</th>
@@ -53,10 +52,18 @@
               $no = 1;
               foreach ($pegawai as $us) : ?>
 
-              <tr style="text-align: center;">
+              <tr>
                 <td><?php echo $no++; ?></td>
-                <td style="text-align: center;"><?php echo $us->nip; ?></td>
-                <td ><?php echo $us->nama_lengkap ?></td>
+                <td ><?php echo $us->nama_lengkap ?><br>
+                  <span class="badge badge-info">
+                    <?php if ($us->status_pegawai == 1 || $us->status_pegawai == 2 )
+                    {
+                      echo "NIP : ".$us->nip;
+                    }else{
+                      echo "NIK : ".$us->nip;
+                    } 
+                    ?></span>
+                </td>
                 <td ><?php echo $us->nama_diklat ?></td>
                 
 
@@ -92,16 +99,23 @@
 
                 <td style="text-align: center;">
                    <?php
-                    if ($us->file == NULL) { ?>
+                    if ($us->file != NULL && $us->status_pegawai == 3) { ?>
 
-                    <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File <i class="fas fa-times-circle"> </a></i>
-
-                   <?php } else { ?>
-
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                    <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
 
                      <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
 
+                   <?php } elseif ($us->file != NULL && $us->status_pegawai == 1 || $us->status_pegawai == 2) { ?>
+
+
+                    <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+
+                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+
+
+                   <?php }else{ ?>
+
+                    <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File <i class="fas fa-times-circle"> </a></i>
 
                    <?php } ?>
 

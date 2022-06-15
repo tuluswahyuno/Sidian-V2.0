@@ -38,7 +38,6 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>NIP</th>
               <th>Nama Pegawai</th>
               <th>Unit Kerja</th>
               <th>Pangkat & Jabatan</th>

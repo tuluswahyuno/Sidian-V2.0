@@ -43,11 +43,11 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>NIK</th>
               <th>Nama Pegawai</th>
+              <th>Gender / Usia</th>
               <th>Jabatan</th>
+              <th>Unit Kerja</th>
               <th>Masa Kerja</th>
-              <th>Jenis Kelamin</th>
               <th>Agama</th>
               <th style="text-align: center;">Action</th>
             </thead>
@@ -61,10 +61,39 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $us->nik ?></td>
-                <td><?php echo $us->nama_lengkap ?></td>
-                <td><?php echo $us->nama_jabatan ?></td>
-                <!-- <td ><?php echo $us->tmt ?></td> -->
+                <td><?php echo $us->nama_lengkap ?><br>
+                  <span class="badge badge-success"><?php echo "NIK : ".$us->nip ?></span>
+                </td>
+                <td style="text-align: center;">
+                <?php echo $us->gender ?><br>
+                <hr style='margin-bottom:0;margin-top:0'>
+                  <?php 
+                  
+                  $tmt = $us->tgl_lahir;
+
+                  if($tmt != '0000-00-00') {
+
+                  $bday = new DateTime($tmt); // Your date of birth
+                  $today = new Datetime(date('m.d.y'));
+                  $diff = $today->diff($bday);
+                  
+                  printf("<span class='badge badge-primary'>%d Tahun, %d Bulan </span>", $diff->y, $diff->m, $diff->d);
+
+                  printf("\n");
+
+                     // echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-warning'>TL : $us->tgl_lahir</span>";
+
+                  }else{
+
+                      echo "<span class='badge badge-danger'>Tgl Lahir Belum Diisi</span>";
+                  }
+
+                  
+                   ?>
+                </td>
+                <td style="text-align: center;"><?php echo $us->nama_jabatan ?></td>
+                <td style="text-align: center;"><?php echo $us->nama_unitkerja ?></td>
+
                 
                 <td style="text-align: center;">
                   <?php 
@@ -92,11 +121,10 @@
                    ?>
                 </td>
 
-                <td style="text-align: center;"><?php echo $us->gender ?></td>
                 <td style="text-align: center;"><?php echo $us->agama ?></td>
 
                 <td>
-                    <a href="<?php echo base_url('admin/Datapegawai/detail_pegawai_nonpns/').$us->nip ?>" class="btn btn-sm btn-success">Lihat Data <i class="fas fa-eye"></i></a>
+                    <a href="<?php echo base_url('admin/Datapegawai/detail_pegawai_nonpns/').$us->nip ?>" class="btn btn-sm btn-success">Detail <i class="fas fa-eye"></i></a>
 
                     <!-- <a href="<?php echo base_url('admin/Datapegawai/delete_pegawai/').$us->nip ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a> -->
                   </td>
