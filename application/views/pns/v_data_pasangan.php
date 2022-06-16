@@ -74,7 +74,7 @@
                 <td style="text-align: center;">
                   <?php
                     if ($us->tunjangan == 'Dapat Tunjangan') { ?>
-                    <a class="btn btn-sm btn-success" href="#"> <?php echo $us->tunjangan ?> </a><!-- <i class="fas fa-check-circle"> </i> -->
+                    <span class="badge badge-success"><?php echo $us->tunjangan ?></span><!-- <i class="fas fa-check-circle"> </i> -->
                   
                   <?php } else { ?>
 
@@ -89,27 +89,26 @@
                    <?php
                     if ($us->akta_nikah == NULL && $us->akta_cerai == NULL) { ?>
 
-                     <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File <i class="fas fa-times-circle"> </a></i>
+                     <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File </a>
 
                    <?php } elseif ($us->akta_nikah != NULL && $us->akta_cerai != NULL) { ?>
 
-                    <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_nikah ?>" target="_blank"> Akta Nikah <i class="fas fa-eye"> </a></i>
+                    <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_nikah ?>" target="_blank"> Akta Nikah </a>
 
-                    <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_cerai ?>" target="_blank"> Akta Cerai <i class="fas fa-eye"> </a></i>
+                    <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_cerai ?>" target="_blank"> Akta Cerai </a>
 
-                    <!-- <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_cerai ?>" target="_blank"> Akta Cerai <i class="fas fa-eye"> </a></i> -->
 
                   <?php } elseif ($us->akta_nikah != NULL && $us->akta_cerai == NULL) { ?>
 
-                    <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_nikah ?>" target="_blank"> Akte Nikah <i class="fas fa-eye"> </a></i>
+                    <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_nikah ?>" target="_blank"> Akta Nikah </a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_nikah ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_nikah ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
                      
                   <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_cerai ?>" target="_blank"> Akta Cerai <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_cerai ?>" target="_blank"> Akta Cerai </a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_cerai ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pasangan/' . $us->akta_cerai ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
 
                    <?php } ?>

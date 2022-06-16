@@ -41,10 +41,9 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>NIP</th>
               <th>Nama</th>
-              <th>Asal</th>
-              <th>Sekarang</th>
+              <th>R. Asal</th>
+              <th>R. Sekarang</th>
               <th>TMT</th>
               <th>File SK</th>
               <th style="text-align: center;">Action</th>
@@ -57,15 +56,18 @@
               $no = 1;
               foreach ($mutasi as $us) : ?>
 
-              <tr style="text-align: center;">
+              <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $us->nip ?></td>
-                <td><?php echo $us->nama_lengkap ?></td>
-                <td><?php echo $us->asal ?></td>
-                <td style="text-align: center;">
-                <a class="btn btn-sm btn-warning" href="#"> <?php echo $us->nama_unitkerja ?></a>
+                <td><?php echo $us->nama_lengkap ?><br>
+                  <span class="badge badge-success"><?php echo "NIP : ".$us->nip ?></span>
                 </td>
-                <td ><?php echo date('d-M-Y', strtotime($us->tmt_mutasi))  ?></td>
+                <td style="text-align: center;">
+                  <span class="badge badge-warning"><?php echo $us->asal ?></span>
+                </td>
+                <td style="text-align: center;">
+                  <span class="badge badge-primary"><?php echo $us->nama_unitkerja ?></span>
+                </td>
+                <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tmt_mutasi))  ?></td>
 
                 <!-- <td ><?php echo $us->file ?></td> -->
 
@@ -73,13 +75,13 @@
                    <?php
                     if ($us->file == NULL) { ?>
 
-                     <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File <i class="fas fa-times-circle"> </a></i>
+                     <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File </a>
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/mutasi/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/mutasi/' . $us->file ?>" target="_blank"> Lihat </a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/mutasi/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/mutasi/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
                    <?php } ?>
 

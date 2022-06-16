@@ -200,11 +200,32 @@
                     
 
                       <div class="form-group">
+                      <div class="row">
+                      <div class="col-sm-6">
                         <label>Unit Kerja</label>
                         <select name="divisi" class="select2unitkerja form-control input-lg select2-single">
                           <option value="<?php echo $pegawai->id_unitkerja; ?>"><?php echo $pegawai->nama_unitkerja; ?></option>
                           <option value=""></option>
                         </select>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Jenis Jabatan</label>
+                          <select class="form-control" name="status_aktif" required>
+                          <option value="<?php echo $pegawai->status_aktif; ?>">
+                            <?php if ($pegawai->status_aktif == '1') {
+                              echo "Aktif";
+                            }else{
+                              echo "Tidak Aktif";
+                            }?>
+                              
+                          </option>
+                          <option value="1">Aktif</option>
+                          <option value="2">Tidak Aktif</option>
+                        </select>
+                      </div>
+                      </div>
                       </div>
 
                       <div class="row">

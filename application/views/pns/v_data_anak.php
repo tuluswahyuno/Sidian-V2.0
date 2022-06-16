@@ -46,7 +46,7 @@
               <th>Anak Ke</th>
               <th>Pekerjaan</th>
               <th>Tunjangan</th>
-              <th>Akte Kelahiran</th>
+              <th>File</th>
               <th style="text-align: center;">Action</th>
             </thead>
 
@@ -60,7 +60,7 @@
               <tr>
                 <td style="text-align: center;"><?php echo $no++; ?></td>
                 <td ><?php echo $us->nama_anak ?></td>
-                <td ><?php echo $us->tempat_lahir ?>, <?php echo date('d-M-Y', strtotime($us->tgl_lahir))  ?></td>
+                <td ><?php echo $us->tempat_lahir ?><br><?php echo date('d-M-Y', strtotime($us->tgl_lahir))  ?></td>
                 <td style="text-align: center;"><?php echo $us->anak_ke ?></td>
                 <td style="text-align: center;"><?php echo $us->pekerjaan ?></td>
                 
@@ -68,11 +68,11 @@
                  <td style="text-align: center;">
                   <?php
                     if ($us->tunjangan == 'Dapat Tunjangan') { ?>
-                    <a class="btn btn-sm btn-success" href="#"> <?php echo $us->tunjangan ?> </a><!-- <i class="fas fa-check-circle"> </i> -->
+                    <span class='badge badge-success'><?php echo $us->tunjangan ?></span>
                   
                   <?php } else { ?>
 
-                    <a class="btn btn-sm btn-warning" href="#"> <?php echo $us->tunjangan ?> </a>
+                    <span class='badge badge-danger'><?php echo $us->tunjangan ?></span>
 
                    <?php } ?>
 
@@ -86,9 +86,9 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/anak/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/anak/' . $us->file ?>" target="_blank"> Akta Lahir </a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/anak/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/anak/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
 
                    <?php } ?>
