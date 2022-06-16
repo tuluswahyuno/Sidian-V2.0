@@ -30,7 +30,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-header">DASHBOARD</li>
+          <!-- <li class="nav-header">DASHBOARD</li>
           <li class="nav-item">
             <a href="<?php echo base_url('pns/Dashboard/timeline') ?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -38,7 +38,7 @@
                 Dashboard
                   </p>
                 </a>
-              </li>
+              </li> -->
 
          
 
@@ -79,7 +79,7 @@
             <a href="<?php echo base_url('pns/Jabatan') ?>" class="nav-link">
               <i class="nav-icon fas fa-user-md"></i>
               <p>
-                Jabatan
+                Riwayat Jabatan
               </p>
             </a>
           </li>
@@ -104,7 +104,7 @@
           </li>
 
 
-          <li class="nav-header">SERTIFIKAT KOMPETENSI</li>
+          <!-- <li class="nav-header">SERTIFIKAT KOMPETENSI</li> -->
           <li class="nav-item">
             <a href="<?php echo base_url('pns/Kompetensi') ?>" class="nav-link">
               <i class="nav-icon fas fa-file-medical"></i>

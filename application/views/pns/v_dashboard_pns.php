@@ -23,6 +23,48 @@
     <section class="content">
       <div class="container-fluid">
 
+        <div class="card">
+<div class="card-header">
+<h3 class="card-title">
+<i class="ion ion-clipboard mr-1"></i>
+Pemberitahuan !
+</h3>
+<div class="card-tools">
+
+</div>
+</div>
+
+<div class="card-body">
+<ul class="todo-list" data-widget="todo-list">
+<li>
+
+<span class="handle">
+<i class="fas fa-ellipsis-v"></i>
+<i class="fas fa-ellipsis-v"></i>
+</span>
+
+<div class="icheck-primary d-inline ml-2">
+<input type="checkbox" value="" name="todo1" id="todoCheck1">
+<label for="todoCheck1"></label>
+</div>
+
+<span class="text">Design a nice theme</span>
+
+<small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+
+<div class="tools">
+<i class="fas fa-edit"></i>
+<i class="fas fa-trash-o"></i>
+</div>
+</li>
+
+</ul>
+</div>
+
+
+</div>
+
+
         <!-- Timelime example  -->
         <div class="row">
           <div class="col-md-12">

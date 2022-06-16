@@ -90,7 +90,7 @@
 
               <th>Penyelenggara</th>
 
-              <th>Nomor</th>
+              <th>No Sertifikat</th>
 
               <!-- <th>Tanggal Mulai</th>
 
@@ -126,7 +126,10 @@
 
                 <td style="text-align: center;"><?php echo $no++; ?></td>
 
-                <td><?php echo $us->nama_diklat ?></td>
+                <td><?php echo $us->nama_diklat ?><br>
+                  <span class="badge badge-success"><?php echo "Tgl Mulai : ".date('d-M-Y', strtotime($us->tgl_mulai))  ?></span><br>
+                  <span class="badge badge-primary"><?php echo "Tgl Selesai : ".date('d-M-Y', strtotime($us->tgl_mulai))  ?></span>
+                </td>
 
                 <td><?php echo $us->institusi ?></td>
 
@@ -212,11 +215,11 @@
 
 
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" target="_blank"> Lihat </a>
 
 
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
 
 
@@ -234,9 +237,9 @@
 
 
 
-                  <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_diklat; ?>">
+                  <!-- <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_diklat; ?>">
 
-                  <i class="fas fa-eye"> </i> Detail</a>
+                  <i class="fas fa-eye"> </i> Detail</a> -->
 
 
 

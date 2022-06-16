@@ -46,18 +46,23 @@
             <i class="fas fa-plus-square"> </i> Tambah Data Pendidikan</a>
           </button>
 
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          Mohon <strong>diurutkan</strong> dari pendidikan awal sampai dengan pendidikan terakhir.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+
          
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
               <th>Jenjang</th>
-              <th>Nama Kampus</th>
-              <th>Jurusan</th>
-              <th>Th Lulus</th>
+              <th>Kampus / Jurusan</th>
               <th>No Ijazah</th>
+              <!-- <th>Tgl Lahir</th> -->
               <!-- <th>Pend Terakhir</th> -->
-              <th>Ijazah</th>
-              <th>Transkrip</th>
+              <th>File</th>
               <th style="text-align: center;">Action</th>
             </thead>
 
@@ -85,10 +90,14 @@
                    <?php } ?>
 
                 </td>
-                <td><?php echo $us->nama_sekolah ?></td>
-                <td><?php echo $us->jurusan ?></td>
-                <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tgl_lulus))  ?></td>
-                <td><?php echo $us->no_ijazah ?></td>
+                <td><?php echo $us->nama_sekolah ?><br>
+                    <span class="badge badge-primary"><?php echo $us->jurusan ?></span>
+                </td>
+                <!-- <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tgl_lulus))  ?></td> -->
+                <td><?php echo $us->no_ijazah ?><br>
+                  <span class="badge badge-info"><?php echo "Tgl Lulus : ".date('d-M-Y', strtotime($us->tgl_lulus))  ?></span>
+                </td>
+                
                 <!-- <td style="text-align: center;">
 
                   <?php
@@ -113,9 +122,11 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->ijazah ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-primary" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->ijazah ?>" target="_blank"> Ijazah </a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->ijazah ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->transkrip ?>" target="_blank"> Transkrip </a>
+
+                     <!-- <a class="badge badge-danger" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->ijazah ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
 
                    <?php } ?>
@@ -123,7 +134,7 @@
                  </td>
 
 
-                 <td style="text-align: center;">
+                 <!-- <td style="text-align: center;">
                    <?php
                     if ($us->transkrip == NULL) { ?>
 
@@ -131,14 +142,14 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->transkrip ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     
 
                      <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->transkrip ?>" download> Unduh <i class="fas fa-download"> </a></i>
 
 
                    <?php } ?>
 
-                 </td>
+                 </td> -->
 
                 
                 

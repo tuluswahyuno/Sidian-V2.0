@@ -289,6 +289,24 @@
 	</form>
 	</div>
 
+	<div>
+                  <hr>
+                  <div class="timeline-body">
+                    Manual Book penggunaan sistem bisa didownload disini . .
+                    
+                    <?php { ?>
+
+                      <a class="btn btn-sm btn-primary" href="<?php echo base_url() . 'uploads/Manual Book SI DIAN.pdf' ?>" target="_blank"> Baca <i class="fas fa-eye"> </a></i>
+
+                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/Manual Book SI DIAN.pdf' ?>" download> Download <i class="fas fa-download"> </a></i>
+
+
+                   <?php } ?>
+
+                   
+                </div>
+              </div>
+
 	</div>
 
 	</div>
@@ -302,8 +320,13 @@
 	</section>
 
 
+
+
   </div>
   <!-- /.content-wrapper -->
+
+
+
 
 
 		<!-- MODAL UPDATE FOTO -->

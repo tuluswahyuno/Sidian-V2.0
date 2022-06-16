@@ -57,7 +57,7 @@
 						case 1 : redirect('admin/Dashboard');
 								 break;
 
-						case 2 : redirect('pns/Dashboard/timeline');
+						case 2 : redirect('pns/Dashboard');
 								 break;
 
 						case 3 : redirect('nonpns/Dashboard/timeline');

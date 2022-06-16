@@ -47,14 +47,21 @@
             <i class="fas fa-plus-square"> </i> Tambah Data Gaji Berkala</a>
           </button>
 
+
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          Mohon <strong>diurutkan</strong> dari kgb pertama sampai dengan kbg terakhir.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+
          
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
               <th>Pangkat/Golongan</th>
               <th>No Surat</th>
-              <th>TMT KBG</th>
-              <th>KGB Mendatang</th>
+              <!-- <th>KGB Mendatang</th> -->
               <th>Gaji Lama</th>
               <th>Gaji Baru</th>
               <th>File SK KGB</th>
@@ -70,10 +77,13 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $us->nama_pangkat ?></td>
-                <td><?php echo $us->no_surat ?></td>
-                <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tmt))  ?></td>
-                <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->kgb_mendatang))  ?></td>
+                <td><?php echo $us->nama_pangkat ?><br>
+                  <span class="badge badge-success"><?php echo "TMT : ".date('d-M-Y', strtotime($us->tmt))  ?></span>
+                </td>
+                <td><?php echo $us->no_surat ?><br>
+                  <span class="badge badge-primary"><?php echo "Tgl : ".date('d-M-Y', strtotime($us->tgl_surat))  ?></span>
+                </td>
+                <!-- <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->kgb_mendatang))  ?></td> -->
                 <td>
                   <span class="badge badge-warning">
                   <?php echo "Rp. ".number_format($us->gaji_lama) ?></td>
@@ -92,15 +102,16 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/gajiberkala/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/gajiberkala/' . $us->file ?>" target="_blank"> Lihat </a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/gajiberkala/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/gajiberkala/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
+
                    <?php } ?>
                  </td>
 
                  <td style="text-align: center;">
-                  <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_gajiberkala; ?>">
-                  <i class="fas fa-eye"> </i> Detail</a>
+                  <!-- <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_gajiberkala; ?>">
+                  <i class="fas fa-eye"> </i> Detail</a> -->
 
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_gajiberkala; ?>">
                   <i class="fas fa-edit"> </i> Edit</a>

@@ -47,12 +47,20 @@
             <i class="fas fa-plus-square"> </i> Tambah Data Pangkat</a>
           </button>
 
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          Mohon <strong>diurutkan</strong> dari pangkat pertama sampai dengan pangkat terakhir.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+
          
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
               <th>Pangkat</th>
-              <th>TMT</th>
+              <th>No SK</th>
+              <th>No Pertek BKN</th>
               <th>Masa Kerja</th>
               <th>File SK</th>
               <th style="text-align: center;">Action</th>
@@ -67,9 +75,21 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $us->nama_pangkat ?></td>
-                <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tmt))  ?></td>
-                <td style="text-align: center;"><?php echo $us->tahun ?> Tahun <?php echo $us->bulan ?> Bulan</td>
+                <td><?php echo $us->nama_pangkat ?><br>
+                  <span class="badge badge-success"><?php echo "TMT : ".date('d-M-Y', strtotime($us->tmt))  ?></span>
+                </td>
+                
+                <td><?php echo $us->no_surat ?><br>
+                  <span class="badge badge-primary"><?php echo "Tgl SK : ".date('d-M-Y', strtotime($us->tgl_surat))  ?></span>
+                </td>
+
+                <td><?php echo $us->no_bkn ?><br>
+                  <span class="badge badge-warning"><?php echo "Tgl Pertek : ".date('d-M-Y', strtotime($us->tgl_bkn))  ?></span>
+                </td>
+
+                <td style="text-align: center;">
+                 <span class="badge badge-info"> <?php echo $us->tahun ?> Th <?php echo $us->bulan ?> Bln </span>
+                </td>
                 
                 <td style="text-align: center;">
                    <?php
@@ -79,9 +99,9 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pangkat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pangkat/' . $us->file ?>" target="_blank"> Lihat </a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pangkat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pangkat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
 
                    <?php } ?>
@@ -89,8 +109,8 @@
                  </td>
 
                  <td style="text-align: center;">
-                  <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_pangkat; ?>">
-                  <i class="fas fa-eye"> </i> Detail</a>
+                  <!-- <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_pangkat; ?>">
+                  <i class="fas fa-eye"> </i> Detail</a> -->
 
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_pangkat; ?>">
                   <i class="fas fa-edit"> </i> Edit</a>

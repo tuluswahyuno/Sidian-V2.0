@@ -31,6 +31,8 @@ class Dashboard extends CI_Controller
 
         $nip = $this->session->userdata('nip');
 
+        $data['kompetensi'] = $this->master_m->get_data_kompetensi_personal($nip); 
+
        $data['pegawai'] = $this->master_m->get_data_pegawai_personal($nip);
         
        $data['belum_dibaca'] = $this->master_m->hitung_belum_dibaca($nip);
