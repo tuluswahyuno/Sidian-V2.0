@@ -368,9 +368,9 @@ class Datapegawai extends CI_Controller
             $nik              = $this->input->post('nik');
             $npwp             = $this->input->post('npwp');
             $bpjs             = $this->input->post('bpjs');
-            $jenjang             = $this->input->post('jenjang');
-            $prodi             = $this->input->post('prodi');
-            // $status_pegawai   = $this->input->post('status_pegawai');
+            $jenjang          = $this->input->post('jenjang');
+            $prodi            = $this->input->post('prodi');
+            $status_aktif     = $this->input->post('status_aktif');
             $kp_terakhir      = $this->input->post('kp_terakhir');
             $kp_mendatang     = $this->input->post('kp_mendatang');
             $kgb_terakhir     = $this->input->post('kgb_terakhir');
@@ -400,9 +400,9 @@ class Datapegawai extends CI_Controller
                 'nik'               => $nik,
                 'npwp'              => $npwp,
                 'bpjs'              => $bpjs,
-                'jenjang'              => $jenjang,
-                'prodi'              => $prodi,
-                // 'status_pegawai'    => $status_pegawai,
+                'jenjang'           => $jenjang,
+                'prodi'             => $prodi,
+                'status_aktif'      => $status_aktif,
                 'kp_terakhir'       => $kp_terakhir,
                 'kp_mendatang'      => $kp_mendatang,
                 'kgb_terakhir'      => $kgb_terakhir,

@@ -211,7 +211,7 @@
 
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Jenis Jabatan</label>
+                          <label>Status Aktif</label>
                           <select class="form-control" name="status_aktif" required>
                           <option value="<?php echo $pegawai->status_aktif; ?>">
                             <?php if ($pegawai->status_aktif == '1') {

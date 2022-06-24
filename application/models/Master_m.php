@@ -203,20 +203,20 @@ class Master_m extends CI_Model
 
     public function get_data_pegawai_pns()
     {
-        $query = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u, jabatan jp, pangkat p WHERE u.id_unitkerja = dp.divisi AND jp.id_masterjabatan = dp.jabatan AND dp.pangkat = p.id_masterpangkat AND status_pegawai = '1' order by id_user;");
+        $query = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u, jabatan jp, pangkat p WHERE u.id_unitkerja = dp.divisi AND jp.id_masterjabatan = dp.jabatan AND dp.pangkat = p.id_masterpangkat AND status_pegawai = '1' AND status_aktif ='1' order by id_user;");
         return $query->result();
     }
 
     public function get_data_pegawai_nonpns()
     {
-        $query = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u, jabatan_nonpns jp WHERE u.id_unitkerja = dp.divisi AND jp.id_jabatannonpns = dp.jabatan AND status_pegawai = '3' order by id_user;");
+        $query = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u, jabatan_nonpns jp WHERE u.id_unitkerja = dp.divisi AND jp.id_jabatannonpns = dp.jabatan AND status_pegawai = '3' AND status_aktif ='1' order by id_user;");
         return $query->result();
     }
 
 
     public function get_data_pegawai_pppk()
     {
-        $query = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u, jabatan jp, pangkat p WHERE u.id_unitkerja = dp.divisi AND jp.id_masterjabatan = dp.jabatan AND dp.pangkat = p.id_masterpangkat AND status_pegawai = '2' order by id_user;");
+        $query = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u, jabatan jp, pangkat p WHERE u.id_unitkerja = dp.divisi AND jp.id_masterjabatan = dp.jabatan AND dp.pangkat = p.id_masterpangkat AND status_pegawai = '2' AND status_aktif ='1' order by id_user;");
         return $query->result();
     }
 

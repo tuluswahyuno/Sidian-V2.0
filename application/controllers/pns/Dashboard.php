@@ -95,7 +95,7 @@ class Dashboard extends CI_Controller
             $bpjs             = $this->input->post('bpjs');
             $jenjang          = $this->input->post('jenjang');
             $prodi            = $this->input->post('prodi');
-            // $status_pegawai   = $this->input->post('status_pegawai');
+            $status_aktif     = $this->input->post('status_aktif');
             $kp_terakhir      = $this->input->post('kp_terakhir');
             $kp_mendatang     = $this->input->post('kp_mendatang');
             $kgb_terakhir     = $this->input->post('kgb_terakhir');
@@ -126,7 +126,7 @@ class Dashboard extends CI_Controller
                 'bpjs'              => $bpjs,
                 'jenjang'           => $jenjang,
                 'prodi'             => $prodi,
-                // 'status_pegawai'    => $status_pegawai,
+                'status_aktif'      => $status_aktif,
                 'kp_terakhir'       => $kp_terakhir,
                 'kp_mendatang'      => $kp_mendatang,
                 'kgb_terakhir'      => $kgb_terakhir,

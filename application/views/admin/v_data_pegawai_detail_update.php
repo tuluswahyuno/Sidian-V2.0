@@ -51,6 +51,11 @@
             </li>
 
 
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('admin/datapegawai/detail_jabatan/').$detail->nip ?>">Jabatan</a>
+            </li>
+
+
 
             <li class="nav-item">
 
@@ -80,6 +85,11 @@
 
               <a class="nav-link" href="<?php echo base_url('admin/datapegawai/detail_berkas/').$detail->nip ?>">Berkas</a>
 
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('admin/datapegawai/detail_mutasi/').$detail->nip ?>">Mutasi Ruang</a>
             </li>
 
           </ul>
@@ -579,7 +589,7 @@
 
                       <div class="row">
 
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
 
                       <div class="form-group">
 
@@ -605,16 +615,34 @@
 
 
 
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
 
                           <div class="form-group">
 
-                          <label>TMT PNS</label>
+                          <label>TMT CPNS</label>
 
                           <input type="date" name="tmt" class="form-control" value="<?php echo $detail->tmt; ?>">
 
                           </div>
 
+                      </div>
+
+
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Status Aktif</label>
+                          <select class="form-control" name="status_aktif" required>
+                          <option value="<?php echo $detail->status_aktif; ?>">
+                            <?php if ($detail->status_aktif == '1') {
+                              echo "Aktif";
+                            }else{
+                              echo "Tidak Aktif";
+                            }?>
+                          </option>
+                          <option value="1">Aktif</option>
+                          <option value="2">Tidak Aktif</option>
+                        </select>
+                      </div>
                       </div>
 
                       </div>
