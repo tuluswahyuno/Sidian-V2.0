@@ -201,11 +201,11 @@
 
 
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/kompetensi/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/kompetensi/' . $us->file ?>" target="_blank"> Lihat </a>
 
 
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/kompetensi/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/kompetensi/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
 
 

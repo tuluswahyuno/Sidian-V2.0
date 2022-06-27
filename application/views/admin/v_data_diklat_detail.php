@@ -94,7 +94,7 @@
                 <td style="text-align: center;"><?php echo $us->durasi_jp ?></td>
                 
                 <td style="text-align: center;">
-                <a class="btn btn-sm btn-warning" href="#"> <?php echo $us->berlaku_sampai ?></a>
+                <span class="badge badge-warning"><?php echo $us->berlaku_sampai ?></span>
                 </td>
 
                 <td style="text-align: center;">
@@ -105,9 +105,9 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" target="_blank"> Lihat </a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
 
                    <?php } ?>

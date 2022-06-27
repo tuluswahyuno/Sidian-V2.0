@@ -41,11 +41,10 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>Nama Anak</th>
+              <th>Nama</th>
               <th>TTL</th>
               <th>Anak Ke</th>
               <th>Pekerjaan</th>
-              <th>Tunjangan</th>
               <th>File</th>
               <th style="text-align: center;">Action</th>
             </thead>
@@ -59,24 +58,21 @@
 
               <tr>
                 <td style="text-align: center;"><?php echo $no++; ?></td>
-                <td ><?php echo $us->nama_anak ?></td>
-                <td ><?php echo $us->tempat_lahir ?><br><?php echo date('d-M-Y', strtotime($us->tgl_lahir))  ?></td>
-                <td style="text-align: center;"><?php echo $us->anak_ke ?></td>
-                <td style="text-align: center;"><?php echo $us->pekerjaan ?></td>
-                
-
-                 <td style="text-align: center;">
+                <td ><?php echo $us->nama_anak ?><br>
                   <?php
                     if ($us->tunjangan == 'Dapat Tunjangan') { ?>
                     <span class='badge badge-success'><?php echo $us->tunjangan ?></span>
                   
                   <?php } else { ?>
 
-                    <span class='badge badge-danger'><?php echo $us->tunjangan ?></span>
+                    <span class='badge badge-warning'><?php echo $us->tunjangan ?></span>
 
                    <?php } ?>
-
                 </td>
+                <td ><?php echo $us->tempat_lahir.", "?><?php echo date('d-M-Y', strtotime($us->tgl_lahir))  ?></td>
+                <td style="text-align: center;"><?php echo $us->anak_ke ?></td>
+                <td style="text-align: center;"><?php echo $us->pekerjaan ?></td>
+                
 
                 <td style="text-align: center;">
                    <?php
@@ -395,11 +391,11 @@
           <?php 
           $no = 0;
           foreach ($anak as $us) : $no++; ?>
-          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="detailmodal<?php echo $us->id_anak; ?>" class="modal fade">
+          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="detailmodal<?php echo $us->id_anak; ?>" class="modal fade">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Detail Data Anak</h5>
+                  <h5 class="modal-title">Detail Anak</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -412,67 +408,65 @@
                     
                     <div class="col-md-12">
 
-                    <div class="form-group">
-                    <label>Nama Anak</label>
-                    <input type="text" name="nama_anak" class="form-control" value="<?php echo $us->nama_anak; ?>" readonly>
-                    </div>
-
-                    <div class="form-group">
-                    <label>NIK</label>
-                    <input type="text" name="nik" class="form-control" value="<?php echo $us->nik; ?>" readonly>
-                    </div>
-
-                    </div>
-
-                    <div class="col-md-7">
-
-                    <div class="form-group">
-                    <label>Tempat Lahir</label>
-                    <input type="text" name="tempat_lahir" class="form-control" value="<?php echo $us->tempat_lahir; ?>" readonly>
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Nama</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->nama_anak; ?>">
                     </div>
                     </div>
 
-                    <div class="col-md-5">
-                    <div class="form-group">
-                    <label>Tanggal Lahir</label>
-                    <input type="date" name="tgl_lahir" class="form-control" value="<?php echo $us->tgl_lahir; ?>" readonly>
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">NIK</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->nik; ?>">
                     </div>
                     </div>
 
-                    <div class="col-md-2">
-                     <div class="form-group">
-                      <label>Anak Ke</label>
-                      <input type="text" name="anak_ke" class="form-control" value="<?php echo $us->anak_ke; ?>" readonly>
-                      </div>
-                      </div>
 
-                      <div class="col-md-4">
-                      <div class="form-group">
-                      <label>Agama</label>
-                      <input type="text" name="agama" class="form-control" value="<?php echo $us->agama; ?>" readonly>
-                      </div>
-                     </div>
-
-                    <div class="col-md-6">
-                    <div class="form-group">
-                    <label>Pekerjaan</label>
-                    <input type="text" name="pekerjaan" class="form-control" value="<?php echo $us->pekerjaan; ?>" readonly>
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">T T L</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->tempat_lahir.", ".date('d-M-Y', strtotime($us->tgl_lahir)); ?>">
                     </div>
                     </div>
 
-                    <div class="col-md-6">
-                      <div class="form-group">
-                      <label>Status</label>
-                      <input type="text" name="status" class="form-control" value="<?php echo $us->status; ?>" readonly>
-                      </div>
-                     </div>
 
-                     <div class="col-md-6">
-                      <div class="form-group">
-                      <label>Tunjangan</label>
-                      <input type="text" name="tunjangan" class="form-control" value="<?php echo $us->tunjangan; ?>" readonly>
-                      </div>
-                     </div>
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Agama</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->agama; ?>">
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Pekerjaan</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->pekerjaan; ?>">
+                    </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Status</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->status; ?>">
+                    </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Anak ke</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->anak_ke; ?>">
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Tunjangan</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->tunjangan; ?>">
+                    </div>
+                    </div>              
 
                     </div>
 

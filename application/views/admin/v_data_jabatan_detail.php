@@ -76,11 +76,19 @@
           </button>
 
 
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          Mohon <strong>diurutkan</strong> dari jabatan pertama sampai dengan jabatan terakhir.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+
+
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
               <th>Jabatan</th>
-              <th>Jenis Jabatan</th>
+              <th>No SK</th>
               <th>Kelas</th>
               <th>TMT</th>
               <th>File SK</th>
@@ -96,11 +104,18 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $us->nama_jabatan ?></td>
-                <td style="text-align: center;"><?php echo $us->jenis_jabatan ?></td>
-                <td style="text-align: center;">
-                <a class="btn btn-sm btn-warning" href="#"> <?php echo "Kelas ".$us->kelas_jabatan ?></a>
+                <td><?php echo $us->nama_jabatan ?><br>
+                  <span class="badge badge-success"><?php echo $us->jenis_jabatan ?></span>
                 </td>
+
+                <td><?php echo $us->no_surat ?><br>
+                  <span class="badge badge-primary"><?php echo "Tgl SK : ".date('d-M-Y', strtotime($us->tgl_surat))  ?></span>
+                </td>
+
+                <td style="text-align: center;">
+                <a class="badge badge-warning" href="#"> <?php echo "Kelas ".$us->kelas_jabatan ?></a>
+                </td>
+
                 <td style="text-align: center;"><?php echo $us->tmt_jabatan ?></td>
                 
                 <td style="text-align: center;">
@@ -111,9 +126,9 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/jabatan/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/jabatan/' . $us->file ?>" target="_blank"> Lihat </a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/jabatan/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/jabatan/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
 
                    <?php } ?>
@@ -123,8 +138,8 @@
                 
 
                  <td style="text-align: center;">
-                  <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_jabatan; ?>">
-                  <i class="fas fa-eye"> </i> Detail</a>
+                  <!-- <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_jabatan; ?>">
+                  <i class="fas fa-eye"> </i> Detail</a> -->
 
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_jabatan; ?>">
                   <i class="fas fa-edit"> </i> Edit</a>

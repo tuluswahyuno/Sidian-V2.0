@@ -184,19 +184,19 @@
                     </div>
 
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                     <div class="form-group">
                     <label>TMT KGB</label>
                     <input type="date" name="tmt" class="form-control" required>
                     </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                     <div class="form-group">
                     <label>KGB Akan Datang</label>
                     <input type="date" name="kgb_mendatang" class="form-control" required>
                     </div>
-                    </div>
+                    </div> -->
                     
 
                     <div class="col-md-12">   
@@ -289,19 +289,19 @@
                     </div>
 
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                     <div class="form-group">
                     <label>TMT KGB</label>
                     <input type="date" name="tmt" class="form-control" value="<?php echo $us->tmt; ?>"required>
                     </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                     <div class="form-group">
                     <label>KGB Akan Datang</label>
                     <input type="date" name="kgb_mendatang" class="form-control" value="<?php echo $us->kgb_mendatang; ?>"required>
                     </div>
-                    </div>
+                    </div> -->
                     
 
                     <div class="col-md-12">   

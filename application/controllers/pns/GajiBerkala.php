@@ -35,7 +35,7 @@
 	        $tmt  			= $this->input->post('tmt');
 	        $no_surat  		= $this->input->post('no_surat');
 	        $tgl_surat  	= $this->input->post('tgl_surat');
-	        $kgb_mendatang  = $this->input->post('kgb_mendatang');
+	        // $kgb_mendatang  = $this->input->post('kgb_mendatang');
 	        $gaji_lama     	= $this->input->post('gaji_lama');
 	        $gaji_baru    	= $this->input->post('gaji_baru');
 
@@ -60,7 +60,7 @@
 	            'tmt' 			=> $tmt,
 	            'no_surat' 		=> $no_surat,
 	            'tgl_surat' 	=> $tgl_surat,
-	            'kgb_mendatang' => $kgb_mendatang,
+	            // 'kgb_mendatang' => $kgb_mendatang,
 	            'gaji_lama'     => $gaji_lama,
 	            'gaji_baru'   	=> $gaji_baru,
 	            'file'          => $file,
@@ -95,7 +95,7 @@
 	        $tmt  			= $this->input->post('tmt');
 	        $no_surat  		= $this->input->post('no_surat');
 	        $tgl_surat  	= $this->input->post('tgl_surat');
-	        $kgb_mendatang  = $this->input->post('kgb_mendatang');
+	        // $kgb_mendatang  = $this->input->post('kgb_mendatang');
 	        $gaji_lama     	= $this->input->post('gaji_lama');
 	        $gaji_baru    	= $this->input->post('gaji_baru');
 	        $update_at      = date('Y-m-d H:i:s');
@@ -132,7 +132,7 @@
 	            'tmt' 			=> $tmt,
 	            'no_surat' 		=> $no_surat,
 	            'tgl_surat' 	=> $tgl_surat,
-	            'kgb_mendatang' => $kgb_mendatang,
+	            // 'kgb_mendatang' => $kgb_mendatang,
 	            'gaji_lama'     => $gaji_lama,
 	            'gaji_baru'   	=> $gaji_baru,
 	            'update_at'     => date('Y-m-d H:i:s')
