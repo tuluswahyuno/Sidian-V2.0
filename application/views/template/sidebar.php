@@ -104,14 +104,7 @@
           </li>
 
           <li class="nav-header">DATA KEPEGAWAIAN</li>
-          <!-- <li class="nav-item">
-            <a href="<?php echo base_url('admin/Datapegawai') ?>" class="nav-link">
-              <i class="nav-icon fas fa-hospital-user"></i>
-              <p>
-                Semua Data
-              </p>
-            </a>
-          </li> -->
+          
           <li class="nav-item">
             <a href="<?php echo base_url('admin/Datapegawai/pns') ?>" class="nav-link">
               <!-- <i class="nav-icon fas fa-user-md"></i> -->
@@ -138,6 +131,16 @@
               <i class="nav-icon fas fa-user-nurse"></i>
               <p>
                 Non ASN
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url('admin/Datapegawai/tidakaktif') ?>" class="nav-link">
+              <!-- <i class="nav-icon fas fa-user-nurse"></i> -->
+              <i class="nav-icon fas fa-user-nurse"></i>
+              <p>
+                Tidak Aktif
               </p>
             </a>
           </li>

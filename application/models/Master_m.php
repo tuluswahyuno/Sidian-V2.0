@@ -220,6 +220,12 @@ class Master_m extends CI_Model
         return $query->result();
     }
 
+    public function get_data_pegawai_tidakaktif()
+    {
+        $query = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u WHERE u.id_unitkerja = dp.divisi AND status_aktif ='2' order by id_user;");
+        return $query->result();
+    }
+
     public function get_data_kp()
     {
         //$query = $this->db->query("SELECT * FROM data_pegawai WHERE MONTH(kp_mendatang) = MONTH(CURDATE());");

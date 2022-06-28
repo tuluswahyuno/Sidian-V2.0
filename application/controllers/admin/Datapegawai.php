@@ -76,6 +76,24 @@ class Datapegawai extends CI_Controller
     }
 
 
+    public function tidakaktif()
+    {
+        check_not_login();
+
+        $data['pegawai'] = $this->master_m->get_data_pegawai_tidakaktif();
+        $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
+        $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+
+        $data['title'] = " Data Pegawai Tidak Aktif ";
+
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar',$data);
+        $this->load->view('admin/v_data_pegawai_tidak_aktif',$data);
+        $this->load->view('template/footer');
+    }
+
+
     public function diklat()
     {
         check_not_login();
@@ -492,6 +510,25 @@ class Datapegawai extends CI_Controller
         $this->load->view('template/header');
         $this->load->view('template/sidebar',$data);
         $this->load->view('admin/v_data_jabatan_detail',$data);
+        $this->load->view('template/footer');
+    }
+
+
+    public function detail_kgb($id)
+    {
+        check_not_login();
+
+        $data['title'] = " Riwayat Gaji Berkala ";
+        $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
+        $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+
+        $data['detail'] = $this->master_m->get_id_pegawai($id);
+        $data['gajiberkala'] = $this->master_m->get_data_gaji_berkala($id); 
+
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar',$data);
+        $this->load->view('admin/v_data_kgb_detail',$data);
         $this->load->view('template/footer');
     }
 

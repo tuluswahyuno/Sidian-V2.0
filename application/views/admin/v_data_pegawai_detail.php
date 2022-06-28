@@ -28,7 +28,7 @@
 
             <li class="nav-item">
 
-              <a class="nav-link" href="<?php echo base_url('admin/datapegawai/detail_pangkat/').$detail->nip ?>">Kepangkatan</a>
+              <a class="nav-link" href="<?php echo base_url('admin/datapegawai/detail_pangkat/').$detail->nip ?>">Pangkat</a>
 
             </li>
 
@@ -38,6 +38,11 @@
 
               <a class="nav-link" href="<?php echo base_url('admin/datapegawai/detail_jabatan/').$detail->nip ?>">Jabatan</a>
 
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('admin/datapegawai/detail_kgb/').$detail->nip ?>">KGB</a>
             </li>
 
 

@@ -92,12 +92,6 @@
 
               <th>No Sertifikat</th>
 
-              <!-- <th>Tanggal Mulai</th>
-
-              <th>Tanggal Selesai</th> -->
-
-              <th>JP</th>
-
               <th>Expired</th>
 
               <th>Sertifikat</th>
@@ -127,69 +121,33 @@
                 <td style="text-align: center;"><?php echo $no++; ?></td>
 
                 <td><?php echo $us->nama_diklat ?><br>
-                  <span class="badge badge-success"><?php echo "Tgl Mulai : ".date('d-M-Y', strtotime($us->tgl_mulai))  ?></span><br>
-                  <span class="badge badge-primary"><?php echo "Tgl Selesai : ".date('d-M-Y', strtotime($us->tgl_mulai))  ?></span>
+                  <span class="badge badge-success"><?php echo "Tgl Diklat : ".date('d-M-Y', strtotime($us->tgl_mulai))?></span><br>
+                  <span class="badge badge-success"><?php echo "s.d ".date('d-M-Y', strtotime($us->tgl_mulai))  ?></span>
                 </td>
 
                 <td><?php echo $us->institusi ?></td>
 
-                <td><?php echo $us->nomor ?></td>
-
-                <td style="text-align: center;"><?php echo $us->durasi_jp ?></td>
-
-
-
+                <td style="text-align: center;"><?php echo $us->nomor ?><br>
+                  <hr style='margin-bottom:0;margin-top:0'>
+                  <span class="badge badge-info"><?php echo "Total JP : ".$us->durasi_jp ?></span>
+                </td>
 
 
                 <td style="text-align: center;">
 
-                  
-
-                   <?php 
-
-                  
-
+                  <?php
                   $tmt = $us->berlaku_sampai;
-
-
-
                   if($tmt != '0000-00-00') {
-
-
-
                   $bday = new DateTime($tmt); // Your date of birth
-
                   $today = new Datetime(date('m.d.y'));
-
                   $diff = $bday->diff($today);
-
-                  
-
-                  printf("<span class='badge badge-danger'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
-
-
-
+                  printf("<span class='badge badge-warning'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
                   printf("\n");
-
-
-
-                     echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-primary'>Deadline : $us->berlaku_sampai</span>";
-
-
-
+                     echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-primary'>Expired : $us->berlaku_sampai</span>";
                   }else{
-
-
-
                     echo "<span class='badge badge-success'>Tidak Ada</span>";
-
                   }
-
-
-
-                  
-
-                   ?>
+                  ?>
 
                 </td>
 
