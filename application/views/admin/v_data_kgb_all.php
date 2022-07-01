@@ -38,10 +38,9 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>NIP</th>
               <th>Nama Pegawai</th>
-              <th>Unit Kerja</th>
               <th>Pangkat & Jabatan</th>
+              <th>Unit Kerja</th>
               <th>Tanggal KGB</th>
               <th style="text-align: center;">Action</th>
             </thead>
@@ -55,12 +54,16 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
-                <td ><?php echo $us->nip ?></td>
-                <td ><?php echo $us->nama_lengkap ?></td>
+                <td ><?php echo $us->nama_lengkap ?><br>
+                  <span class="badge badge-success"><?php echo "NIP : ".$us->nip ?></span>
+                </td>
+                <td style="text-align: center;">
+                    <?php echo $us->nama_pangkat ?><br>
+                  <hr style='margin-bottom:0;margin-top:0'>
+                    <?php echo $us->nama_jabatan ?>
+                </td>
+
                 <td style="text-align: center;"><?php echo $us->nama_unitkerja ?></td>
-                <td style="text-align: center;"><span class='badge badge-success'><?php echo $us->nama_pangkat ?></span><br>
-                     <hr style='margin-bottom:0;margin-top:0'>
-                     <span class='badge badge-primary'><?php echo $us->nama_jabatan ?></td></span>
 
                 <td style="text-align: center;">
                   <?php 
@@ -73,11 +76,11 @@
                   $today = new Datetime(date('m.d.y'));
                   $diff = $bday->diff($today);
                   
-                  printf("<span class='badge badge-success'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
+                  printf("<span class='badge badge-warning'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
 
                   printf("\n");
 
-                     echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-danger'>Deadline : $us->kgb_mendatang</span>";
+                     echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-primary'>Deadline : $us->kgb_mendatang</span>";
 
                   }else{
 
@@ -89,7 +92,7 @@
                 </td>
 
                 <td>
-                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_user; ?>">
+                    <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#editmodal<?php echo $us->id_user; ?>">
                   <i class="fas fa-edit"></i> Selesai</a>
             
                   <!-- <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('admin/Datapegawai/delete_jabatan/').$us->id_user ?>"><i class="fas fa-trash"></i></a> -->

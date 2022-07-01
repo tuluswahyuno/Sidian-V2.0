@@ -38,9 +38,10 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>NIP</th>
-              <th>Nama Pegawai</th>
+              
               <th>Nama Diklat</th>
+              <th>Penyelenggara</th>
+              <th>No Sertifikat</th>
               <th>Expired</th>
               <th>Sertifikat</th>
               <th style="text-align: center;">Action</th>
@@ -55,14 +56,15 @@
 
               <tr style="text-align: center;">
                 <td><?php echo $no++; ?></td>
-                <td style="text-align: center;"><?php echo $us->nip; ?></td>
-                <td ><?php echo $us->nama_lengkap ?></td>
                 <td ><?php echo $us->nama_diklat ?></td>
-                
+              
 
-                <!-- <td style="text-align: center;">
-                <a class="btn btn-sm btn-danger" href="#"> <?php echo $us->berlaku_sampai ?></a>
-                </td> -->
+                <td><?php echo $us->institusi ?></td>
+
+                <td style="text-align: center;"><?php echo $us->nomor ?><br>
+                  <hr style='margin-bottom:0;margin-top:0'>
+                  <span class="badge badge-info"><?php echo "Total JP : ".$us->durasi_jp ?></span>
+                </td>
 
                 <td style="text-align: center;">
                   <?php 
@@ -75,11 +77,11 @@
                   $today = new Datetime(date('m.d.y'));
                   $diff = $bday->diff($today);
                   
-                  printf("<span class='badge badge-danger'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
+                  printf("<span class='badge badge-warning'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
 
                   printf("\n");
 
-                     echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-primary'>Deadline : $us->berlaku_sampai</span>";
+                     echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-primary'>Expired : $us->berlaku_sampai</span>";
 
                   }else{
 
@@ -98,9 +100,7 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
-
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/diklat/' . $us->file ?>" target="_blank"> Lihat </a>
 
 
                    <?php } ?>
