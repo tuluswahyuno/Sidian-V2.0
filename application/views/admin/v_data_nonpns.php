@@ -49,223 +49,243 @@
           
           <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('flash'); ?>"></div>
 
-          <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Profile Pegawai</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <form>
+<section class="content">
+  <div class="container-fluid">
+  <div class="row">
+  <div class="col-md-4">
+
+  <div class="card card-primary card-outline">
+  <div class="card-body box-profile">
+  <div class="text-center">
+  <img class="profile-user-img img-fluid img-box" src="<?php echo base_url().'uploads/foto/'.$detail->foto ?>" alt="User profile picture">
+  </div>
+  <h3 class="profile-username text-center"><?php echo $detail->nama_lengkap; ?></h3>
+  <p class="text-muted text-center"><?php echo $detail->nik; ?></p>
+  <ul class="list-group list-group-unbordered mb-3">
+  <li class="list-group-item">
+    <b><?php echo $detail->jpegawai; ?></b> <a class="float-right">Status Pegawai</a>
+  </li>
+  <li class="list-group-item">
+    <b><?php echo $detail->nama_profesi; ?></b> <a class="float-right">Profesi</a>
+  </li>
+  <li class="list-group-item">
+    <b><?php echo $detail->nama_unitkerja; ?></b> <a class="float-right">Unit Kerja</a>
+  </li>
+  <li class="list-group-item">
+    <b><?php echo $detail->tempat_lahir.", ". date('d-M-Y', strtotime($detail->tgl_lahir)); ?></b> <a class="float-right">Tempat, Tgl Lahir</a>
+  </li>
+  </ul>
+  <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-foto"><b>Update Foto</b></a>
+  <a href="<?php echo base_url('nonpns/Dashboard/update_data') ?>" class="btn btn-danger btn-block"><b>Update Data</b></a>
+  </div>
+
+  </div>
+
+
+  
+
+  </div>
+
+  <div class="col-md-8">
+  <div class="card">
+  <div class="card-header p-2">
+  <ul class="nav nav-pills">
+  <li class="nav-item"><a class="nav-link active" href="#profile" data-toggle="tab">Profile</a></li>
+    <!-- <li class="nav-item"><a class="nav-link" href="#about" data-toggle="tab">Profesi</a></li> -->
+  <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Masa Kerja</a></li>
+  </ul>
+  </div>
+  <div class="card-body">
+  <div class="tab-content">
+  
+
+  <div class="tab-pane" id="timeline">
+
+  <div class="timeline timeline-inverse">
+
+  <div class="time-label">
+  <span class="bg-secondary">
+    Masa Kerja
+  </span>
+  </div>
+
+
+  <div>
+  <i class="fas fa-user-md bg-gray"></i>
+  <div class="timeline-item">
+  <!-- <span class="time"><i class="far fa-clock"></i> 12:05</span> -->
+  <h3 class="timeline-header"><a>TMT anda adalah</a> 
+    <span class="badge badge-primary"><?php echo date('d-M-Y', strtotime($detail->tmt))  ?></span>
+  </h3>
+  <div class="timeline-body">
+    Keseluruhan masa kerja anda adalah 
+    <?php 
                   
-                  <div class="row">
-                    <div class="col-sm-6">
+                  $tmt = $detail->tmt;
 
-                      
-                      <div class="form-group">
-                          <label>NIK</label>
-                          <input type="hidden" name="nip" class="form-control" value="<?php echo $detail->nip; ?>" readonly>
-                          <input type="text" name="nik" class="form-control" value="<?php echo $detail->nik; ?>" readonly>
-                      </div>
-                     
-                      
-                      <div class="form-group">
-                          <label>Nama Pegawai</label>
-                              
-                          <input type="text" name="nama_lengkap" class="form-control" value="<?php echo $detail->nama_lengkap; ?>" readonly>
-                      </div>
-                      
-                      
+                  if($tmt != '0000-00-00') {
 
-                      <div class="row">
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                          <label>Tempat Lahir</label>
-                          <input type="text" name="tempat_lahir" class="form-control" value="<?php echo $detail->tempat_lahir; ?>" readonly>
-                          </div>
-                      </div>
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                          <label>Tanggal Lahir</label>
-                          <input type="text" name="tgl_lahir" class="form-control" value="<?php echo $detail->tgl_lahir; ?>" readonly>
-                          </div>
-                      </div>
-                      </div>
+                  $bday = new DateTime($tmt); // Your date of birth
+                  $today = new Datetime(date('m.d.y'));
+                  $diff = $today->diff($bday);
+                  
+                  printf("<span class='badge badge-primary'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
+
+                  printf("\n");
+
+                     // echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-warning'>TMT : $detail->tmt</span>";
+
+                  }else{
+
+                      echo "<span class='badge badge-danger'>TMT Belum Diset</span>";
+                  }
+
+                  
+                   ?>
+  </div>
+  
+  </div>
+  </div>
 
 
-                      <div class="row">
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                          <label>Jenis Kelamin</label>
-                          <input type="text" name="gender" class="form-control" value="<?php echo $detail->gender; ?>" readonly>
-                          </div>
-                      </div>
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                          <label>Agama</label>
-                          <input type="text" name="agama" class="form-control" value="<?php echo $detail->agama; ?>" readonly>
-                          </div>
-                      </div>
-                      </div>
+  <div>
+  <i class="far fa-clock bg-gray"></i>
+  </div>
+  </div>
+  </div>
 
-                      <div class="form-group">
-                          <label>Alamat</label>
-                          <input type="text" name="alamat" class="form-control" value="<?php echo $detail->alamat; ?>" readonly>
-                      </div>
+  <div class="active tab-pane" id="profile">
+  <form class="form-horizontal">
+  <div class="form-group row">
+  <label for="inputName" class="col-sm-2 col-form-label">Pendidikan</label>
+  <div class="col-sm-10">
+  <input type="email" class="form-control" id="inputName" value="<?php echo $detail->pendidikan. " ".$detail->prodi; ?>">
+  </div>
+  </div>
+  <div class="form-group row">
+  <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+  <div class="col-sm-10">
+  <input type="email" class="form-control" id="inputEmail" value="<?php echo $detail->email; ?>">
+  </div>
+  </div>
+  <div class="form-group row">
+  <label for="inputName2" class="col-sm-2 col-form-label">Agama</label>
+  <div class="col-sm-10">
+  <input type="text" class="form-control" id="inputName2" value="<?php echo $detail->agama; ?>">
+  </div>
+  </div>
+  <div class="form-group row">
+  <label for="inputName2" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+  <div class="col-sm-10">
+  <input type="text" class="form-control" id="inputName2" value="<?php echo $detail->gender; ?>">
+  </div>
+  </div>
+  <div class="form-group row">
+  <label for="inputExperience" class="col-sm-2 col-form-label">Alamat</label>
+  <div class="col-sm-10">
+  <textarea class="form-control" id="inputExperience"><?php echo $detail->alamat; ?>
+  </textarea>
+  </div>
+  </div>
+  <div class="form-group row">
+  <label for="inputName" class="col-sm-2 col-form-label">NIK</label>
+  <div class="col-sm-10">
+  <input type="email" class="form-control" id="inputName" value="<?php echo $detail->nik; ?>">
+  </div>
+  </div>
+  <div class="form-group row">
+  <label for="inputSkills" class="col-sm-2 col-form-label">No BPJS</label>
+  <div class="col-sm-10">
+  <input type="text" class="form-control" id="inputSkills" value="<?php echo $detail->bpjs; ?>">
+  </div>
+  </div>
+  <div class="form-group row">
+  <label for="inputSkills" class="col-sm-2 col-form-label">NPWP</label>
+  <div class="col-sm-10">
+  <input type="text" class="form-control" id="inputSkills" value="<?php echo $detail->npwp; ?>">
+  </div>
+  </div>
+  <div class="form-group row">
+  <label for="inputSkills" class="col-sm-2 col-form-label">No HP Aktif</label>
+  <div class="col-sm-10">
+  <input type="text" class="form-control" id="inputSkills" value="<?php echo $detail->no_hp; ?>">
+  </div>
+  </div>
+  <div class="form-group row">
+  <div class="offset-sm-2 col-sm-10">
+  <div class="checkbox">
+  
+  </div>
+  </div>
+  </div>
+  <!-- <div class="form-group row">
+  <div class="offset-sm-2 col-sm-10">
+  <button type="submit" class="btn btn-danger">Update Data</button>
+  </div>
+  </div> -->
+  </form>
+  </div>
 
-                      <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label>Longitude</label>
-                          <input type="text" name="longitude" class="form-control" value="<?php echo $detail->longitude; ?>" readonly>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label>Longitude</label>
-                          <input type="text" name="latitude" class="form-control" value="<?php echo $detail->latitude; ?>" readonly>
-                        </div>
-                      </div>
-                      </div>
+  </div>
 
+  </div>
+  </div>
 
-                      <!-- <div class="form-group">
-                          <label>Pangkat</label>
-                          <input type="text" name="pangkat" class="form-control" value="<?php echo $detail->nama_pangkat; ?>" readonly>
-                      </div> -->
+  </div>
 
+  </div>
 
-                      
-
-
-                      
-
-                      
-                      
-                    </div>
-
-                    <div class="col-sm-6">
-
-                     <!--  <div class="form-group">
-                          <label>Jenis Jabatan</label>
-                          <input type="text" name="jenis_jabatan" class="form-control" value="<?php echo $detail->jenis_jabatan; ?>" readonly>
-                      </div> -->
-
-                      <div class="row">
-                      <div class="col-sm-6">
-                      <div class="form-group">
-                          <label>Jabatan</label>
-                          <input type="text" name="jabatan" class="form-control" value="<?php echo $detail->nama_jabatan; ?>" readonly>
-                      </div>
-                      </div>
-
-                      <div class="col-sm-6">
-                      <div class="form-group">
-                          <label>Unit Kerja</label>
-                          <input type="text" name="divisi" class="form-control" value="<?php echo $detail->nama_unitkerja; ?>" readonly>
-                      </div>
-                      </div>
-                      </div>
-                      
-                      <div class="row">
-                      <div class="col-sm-7">
-                      <div class="form-group">
-                          <label>Email</label>
-                          <input type="text" name="email" class="form-control" value="<?php echo $detail->email; ?>" readonly>
-                      </div>
-                      </div>
-
-                      <div class="col-sm-5">
-                      <div class="form-group">
-                          <label>No HP</label>
-                          <input type="text" name="no_hp" class="form-control" value="<?php echo $detail->no_hp; ?>" readonly>
-                      </div>
-                      </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label>Pendidikan Terakhir</label>
-                       <input type="text" name="jenjang" class="form-control" value="<?php echo $detail->pendidikan." ".$detail->prodi; ?>" readonly>
-                      </div> 
-
-                      
-                      <div class="row">
-                      <div class="col-sm-6">
-                      <div class="form-group">
-                          <label>NPWP</label>
-                          <input type="text" name="npwp" class="form-control" value="<?php echo $detail->npwp; ?>" readonly>
-                      </div>
-                      </div>
-
-                      <div class="col-sm-6">
-                      <div class="form-group">
-                          <label>BPJS</label>
-                          <input type="text" name="bpjs" class="form-control" value="<?php echo $detail->bpjs; ?>" readonly>
-                      </div>
-                      </div>
-                      </div>
+  </div>
+  </section>
 
 
-                      <div class="row">
-                      <div class="col-sm-6">
-                      <div class="form-group">
-                          <label>Take Home Pay</label>
-                          <input type="text" name="takehomepay" class="form-control" value="<?php echo "Rp. ".$detail->takehomepay; ?>" readonly>
-                      </div>
-                      </div>
-
-                      <div class="col-sm-6">
-                          <div class="form-group">
-                          <label>TMT</label>
-                          <input type="text" name="tmt" class="form-control" value="<?php echo $detail->tmt; ?>" readonly>
-                          </div>
-                      </div>
-                      </div>
-
-                      <div class="row">
-                      <div class="col-sm-6">
-                      <div class="form-group">
-                          <label>Referensi</label>
-                          <input type="text" name="Referensi" class="form-control" value="<?php echo $detail->referensi; ?>" readonly>
-                      </div>
-                      </div>
-
-                      <div class="col-sm-6">
-                      <div class="form-group">
-                          <label>Status Pegawai</label>
-                          <input type="text" name="status_pegawai" class="form-control" value="<?php echo $detail->jpegawai; ?>" readonly>
-                      </div>
-                      </div>
-                      </div>
-
-
-                    </div>
-
-                    
-                  </div>
-
-            
-                
-                  <div align="right">
-                    <a href="<?php echo base_url('admin/Datapegawai/detail_pegawai_update_nonpns/').$detail->nip ?>" class="btn btn-primary"><i class="fas fa-edit"></i> Update Data</a>
-                  <!-- <button type="submit" class="btn btn-primary">Update Data</button> -->
-                  </div>
-                </form>
-              </div>
-              <!-- /.card-body -->
-            </div>
-          
-
-        </div>
-        <!-- /.card-body -->
-        
-        <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
-
-    </section>
-    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+        <!-- MODAL UPDATE FOTO -->
+          <div aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1" role="dialog" id="update-foto" class="modal fade">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Update Foto</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+                <form method="POST" action="<?php echo base_url('nonpns/Dashboard/update_foto') ?>" enctype="multipart/form-data">
+
+                    <div class="row">
+                    <div class="col-md-12">
+
+                    <div class="form-group">
+                    <label>Foto Profile</label>
+                    <input type="hidden" name="nip" class="form-control" value="<?php echo $detail->nip; ?>" hidden>
+                    <input type="file" name="foto" class="form-control" accept=".jpg, .jpeg, .png" required>
+                      <div class="mt-1">
+                        <span class="text-secondary">File yang diupload harus dalam format : .jpg, .jpeg, .png</span>
+                      </div>
+                    </div>
+
+                    </div>
+
+                    </div>
+
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- AKHIR MODAL MODAL UPDATE FOTO -->
+
 
 
 

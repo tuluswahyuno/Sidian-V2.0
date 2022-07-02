@@ -60,7 +60,7 @@
 						case 2 : redirect('pns/Dashboard');
 								 break;
 
-						case 3 : redirect('nonpns/Dashboard/timeline');
+						case 3 : redirect('nonpns/Dashboard');
 								 break;
 
 						default: break;

@@ -87,15 +87,9 @@
               <th>#</th>
 
               <th>Nama Diklat</th>
-
               <th>Penyelenggara</th>
-
-              <th>Nomor</th>
-
-              <th>JP</th>
-
+              <th>No Sertifikat</th>
               <th>Expired</th>
-
               <th>Sertifikat</th>
 
               <th style="text-align: center;">Action</th>
@@ -122,64 +116,42 @@
 
                <td style="text-align: center;"><?php echo $no++; ?></td>
 
-                <td><?php echo $us->nama_diklat ?></td>
+                <td><?php echo $us->nama_diklat ?><br>
+                  <span class="badge badge-success"><?php echo "Tgl Diklat : ".date('d-M-Y', strtotime($us->tgl_mulai))?></span><br>
+                  <span class="badge badge-success"><?php echo "s.d ".date('d-M-Y', strtotime($us->tgl_mulai))  ?></span>
+                </td>
 
-                <td style="text-align: center;"><?php echo $us->institusi ?></td>
+                <td><?php echo $us->institusi ?></td>
 
-                <td><?php echo $us->nomor ?></td>
-
-                <td style="text-align: center;"><?php echo $us->durasi_jp ?></td>
-
-
+                <td style="text-align: center;"><?php echo $us->nomor ?><br>
+                  <hr style='margin-bottom:0;margin-top:0'>
+                  <span class="badge badge-info"><?php echo "Total JP : ".$us->durasi_jp ?></span>
+                </td>
 
                 <td style="text-align: center;">
-
                   <?php 
-
                   
-
                   $tmt = $us->berlaku_sampai;
-
-
 
                   if($tmt != '0000-00-00') {
 
-
-
                   $bday = new DateTime($tmt); // Your date of birth
-
                   $today = new Datetime(date('m.d.y'));
-
                   $diff = $bday->diff($today);
-
                   
-
-                  printf("<span class='badge badge-danger'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
-
-
+                  printf("<span class='badge badge-warning'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
 
                   printf("\n");
 
-
-
-                     echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-primary'>Deadline : $us->berlaku_sampai</span>";
-
-
+                     echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-primary'>Expired : $us->berlaku_sampai</span>";
 
                   }else{
 
-
-
-                    echo "<span class='badge badge-success'>Tidak Ada</span>";
-
+                      echo "<span class='badge badge-success'>Tidak Ada</span>";
                   }
 
-
-
                   
-
                    ?>
-
                 </td>
 
 
@@ -189,62 +161,29 @@
                    <?php
 
                     if ($us->file == NULL) { ?>
-
-
-
-                    <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File <i class="fas fa-times-circle"> </a></i>
-
-
-
+                    <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File </a>
                    <?php } else { ?>
 
-
-
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
-
-
-
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
-
-
-
-
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" target="_blank"> Lihat </a>
 
                    <?php } ?>
-
-
-
                  </td>
-
 
 
                  <td style="text-align: center;">
 
-
-
-                  <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_diklat; ?>">
-
-                  <i class="fas fa-eye"> </i></a>
-
-
+                  
 
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_diklat; ?>">
-
-                  <i class="fas fa-edit"> </i></a>
+                  <i class="fas fa-edit"></i> Edit</a>
 
                   </a>
-
-            
-
-                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('nonpns/Diklat/delete_diklat/').$us->id_diklat ?>"><i class="fas fa-trash"></i></a>
+         
+                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('nonpns/Diklat/delete_diklat/').$us->id_diklat ?>"><i class="fas fa-trash"></i> Hapus</a>
 
                 </td>
 
-
-
               </tr>
-
-
 
               <?php endforeach; ?>
 
@@ -464,7 +403,7 @@
 
                 <div class="modal-header">
 
-                  <h5 class="modal-title">Update Data Pasangan</h5>
+                  <h5 class="modal-title">Update Data Diklat</h5>
 
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 

@@ -43,11 +43,9 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>Pasangan</th>
               <th>Nama</th>
               <th>Pekerjaan</th>
-              <th>Psgn Ke</th>
-              <th>Tunjangan</th>
+              <th>Tgl Nikah</th>
               <th>File</th>
               <th style="text-align: center;">Action</th>
             </thead>
@@ -61,26 +59,17 @@
 
               <tr>
                 <td style="text-align: center;"><?php echo $no++; ?></td>
-                <td><?php echo $us->pasangan ?></td>
-                <td><?php echo $us->nama_pasangan ?></td>
-                <!-- <td style="text-align: center;"><?php echo $us->tempat_lahir ?>, <?php echo $us->tgl_lahir ?></td> -->
-                <td style="text-align: center;"><?php echo $us->pekerjaan ?></td>
-                <td style="text-align: center;"><?php echo $us->pasangan_ke ?></td>
-                
-
-                <td style="text-align: center;">
+                <td><?php echo $us->nama_pasangan ?><br>
                   <?php
                     if ($us->tunjangan == 'Dapat Tunjangan') { ?>
-                    <a class="btn btn-sm btn-success" href="#"> <?php echo $us->tunjangan ?> </a>
-                  
+                    <span class="badge badge-success"><?php echo $us->tunjangan ?></span>
                   <?php } else { ?>
-
-                    <a class="btn btn-sm btn-warning" href="#"> <?php echo $us->tunjangan ?> </a>
-
+                    <span class="badge badge-warning"><?php echo $us->tunjangan ?></span>
                    <?php } ?>
-
                 </td>
-
+                <td style="text-align: center;"><?php echo $us->pekerjaan ?></td>
+                <td style="text-align: center;"><?php echo $us->tgl_nikah ?></td>
+                
 
                 <td style="text-align: center;">
                    <?php
@@ -90,22 +79,17 @@
 
                    <?php } elseif ($us->akta_nikah != NULL && $us->akta_cerai != NULL) { ?>
 
-                    <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_nikah ?>" target="_blank"> Akta Nikah <i class="fas fa-eye"> </a></i>
+                    <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_nikah ?>" target="_blank"> Akta Nikah</a>
 
-                    <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_cerai ?>" target="_blank"> Akta Cerai <i class="fas fa-eye"> </a></i>
+                    <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_cerai ?>" target="_blank"> Akta Cerai</a>
 
                   <?php } elseif ($us->akta_nikah != NULL && $us->akta_cerai == NULL) { ?>
 
-                    <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_nikah ?>" target="_blank"> Akte Nikah <i class="fas fa-eye"> </a></i>
+                    <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_nikah ?>" target="_blank"> Akte Nikah</a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_nikah ?>" download> Unduh <i class="fas fa-download"> </a></i>
-                     
                   <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_cerai ?>" target="_blank"> Akta Cerai <i class="fas fa-eye"> </a></i>
-
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_cerai ?>" download> Unduh <i class="fas fa-download"> </a></i>
-
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_cerai ?>" target="_blank"> Akta Cerai </a>
 
                    <?php } ?>
 
@@ -114,13 +98,13 @@
                  <td style="text-align: center;">
 
                   <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_pasangan; ?>">
-                  <i class="fas fa-eye"> </i></a>
+                  <i class="fas fa-eye"> </i> Detail</a>
 
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_pasangan; ?>">
-                  <i class="fas fa-edit"> </i></a>
+                  <i class="fas fa-edit"> </i> Edit</a>
                   </a>
             
-                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('nonpns/Pasangan/delete_pasangan/').$us->id_pasangan ?>"><i class="fas fa-trash"></i></a>
+                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('nonpns/Pasangan/delete_pasangan/').$us->id_pasangan ?>"><i class="fas fa-trash"></i> Hapus</a>
                 </td>
 
               </tr>
@@ -518,150 +502,96 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Update Data Pasangan</h5>
+                  <h5 class="modal-title">Detail Data Pasangan</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
 
                 <div class="modal-body">
-               
-
-                    <div class="row">
+                <div class="row">
                     
-                    
-                    <div class="col-md-3">
-                      <div class="form-group">
-                      <label>Pasangan</label>
-                      <input type="text" name="pasangan" class="form-control" value="<?php echo $us->pasangan; ?>" readonly>
-                      </select>
-                      </div>
-                     </div>
 
-                    <div class="col-md-9">
+                    <div class="col-md-12">
 
-                    <div class="form-group">
-                    <label>Nama Suami/Istri</label>
-                    <input type="text" name="nama_pasangan" class="form-control" value="<?php echo $us->nama_pasangan; ?>" readonly>
-                    </div>
-
-                    </div>
-
-                    <div class="col-md-7">
-
-                    <div class="form-group">
-                    <label>Tempat Lahir</label>
-                    <input type="text" name="tempat_lahir" class="form-control" value="<?php echo $us->tempat_lahir; ?>" readonly>
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Status</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->pasangan." Ke-".$us->pasangan_ke; ?>">
                     </div>
                     </div>
 
-                    <div class="col-md-5">
-                    <div class="form-group">
-                    <label>Tanggal Lahir</label>
-                    <input type="text" name="tgl_lahir" class="form-control" value="<?php echo $us->tgl_lahir; ?>" readonly>
-                    </div>
-                    </div>
-
-                     <div class="col-md-5">
-                    <div class="form-group">
-                    <label>Tanggal Menikah</label>
-                    <input type="text" name="tgl_nikah" class="form-control" value="<?php echo $us->tgl_nikah; ?>" readonly>
-                    </div>
-                    </div>
-
-                    <div class="col-md-3">
-                     <div class="form-group">
-                      <label>Anak Ke</label>
-                      <input type="text" name="pasangan_ke" class="form-control" value="<?php echo $us->pasangan_ke; ?>" readonly>
-                      </div>
-                      </div>
-
-                      <div class="col-md-4">
-                      <div class="form-group">
-                      <label>Agama</label>
-                      <input type="text" name="agama" class="form-control" value="<?php echo $us->agama; ?>" readonly>
-                      </div>
-                     </div>
-
-                    <div class="col-md-6">
-                    <div class="form-group">
-                    <label>NIK</label>
-                    <input type="text" name="nik" class="form-control" value="<?php echo $us->nik; ?>" readonly>
-                    </div>
-                    </div>
-
-                    <div class="col-md-6">
-                    <div class="form-group">
-                    <label>Pekerjaan</label>
-                    <input type="text" name="pekerjaan" class="form-control" value="<?php echo $us->pekerjaan; ?>" readonly>
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Nama</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->nama_pasangan; ?>">
                     </div>
                     </div>
 
 
-                    <div class="col-md-3">
-                      <div class="form-group">
-                      <label>Status Hidup</label>
-                      <input type="text" name="status_hidup" class="form-control" value="<?php echo $us->status_hidup; ?>" readonly>
-                      </div>
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">NIK</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->nik; ?>">
                     </div>
-
-                    <div class="col-md-4">
-                      <div class="form-group">
-                      <label>Status Pernikahan</label>
-                      <input type="text" name="status_pernikahan" class="form-control" value="<?php echo $us->status_pernikahan; ?>" readonly>
-                      </div>
-                    </div>
-
-                    <div class="col-md-5">
-                      <div class="form-group">
-                      <label>Tunjangan</label>
-                      <input type="text" name="tunjangan" class="form-control" value="<?php echo $us->tunjangan; ?>" readonly>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                    <label>File Akta Nikah</label><br>
-                   <?php
-                    if ($us->akta_nikah == NULL) { ?>
-
-                     <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File <i class="fas fa-times-circle"> </a></i>
-
-                   <?php } else { ?>
-
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_nikah ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
-
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_nikah ?>" download> Unduh <i class="fas fa-download"> </a></i>
-
-
-                   <?php } ?>
-
                     </div>
 
 
-                    <div class="col-md-6">
-                    <label>File Akta Cerai</label><br>
-                   <?php
-                    if ($us->akta_cerai == NULL) { ?>
-
-                     <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File <i class="fas fa-times-circle"> </a></i>
-
-                   <?php } else { ?>
-
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_cerai ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
-
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/pasangan/' . $us->akta_cerai ?>" download> Unduh <i class="fas fa-download"> </a></i>
-
-
-                   <?php } ?>
-
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">T T L</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->tempat_lahir.", ".date('d-M-Y', strtotime($us->tgl_lahir)); ?>">
+                    </div>
                     </div>
 
 
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Tgl Nikah</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo date('d-M-Y', strtotime($us->tgl_nikah)); ?>">
+                    </div>
+                    </div>
 
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Agama</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->agama; ?>">
+                    </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Pekerjaan</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->pekerjaan; ?>">
+                    </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Status Hidup</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->status_hidup; ?>">
+                    </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Status Nikah</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->status_pernikahan; ?>">
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Tunjangan</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName" value="<?php echo $us->tunjangan; ?>">
+                    </div>
+                    </div>
 
                     </div>
 
-                  
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -42,7 +42,6 @@
             <thead style="text-align: center;">
               <th>#</th>
               <th>Nama</th>
-              <!-- <th>TTL</th> -->
               <th>Umur</th>
               <th>Pekerjaan</th>
               <th>File</th>

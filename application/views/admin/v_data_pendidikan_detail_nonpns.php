@@ -69,10 +69,8 @@
               <th>#</th>
               <th>Jenjang</th>
               <th>Nama Kampus</th>
-              <th>Jurusan</th>
-              <th>Tahun Lulus</th>
-              <th>Ijazah</th>
-              <th>Transkrip</th>
+              <th>No Ijazah</th>
+              <th>File</th>
               <th style="text-align: center;">Action</th>
             </thead>
 
@@ -85,10 +83,26 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $us->pendidikan ?></td>
-                <td style="text-align: center;"><?php echo $us->nama_sekolah ?></td>
-                <td style="text-align: center;"><?php echo $us->jurusan ?></td>
-                <td style="text-align: center;"><?php echo $us->tgl_lulus ?></td>
+                
+                <td><?php echo $us->pendidikan ?><br>
+                  <?php
+                    if ($us->pterakhir == "0") { ?>
+
+                     <span class='badge badge-warning'>Bukan Pend Terakhir</span>
+
+                   <?php } else { ?>
+
+                     <span class='badge badge-success'>Pendidikan Terakhir</span>
+
+
+                   <?php } ?>
+                </td>
+                <td><?php echo $us->nama_sekolah ?><br>
+                    <span class="badge badge-primary"><?php echo $us->jurusan ?></span>
+                </td>
+                <td><?php echo $us->no_ijazah ?><br>
+                  <span class="badge badge-info"><?php echo "Tgl Lulus : ".date('d-M-Y', strtotime($us->tgl_lulus))  ?></span>
+                </td>
                 
                 <td style="text-align: center;">
                    <?php
@@ -98,40 +112,22 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pendidikan/' . $us->ijazah ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pendidikan/' . $us->ijazah ?>" target="_blank"> Ijazah </a>
 
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/pendidikan/' . $us->ijazah ?>" download> Unduh <i class="fas fa-download"> </a></i>
-
-
-                   <?php } ?>
-
-                 </td>
-
-
-                 <td style="text-align: center;">
-                   <?php
-                    if ($us->transkrip == NULL) { ?>
-
-                     <span class='badge badge-danger'>No File</span>
-
-                   <?php } else { ?>
-
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/pendidikan/' . $us->transkrip ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
-
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/pendidikan/' . $us->transkrip ?>" download> Unduh <i class="fas fa-download"> </a></i>
-
+                     <a class="btn btn-sm btn-primary" href="<?php echo base_url() . 'uploads/non-pns/pendidikan/' . $us->transkrip ?>" target="_blank"> Transkrip </a>
 
                    <?php } ?>
 
                  </td>
+
 
                  <td style="text-align: center;">
 
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_pendidikan; ?>">
-                  <i class="fas fa-edit"> </i></a>
+                  <i class="fas fa-edit"> </i> Edit</a>
                   </a>
             
-                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('nonpns/Pendidikan/delete_pendidikan_detail/').$us->id_pendidikan ?>"><i class="fas fa-trash"></i></a>
+                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('nonpns/Pendidikan/delete_pendidikan_detail/').$us->id_pendidikan ?>"><i class="fas fa-trash"></i> Hapus</a>
                 </td>
 
               </tr>
@@ -175,14 +171,33 @@
 
                     <div class="form-group">
                     <label>Jurusan</label>
-                    <input type="text" name="jurusan" class="form-control" placeholder="Masukkan Jurusan" required>
+                    <input type="text" name="jurusan" class="form-control" placeholder="Masukkan Jurusan">
                     </div>
 
+                    </div>
+
+                    <div class="col-md-4">
+                    <div class="form-group">
+                    <label>No Ijazah</label>
+                    <input type="text" name="no_ijazah" class="form-control" placeholder="Masukkan No Ijazah" required>
+                    </div>
+                    </div>
+
+                    <div class="col-md-4">
                     <div class="form-group">
                     <label>Tanggal Lulus</label>
-                    <input type="date" name="tgl_lulus" class="form-control" placeholder="Masukkan Tgl Lulus" required>
+                    <input type="date" name="tgl_lulus" class="form-control" required>
                     </div>
-
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Pend Terakhir</label>
+                          <select class="form-control" name="pterakhir" required>
+                            <option value="0">Tidak</option>
+                            <option value="1">Ya</option>
+                          </select>
+                        </div>
                     </div>
 
                     <div class="col-md-6">
@@ -252,15 +267,39 @@
 
                      <div class="form-group">
                     <label>Jurusan</label>
-                    <input type="text" name="jurusan" class="form-control" value="<?php echo $us->jurusan; ?>" required>
+                    <input type="text" name="jurusan" class="form-control" value="<?php echo $us->jurusan; ?>">
+                    </div>
+
                     </div>
 
 
+                    <div class="col-md-4">
                     <div class="form-group">
-                    <label>Tahun Lulus</label>
+                    <label>No Ijazah</label>
+                    <input type="text" name="no_ijazah" class="form-control" value="<?php echo $us->no_ijazah; ?>" required>
+                    </div>
+                    </div>
+
+                    <div class="col-md-4">
+                    <div class="form-group">
+                    <label>Tanggal Lulus</label>
                     <input type="date" name="tgl_lulus" class="form-control" value="<?php echo $us->tgl_lulus; ?>" required>
                     </div>
-
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Pend Terakhir</label>
+                          <select class="form-control" name="pterakhir" required>
+                            <option value="<?php echo $us->pterakhir; ?>">
+                                <?php
+                                  if ($us->pterakhir == "0") { echo "Tidak"; } else {echo "Ya";} 
+                                ?>
+                              </option>
+                            <option value="0">Tidak</option>
+                            <option value="1">Ya</option>
+                          </select>
+                        </div>
                     </div>
 
                     <div class="col-md-6">

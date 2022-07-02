@@ -135,16 +135,9 @@
 
                    <?php } else { ?>
 
-                     <!-- <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->ijazah ?>" target="_blank"> Ijazah <i class="fas fa-eye"> </a></i>
-
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->transkrip ?>" target="_blank"> Transkrip <i class="fas fa-eye"> </a></i> -->
-
                      <a class="btn btn-sm btn-primary" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->ijazah ?>" target="_blank"> Ijazah </a>
 
                      <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->transkrip ?>" target="_blank"> Transkrip </a>
-
-                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->ijazah ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
-
 
                    <?php } ?>
 
@@ -327,12 +320,6 @@
                     <label>Jurusan</label>
                     <input type="text" name="jurusan" class="form-control" value="<?php echo $us->jurusan; ?>" required>
                     </div>
-
-
-                    <!-- <div class="form-group">
-                    <label>Tahun Lulus</label>
-                    <input type="date" name="tgl_lulus" class="form-control" value="<?php echo $us->tgl_lulus; ?>" required>
-                    </div> -->
 
                     </div>
 

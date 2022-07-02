@@ -36,8 +36,6 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>NIP</th>
-              <th>Nama Pegawai</th>
               <th>Nama Diklat</th>
               <th>Expired</th>
               <th>Sertifikat</th>
@@ -53,14 +51,8 @@
 
               <tr style="text-align: center;">
                 <td><?php echo $no++; ?></td>
-                <td style="text-align: center;"><?php echo $us->nip; ?></td>
-                <td ><?php echo $us->nama_lengkap ?></td>
                 <td ><?php echo $us->nama_diklat ?></td>
-                
-
-                <!-- <td style="text-align: center;">
-                <a class="btn btn-sm btn-danger" href="#"> <?php echo $us->berlaku_sampai ?></a>
-                </td> -->
+          
 
                 <td style="text-align: center;">
                   <?php 
@@ -96,10 +88,7 @@
 
                    <?php } else { ?>
 
-                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" target="_blank"> Lihat <i class="fas fa-eye"> </a></i>
-
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i>
-
+                     <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/non-pns/diklat/' . $us->file ?>" target="_blank"> Lihat </a>
 
                    <?php } ?>
 

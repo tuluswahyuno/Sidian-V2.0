@@ -138,21 +138,21 @@ class Master_m extends CI_Model
     public function rumus_filter($id)
     {
         
-        $query = $this->db->query("SELECT * FROM data_pegawai dp, pangkat p, unitkerja u,jabatan j, profesi pr, jenis_pegawai jp WHERE dp.pangkat = p.id_masterpangkat and dp.jabatan = j.id_masterjabatan and dp.divisi = u.id_unitkerja and dp.profesi = pr.id_profesi and dp.status_pegawai = jp.id_jenispegawai and dp.profesi='$id' AND status_pegawai = '1';");
+        $query = $this->db->query("SELECT * FROM data_pegawai dp, pangkat p, unitkerja u,jabatan j, profesi pr, jenis_pegawai jp WHERE dp.pangkat = p.id_masterpangkat and dp.jabatan = j.id_masterjabatan and dp.divisi = u.id_unitkerja and dp.profesi = pr.id_profesi and dp.status_pegawai = jp.id_jenispegawai and dp.profesi='$id' AND status_pegawai = '1' AND status_aktif='1';");
         return $query->result();
     }
 
 
     public function rumus_filter_full()
     {
-         $query = $this->db->query("SELECT * FROM data_pegawai dp, pangkat p, unitkerja u,jabatan j, profesi pr, jenis_pegawai jp WHERE dp.pangkat = p.id_masterpangkat and dp.jabatan = j.id_masterjabatan and dp.divisi = u.id_unitkerja and dp.profesi = pr.id_profesi and dp.status_pegawai = jp.id_jenispegawai AND status_pegawai = '1';");
+         $query = $this->db->query("SELECT * FROM data_pegawai dp, pangkat p, unitkerja u,jabatan j, profesi pr, jenis_pegawai jp WHERE dp.pangkat = p.id_masterpangkat and dp.jabatan = j.id_masterjabatan and dp.divisi = u.id_unitkerja and dp.profesi = pr.id_profesi and dp.status_pegawai = jp.id_jenispegawai AND status_pegawai = '1' AND status_aktif='1';");
         return $query->result();
     }
 
 
     public function rumus_filter_non_asn($id)
     {
-        $query = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u, jabatan_nonpns j, profesi pr, jenis_pegawai jp WHERE dp.jabatan = j.id_jabatannonpns and dp.divisi = u.id_unitkerja and dp.profesi = pr.id_profesi and dp.status_pegawai = jp.id_jenispegawai and dp.profesi=pr.id_profesi and dp.profesi='$id' AND status_pegawai = '3';");
+        $query = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u, jabatan_nonpns j, profesi pr, jenis_pegawai jp WHERE dp.jabatan = j.id_jabatannonpns and dp.divisi = u.id_unitkerja and dp.profesi = pr.id_profesi and dp.status_pegawai = jp.id_jenispegawai and dp.profesi=pr.id_profesi and dp.profesi='$id' AND status_pegawai = '3' AND status_aktif='1';");
         return $query->result();
     }
 
@@ -309,7 +309,7 @@ class Master_m extends CI_Model
     public function get_id_pegawai_adminnonpns($id)
     {
         // $hasil = $this->db->where('nip', $id)->get('data_pegawai');
-        $hasil = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u, jabatan_nonpns jp, jenis_pegawai j, pendidikan pd WHERE dp.divisi = u.id_unitkerja AND dp.jabatan = jp.id_jabatannonpns AND dp.status_pegawai = j.id_jenispegawai and dp.jenjang = pd.id_masterpendidikan AND nip='$id';");
+        $hasil = $this->db->query("SELECT * FROM data_pegawai dp, unitkerja u, jabatan_nonpns jp, jenis_pegawai j, pendidikan pd, profesi pr WHERE dp.divisi = u.id_unitkerja AND dp.jabatan = jp.id_jabatannonpns AND dp.status_pegawai = j.id_jenispegawai and dp.jenjang = pd.id_masterpendidikan AND dp.profesi = pr.id_profesi AND nip='$id';");
         if($hasil->num_rows() > 0){
             return $hasil->row();
         }else{

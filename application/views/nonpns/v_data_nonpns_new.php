@@ -21,7 +21,7 @@
 
     <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('flash'); ?>"></div>
 
-    <section class="content">
+  <section class="content">
   <div class="container-fluid">
   <div class="row">
   <div class="col-md-4">
@@ -69,39 +69,6 @@
   </div>
   <div class="card-body">
   <div class="tab-content">
-
-  <!-- <div class="tab-pane" id="about">
-    <div class="card card-primary">
-  
-  <div class="card-body">
-  <strong><i class="fas fa-user-md"></i> Profesi</strong>
-  <p class="text-muted">
-    <?php echo $pegawai->nama_profesi; ?>
-  </p>
-  <hr>
-  <strong><i class="fas fa-hospital-user mr-1"></i> Unit Kerja</strong>
-  <p class="text-muted">
-    <?php echo $pegawai->nama_unitkerja; ?>
-  </p>
-  <hr>
-  <strong><i class="fas fa-user mr-1"></i> TTL</strong>
-  <p class="text-muted">
-  <?php echo $pegawai->tempat_lahir.", "; ?><?php echo date('d-M-Y', strtotime($pegawai->tgl_lahir))  ?>
-
-  </p>
-  
-  <hr>
-  <strong><i class="fas fa-venus-mars"></i> Jenis Kelamin</strong>
-  <p class="text-muted">
-    <?php echo $pegawai->gender; ?><br> 
-  </p>
-
-
-
-  </div>
-
-  </div>
-  </div> -->
   
 
   <div class="tab-pane" id="timeline">

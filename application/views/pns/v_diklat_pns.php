@@ -57,8 +57,6 @@
               <tr style="text-align: center;">
                 <td><?php echo $no++; ?></td>
                 <td ><?php echo $us->nama_diklat ?></td>
-              
-
                 <td><?php echo $us->institusi ?></td>
 
                 <td style="text-align: center;"><?php echo $us->nomor ?><br>

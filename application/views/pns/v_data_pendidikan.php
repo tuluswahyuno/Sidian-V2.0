@@ -60,8 +60,6 @@
               <th>Jenjang</th>
               <th>Kampus / Jurusan</th>
               <th>No Ijazah</th>
-              <!-- <th>Tgl Lahir</th> -->
-              <!-- <th>Pend Terakhir</th> -->
               <th>File</th>
               <th style="text-align: center;">Action</th>
             </thead>
@@ -91,28 +89,15 @@
 
                 </td>
                 <td><?php echo $us->nama_sekolah ?><br>
-                    <span class="badge badge-primary"><?php echo $us->jurusan ?></span>
+                    <?php 
+                      if ($us->jurusan == "-") { }else{ ?>
+                        <span class="badge badge-primary"><?php echo $us->jurusan ?></span>
+                  <?php } ?>
                 </td>
-                <!-- <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tgl_lulus))  ?></td> -->
+
                 <td><?php echo $us->no_ijazah ?><br>
                   <span class="badge badge-info"><?php echo "Tgl Lulus : ".date('d-M-Y', strtotime($us->tgl_lulus))  ?></span>
                 </td>
-                
-                <!-- <td style="text-align: center;">
-
-                  <?php
-                    if ($us->pterakhir == "0") { ?>
-
-                     <span class='badge badge-danger'>Tidak</span>
-
-                   <?php } else { ?>
-
-                     <span class='badge badge-success'>Ya</span>
-
-
-                   <?php } ?>
-                    
-                </td> -->
 
                 <td style="text-align: center;">
                    <?php
@@ -126,34 +111,12 @@
 
                      <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->transkrip ?>" target="_blank"> Transkrip </a>
 
-                     <!-- <a class="badge badge-danger" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->ijazah ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
 
                    <?php } ?>
 
                  </td>
-
-
-                 <!-- <td style="text-align: center;">
-                   <?php
-                    if ($us->transkrip == NULL) { ?>
-
-                     <a class="btn btn-sm btn-danger" href="#"> Tidak Ada File <i class="fas fa-times-circle"> </a></i>
-
-                   <?php } else { ?>
-
-                     
-
-                     <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/pendidikan/' . $us->transkrip ?>" download> Unduh <i class="fas fa-download"> </a></i>
-
-
-                   <?php } ?>
-
-                 </td> -->
-
-                
-                
-
+                 
                  <td style="text-align: center;">
 
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_pendidikan; ?>">

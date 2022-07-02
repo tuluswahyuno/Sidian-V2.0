@@ -69,8 +69,6 @@
                 </td>
                 <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tmt_mutasi))  ?></td>
 
-                <!-- <td ><?php echo $us->file ?></td> -->
-
                 <td style="text-align: center;">
                    <?php
                     if ($us->file == NULL) { ?>
@@ -80,8 +78,6 @@
                    <?php } else { ?>
 
                      <a class="btn btn-sm btn-success" href="<?php echo base_url() . 'uploads/mutasi/' . $us->file ?>" target="_blank"> Lihat </a>
-
-                     <!-- <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'uploads/mutasi/' . $us->file ?>" download> Unduh <i class="fas fa-download"> </a></i> -->
 
                    <?php } ?>
 
