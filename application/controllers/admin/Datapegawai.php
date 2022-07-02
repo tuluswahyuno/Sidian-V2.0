@@ -112,6 +112,49 @@ class Datapegawai extends CI_Controller
         $this->load->view('template/footer');
     }
 
+
+    public function kompetensi()
+    {
+        check_not_login();
+
+        $data['pegawai'] = $this->master_m->get_data_kompetensi(); 
+        $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
+        $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+
+
+        $data['title'] = " SIP/STR Perlu Diperpanjang ";
+
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar',$data);
+        $this->load->view('admin/v_data_kompetensi_all',$data);
+        $this->load->view('template/footer');
+    }
+
+
+    public function update_kompetensi()
+    {
+        $id_kompetensi          = $this->input->post('id_kompetensi');
+        $tgl_expired     = $this->input->post('tgl_expired');
+        $update_at          = date('Y-m-d H:i:s');
+
+        date_default_timezone_set('Asia/Jakarta');
+
+        $data = array(
+            'tgl_expired'    => $tgl_expired,
+            'update_at'         => date('Y-m-d H:i:s')
+        );
+
+        $where = array(
+            'id_kompetensi' => $id_kompetensi
+        );
+
+        $this->master_m->update_data('data_kompetensi',$data,$where);
+
+        $this->session->set_flashdata('flash', 'Diupdate');
+        redirect('admin/Datapegawai/kompetensi');
+    }
+
     public function update_diklat()
     {
         $id_diklat          = $this->input->post('id_diklat');

@@ -56,10 +56,7 @@
             <thead style="text-align: center;">
               <th>#</th>
               <th>Nama Pegawai</th>
-              <th>NIP</th>
-              <!-- <th>Jabatan</th> -->
               <th>Email</th>
-              <!-- <th>Username</th> -->
               <th style="text-align: center;">Hak Akses</th>
               <th style="text-align: center;">Action</th>
             </thead>
@@ -73,15 +70,14 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $us->nama_lengkap ?></td>
-                <td><?php echo $us->nip ?></td>
-                <!-- <td style="text-align: center;"><?php echo "<span class='badge badge-primary'>$us->jabatan</span>"; ?></td> -->
+                <td><?php echo $us->nama_lengkap ?><br>
+                  <span class="badge badge-success"><?php echo $us->nip ?></span>
+                </td>
                 <td><?php echo $us->email ?></td>
-                <!-- <td><?php echo $us->username ?></td> -->
                 <td style="text-align: center;">
                   <?php 
                       if($us->role == '1'){
-                          echo "<span class='badge badge-danger'>Administrator</span>";
+                          echo "<span class='badge badge-warning'>Administrator Sistem</span>";
                       }elseif($us->role == '2'){
                           echo "<span class='badge badge-success'>Aparatur Sipil Negara</span>";
                       }elseif($us->role == '3'){
@@ -92,13 +88,12 @@
                  <td style="text-align: center;">
 
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_user; ?>">
-                  <i class="fas fa-edit"> </i></a>
+                  <i class="fas fa-edit"> </i> Edit</a>
                   </a>
 
-            
-            
-            <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('admin/User/delete_user/').$us->id_user ?>"><i class="fas fa-trash"></i></a>
-          </td>
+                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('admin/User/delete_user/').$us->id_user ?>"><i class="fas fa-trash"></i> Hapus</a>
+                
+                </td>
 
               </tr>
 

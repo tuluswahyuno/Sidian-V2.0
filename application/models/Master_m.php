@@ -197,7 +197,7 @@ class Master_m extends CI_Model
 
     public function get_data_pegawai()
     {
-        $query = $this->db->query("SELECT * FROM data_pegawai order by id_user;");
+        $query = $this->db->query("SELECT * FROM data_pegawai where status_aktif='1' order by id_user;");
         return $query->result();
     }
 
@@ -252,6 +252,15 @@ class Master_m extends CI_Model
         $query = $this->db->query("SELECT * from data_diklat dd, data_pegawai dp where dd.berlaku_sampai between date(now()) and date(date_add(now(), interval +3 MONTH)) AND dd.nip = dp.nip ORDER BY berlaku_sampai DESC;");
 
         // Select * from data_diklat where berlaku_sampai between date(now()) and date(date_add(now(), interval +3 month))
+        return $query->result();
+    }
+
+
+    public function get_data_kompetensi()
+    {
+
+        $query = $this->db->query("SELECT * from data_kompetensi dd, data_pegawai dp where dd.tgl_expired between date(now()) and date(date_add(now(), interval +3 MONTH)) AND dd.nip = dp.nip ORDER BY tgl_expired DESC;");
+
         return $query->result();
     }
 

@@ -38,9 +38,7 @@
             <thead style="text-align: center;">
               <th>#</th>
               <th>Nama Pegawai</th>
-              <th>NIP</th>
               <th>Email</th>
-              <!-- <th>Jabatan</th> -->
               <th style="text-align: center;">Action</th>
             </thead>
 
@@ -53,20 +51,17 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $us->nama_lengkap ?></td>
-                <td><?php echo $us->nip ?></td>
+                <td><?php echo $us->nama_lengkap ?><br>
+                  <span class="badge badge-success"><?php echo $us->nip ?></span>
+                </td>
                 <td><?php echo $us->email ?></td>
-                <!-- <td style="text-align: center;"><?php echo "<span class='badge badge-primary'>$us->jabatan</span>"; ?></td> -->
+                
                  <td style="text-align: center;">
 
-                  <a class="btn btn-sm btn-danger" data-toggle="modal" data-target="#editmodal<?php echo $us->id_user; ?>">
+                  <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_user; ?>">
                   <i class="fas fa-user-lock"> </i> Ganti Password</a>
                   </a>
-
-            
-            
-            <!-- <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('admin/User/delete_user/').$us->id_user ?>"><i class="fas fa-trash"></i></a> -->
-          </td>
+                </td>
 
               </tr>
 

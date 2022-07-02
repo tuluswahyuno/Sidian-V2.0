@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2>Diklat Expired</h2>
+            <h2>Kompetensi Expired</h2>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?php echo base_url('admin/Dashboard') ?>">Dashboard</a></li>
-              <li class="breadcrumb-item active">Diklat Expired</li>
+              <li class="breadcrumb-item active">Kompetensi Expired</li>
             </ol>
           </div>
         </div>
@@ -39,8 +39,7 @@
             <thead style="text-align: center;">
               <th>#</th>
               <th>Nama Pegawai</th>
-              <th>Nama Diklat</th>
-              <th>Penyelenggara</th>
+              <th>STR/SIP</th>
               <th>Expired</th>
               <th>Sertifikat</th>
               <th style="text-align: center;">Action</th>
@@ -65,13 +64,12 @@
                     } 
                     ?></span>
                 </td>
-                <td ><?php echo $us->nama_diklat ?></td>
-                <td><?php echo $us->institusi ?></td>
+                <td style="text-align: center;"><?php echo $us->jenis_kompetensi ?></td>
 
                 <td style="text-align: center;">
                   <?php 
                   
-                  $tmt = $us->berlaku_sampai;
+                  $tmt = $us->tgl_expired;
 
                   if($tmt != '0000-00-00') {
 
@@ -83,7 +81,7 @@
 
                   printf("\n");
 
-                     echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-primary'>Expired : $us->berlaku_sampai</span>";
+                     echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-primary'>Expired : $us->tgl_expired</span>";
 
                   }else{
 
@@ -141,14 +139,14 @@
                 </div>
 
                 <div class="modal-body">
-                <form method="POST" action="<?php echo base_url('admin/Datapegawai/update_diklat') ?>">
+                <form method="POST" action="<?php echo base_url('admin/Datapegawai/update_kompetensi') ?>">
 
                     <div class="row">
                     <div class="col-md-12">
                     <div class="form-group">
                     <label>Berlaku Sampai</label>
-                      <input type="hidden" name="id_diklat" value="<?php echo $us->id_diklat; ?>" >
-                      <input type="date" name="berlaku_sampai" class="form-control" value="<?php echo $us->berlaku_sampai; ?>" required>
+                      <input type="hidden" name="id_kompetensi" value="<?php echo $us->id_kompetensi; ?>" >
+                      <input type="date" name="tgl_expired" class="form-control" value="<?php echo $us->tgl_expired; ?>" required>
                     </div>
 
                     </div>

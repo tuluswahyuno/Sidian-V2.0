@@ -145,7 +145,7 @@
             </a>
           </li>
 
-          <li class="nav-header">KENAIKAN</li>
+          <li class="nav-header">KENAIKAN PANGKAT & GAJI</li>
           <li class="nav-item">
             <a href="<?php echo base_url('admin/Datapegawai/kp') ?>" class="nav-link">
               <i class="nav-icon fas fa-file-contract"></i>
@@ -172,12 +172,24 @@
           </li>
 
 
-          <li class="nav-header">DIKLAT</li>
+          <li class="nav-header">DIKLAT & KOMPETENSI</li>
           <li class="nav-item">
             <a href="<?php echo base_url('admin/Datapegawai/diklat') ?>" class="nav-link">
               <i class="nav-icon fas fa-award"></i>
               <p>
-                Perlu Perpanjang
+                Diklat Expired
+              </p>
+                  <?php if ($diklat_bulan_ini != null) {?>
+                  <span class="right badge badge-danger"><?php echo $diklat_bulan_ini; ?> Orang</span>
+                  <?php }else{} ?>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url('admin/Datapegawai/kompetensi ') ?>" class="nav-link">
+              <i class="nav-icon fas fa-user-md"></i>
+              <p>
+                SIP/STR Expired
               </p>
                   <?php if ($diklat_bulan_ini != null) {?>
                   <span class="right badge badge-danger"><?php echo $diklat_bulan_ini; ?> Orang</span>
