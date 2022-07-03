@@ -17,6 +17,11 @@
 		{
 			$this->load->view('template/landing');
 		}
+
+		public function maintenance()
+		{
+			$this->load->view('template/UnderMaintenance');
+		}
 		
 		public function proses()
 		{

@@ -158,7 +158,7 @@ $db['default'] = array(
 
 	'password' => '',
 
-	'database' => 'sidian',
+	'database' => 'sidianv2',
 
 	'dbdriver' => 'mysqli',
 
