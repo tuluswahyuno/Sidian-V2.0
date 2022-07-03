@@ -75,10 +75,9 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>NIP</th>
               <th>Nama</th>
-              <th>Ruang Asal</th>
-              <th>Ruang Sekarang</th>
+              <th>R. Asal</th>
+              <th>R. Sekarang</th>
               <th>TMT</th>
               <th>File SK</th>
               <!-- <th style="text-align: center;">Action</th> -->
@@ -92,21 +91,17 @@
               foreach ($mutasi as $us) : ?>
 
               <tr>
-                <td><?php echo $no++; ?></td>
-                <td><?php echo $us->nip ?></td>
-                <td><?php echo $us->nama_lengkap ?></td>
-                <!-- <td ><?php echo $us->asal ?></td> -->
-
-                <td style="text-align: center;">
-                <a class="btn btn-sm btn-info" href="#"> <?php echo $us->asal ?></a>
+                <td style="text-align: center;"><?php echo $no++; ?></td>
+                <td><?php echo $us->nama_lengkap ?><br>
+                  <span class="badge badge-success"><?php echo "NIP : ".$us->nip ?></span>
                 </td>
-
                 <td style="text-align: center;">
-                <a class="btn btn-sm btn-warning" href="#"> <?php echo $us->nama_unitkerja ?></a>
+                  <span class="badge badge-warning"><?php echo $us->asal ?></span>
                 </td>
-
-                <td ><?php echo $us->tmt_mutasi ?></td>
-                <!-- <td ><?php echo $us->file ?></td> -->
+                <td style="text-align: center;">
+                  <span class="badge badge-primary"><?php echo $us->nama_unitkerja ?></span>
+                </td>
+                <td style="text-align: center;"><?php echo date('d-M-Y', strtotime($us->tmt_mutasi))  ?></td>
 
                 <td style="text-align: center;">
                    <?php

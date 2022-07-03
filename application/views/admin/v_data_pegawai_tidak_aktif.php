@@ -130,8 +130,8 @@
                     <?php } ?>
                 </td>
 
-                <td>
-                    <a href="<?php echo base_url('admin/Datapegawai/detail_pegawai/').$us->nip ?>" class="btn btn-sm btn-success">Detail <i class="fas fa-eye"></i></a>
+                <td style="text-align: center;">
+                    <a href="<?php echo base_url('admin/Datapegawai/detail_pegawai/').$us->nip ?>" class="btn btn-sm btn-primary">Detail <i class="fas fa-info-circle"></i></a>
 
                     <!-- <a href="<?php echo base_url('admin/Datapegawai/delete_pegawai/').$us->nip ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a> -->
                   </td>

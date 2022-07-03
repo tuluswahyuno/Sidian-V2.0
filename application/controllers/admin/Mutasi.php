@@ -12,7 +12,8 @@ class Mutasi extends CI_Controller
 
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
 		$data['mutasi'] = $this->master_m->get_data_mutasi();
 
@@ -33,7 +34,8 @@ class Mutasi extends CI_Controller
         $data['pegawai'] = $this->master_m->get_data_pegawai_personal($nip); 
         $data['belum_dibaca'] = $this->master_m->hitung_belum_dibaca($nip);
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat_pegawai($nip); 
-        $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip); 
+        $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip);
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['title'] = " Mutasi ";
 

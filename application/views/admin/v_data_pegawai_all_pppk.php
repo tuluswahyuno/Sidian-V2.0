@@ -123,8 +123,8 @@
                 </td>
                 <td style="text-align: center;"><?php echo $us->nama_unitkerja ?></td>
 
-                <td>
-                    <a href="<?php echo base_url('admin/Datapegawai/detail_pegawai/').$us->nip ?>" class="btn btn-sm btn-success">Detail <i class="fas fa-eye"></i></a>
+                <td style="text-align: center;">
+                    <a href="<?php echo base_url('admin/Datapegawai/detail_pegawai/').$us->nip ?>" class="btn btn-sm btn-primary">Detail <i class="fas fa-info-circle"></i></a>
                   </td>
 
               </tr>

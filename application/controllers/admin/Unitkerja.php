@@ -13,7 +13,8 @@ class Unitkerja extends CI_Controller
 		$data['unitkerja'] = $this->master_m->get_data('unitkerja')->result();
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
         
 		
 		$data['title'] = "Data Unit Kerja";

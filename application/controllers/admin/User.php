@@ -17,7 +17,8 @@ class User extends CI_Controller
 
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
 
         $this->load->view('template/header');
@@ -116,6 +117,7 @@ class User extends CI_Controller
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
 
         $this->load->view('template/header');
         $this->load->view('template/sidebar',$data);

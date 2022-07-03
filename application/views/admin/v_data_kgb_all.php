@@ -91,11 +91,9 @@
                    ?>
                 </td>
 
-                <td>
-                    <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#editmodal<?php echo $us->id_user; ?>">
+                <td style="text-align: center;">
+                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_user; ?>">
                   <i class="fas fa-edit"></i> Selesai</a>
-            
-                  <!-- <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('admin/Datapegawai/delete_jabatan/').$us->id_user ?>"><i class="fas fa-trash"></i></a> -->
                   </td>
 
               </tr>

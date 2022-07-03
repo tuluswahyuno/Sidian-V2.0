@@ -191,8 +191,8 @@
               <p>
                 SIP/STR Expired
               </p>
-                  <?php if ($diklat_bulan_ini != null) {?>
-                  <span class="right badge badge-danger"><?php echo $diklat_bulan_ini; ?> Orang</span>
+                  <?php if ($kompetensi_expired != null) {?>
+                  <span class="right badge badge-danger"><?php echo $kompetensi_expired; ?> Orang</span>
                   <?php }else{} ?>
             </a>
           </li>
@@ -234,6 +234,15 @@
               <i class="nav-icon fas fa-paper-plane"></i>
               <p>
                 Data Non ASN
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url('admin/Pendidikan/All') ?>" class="nav-link">
+              <i class="fas fa-user-graduate nav-icon"></i>
+              <p>
+                Data Pendidikan
               </p>
             </a>
           </li>

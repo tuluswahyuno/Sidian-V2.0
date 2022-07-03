@@ -48,9 +48,9 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
-              <th>Nama Pegawai</th>
-              <th>Asal</th>
-              <th>Sekarang</th>
+              <th>Nama</th>
+              <th>R. Asal</th>
+              <th>R. Sekarang</th>
               <th>TMT</th>
               <th>File SK</th>
               <th style="text-align: center;">Action</th>
@@ -90,7 +90,7 @@
 
                  </td>
 
-                <td>
+                <td style="text-align: center;">
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_mutasi; ?>">
                   <i class="fas fa-edit"> </i> Edit</a>
             

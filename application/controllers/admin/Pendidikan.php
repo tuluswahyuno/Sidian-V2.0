@@ -14,12 +14,31 @@ class Pendidikan extends CI_Controller
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
         
 		$data['title'] = "Data Pendidikan";
 
         $this->load->view('template/header');
         $this->load->view('template/sidebar',$data);
 		$this->load->view('admin/v_master_pendidikan',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function All()
+	{
+		check_not_login();
+
+		$data['pegawai'] = $this->master_m->get_data_pendidikan_all();
+		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
+        $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
+        
+		$data['title'] = "Data Pendidikan Pegawai";
+
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar',$data);
+		$this->load->view('admin/v_pendidikan_all',$data);
 		$this->load->view('template/footer');
 	}
 

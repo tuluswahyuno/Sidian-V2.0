@@ -19,7 +19,8 @@ class Dashboard extends CI_Controller
 
         $data3['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
         $data3['kp_bulan_ini'] = $this->master_m->hitung_kp();
-        $data3['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
+        $data3['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
+        $data3['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
         
 
         foreach($this->model_grafik->statistik_surat()->result_array() as $row)

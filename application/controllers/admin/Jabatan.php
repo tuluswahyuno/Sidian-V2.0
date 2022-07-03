@@ -13,6 +13,7 @@ class Jabatan extends CI_Controller
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
         
 
 		$data['jabatan'] = $this->master_m->get_data('jabatan')->result();

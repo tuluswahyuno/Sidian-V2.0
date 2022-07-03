@@ -46,7 +46,6 @@
               <th>Nama Pegawai</th>
               <th>Gender / Usia</th>
               <th>Pangkat</th>
-              <th>Jabatan</th>
               <th>Masa Kerja</th>
               <th>Unit Kerja</th>
               <th style="text-align: center;">Action</th>
@@ -93,8 +92,28 @@
                    ?>
                 </td>
 
-                <td ><?php echo $us->nama_pangkat ?></td>
-                <td ><?php echo $us->nama_jabatan ?></td>
+                <td style="text-align: center;">
+
+                  <?php if ($us->pangkat == '1' && $us->jabatan == '1'){?>
+
+                    <?php echo "-" ?>
+
+                  <?php }elseif($us->pangkat !== '1' && $us->jabatan == '1'){ ?>
+
+                    <?php echo $us->nama_pangkat ?>
+
+                  <?php }elseif($us->pangkat == '1' && $us->jabatan !== '1'){ ?>
+
+                    <?php echo $us->nama_jabatan ?>
+
+                  <?php }else{ ?>
+
+                      <?php echo $us->nama_pangkat ?><br>
+                      <hr style='margin-bottom:0;margin-top:0'>
+                      <?php echo $us->nama_jabatan ?>
+
+                    <?php } ?>
+                </td>
 
                 
 
@@ -123,12 +142,15 @@
                   
                    ?>
                 </td>
-                <td style="text-align: center;"><?php echo $us->nama_unitkerja ?></td>
 
-                <td>
-                    <a href="<?php echo base_url('admin/Datapegawai/detail_pegawai/').$us->nip ?>" class="btn btn-sm btn-success">Detail <i class="fas fa-eye"></i></a>
+                <td style="text-align: center;">
+                  <?php if ($us->divisi == '1') {}else{ ?>
+                    <?php echo $us->nama_unitkerja ?>
+                  <?php } ?>
+                </td>
 
-                    <!-- <a href="<?php echo base_url('admin/Datapegawai/delete_pegawai/').$us->nip ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a> -->
+                <td style="text-align: center;">
+                    <a href="<?php echo base_url('admin/Datapegawai/detail_pegawai/').$us->nip ?>" class="btn btn-sm btn-primary">Detail <i class="fas fa-info-circle"></i></a>
                   </td>
 
               </tr>

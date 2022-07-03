@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2>Kompetensi Expired</h2>
+            <h2>SIP/STR Expired</h2>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?php echo base_url('admin/Dashboard') ?>">Dashboard</a></li>
-              <li class="breadcrumb-item active">Kompetensi Expired</li>
+              <li class="breadcrumb-item active">SIP/STR Expired</li>
             </ol>
           </div>
         </div>
@@ -28,7 +28,7 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title"></h3>
-          <a>Data Diklat</a>
+          <a>SIP/STR Expired</a>
         </div>
         <div class="card-body">
           

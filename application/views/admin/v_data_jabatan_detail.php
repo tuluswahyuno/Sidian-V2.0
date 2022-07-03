@@ -107,7 +107,7 @@
               foreach ($jabatan as $us) : ?>
 
               <tr>
-                <td><?php echo $no++; ?></td>
+                <td style="text-align: center;"><?php echo $no++; ?></td>
                 <td><?php echo $us->nama_jabatan ?><br>
                   <span class="badge badge-success"><?php echo $us->jenis_jabatan ?></span>
                 </td>

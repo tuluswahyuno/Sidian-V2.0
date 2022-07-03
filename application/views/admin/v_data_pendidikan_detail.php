@@ -106,7 +106,7 @@
               foreach ($pendidikan as $us) : ?>
 
               <tr>
-                <td><?php echo $no++; ?></td>
+                <td style="text-align: center;"><?php echo $no++; ?></td>
                 <td><?php echo $us->pendidikan ?><br>
                   <?php
                     if ($us->pterakhir == "0") { ?>

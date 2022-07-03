@@ -92,7 +92,7 @@
                 </td>
 
                 <td style="text-align: center;">
-                    <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#editmodal<?php echo $us->id_user; ?>">
+                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_user; ?>">
                   <i class="fas fa-edit"></i> Selesai</a>
                   </td>
 

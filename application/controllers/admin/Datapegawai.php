@@ -11,6 +11,7 @@ class Datapegawai extends CI_Controller
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
         
 
         $data['title'] = " Data Pegawai ";
@@ -30,6 +31,7 @@ class Datapegawai extends CI_Controller
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
 
         $data['title'] = " Data PNS ";
 
@@ -48,6 +50,7 @@ class Datapegawai extends CI_Controller
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
 
         $data['title'] = " Data PPPK ";
 
@@ -66,6 +69,7 @@ class Datapegawai extends CI_Controller
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
          $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
 
         $data['title'] = " Data Non ASN ";
 
@@ -84,6 +88,7 @@ class Datapegawai extends CI_Controller
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
 
         $data['title'] = " Data Pegawai Tidak Aktif ";
 
@@ -102,6 +107,7 @@ class Datapegawai extends CI_Controller
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
 
 
         $data['title'] = " Data Diklat Perlu Perpanjang ";
@@ -121,6 +127,7 @@ class Datapegawai extends CI_Controller
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
 
         $data['title'] = " SIP/STR Perlu Diperpanjang ";
@@ -185,7 +192,8 @@ class Datapegawai extends CI_Controller
         $data['pegawai'] = $this->master_m->get_data_kp(); 
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['title'] = " Data Kenaikan Pangkat ";
 
@@ -228,7 +236,8 @@ class Datapegawai extends CI_Controller
         $data['pegawai'] = $this->master_m->get_data_kgb();
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp(); 
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['title'] = " Data Kenaikan Gaji Berkala ";
 
@@ -271,7 +280,8 @@ class Datapegawai extends CI_Controller
 		$data['detail'] = $this->master_m->get_id_pegawai_admin($id);
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
 		$data['title'] = " Detail Pegawai ";
 
@@ -290,7 +300,8 @@ class Datapegawai extends CI_Controller
         $data['detail'] = $this->master_m->get_id_pegawai_adminnonpns($id);
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['title'] = " Detail Pegawai ";
 
@@ -307,7 +318,8 @@ class Datapegawai extends CI_Controller
         $data['detail'] = $this->master_m->get_id_pegawai_adminnonpns($id);
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['jenispegawai'] = $this->master_m->get_jenispegawai();
         $data['jenisprofesi'] = $this->master_m->get_jenisprofesi();
@@ -329,7 +341,8 @@ class Datapegawai extends CI_Controller
 		$data['detail'] = $this->master_m->get_id_pegawai_admin($id);
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['jenispegawai'] = $this->master_m->get_jenispegawai();
         $data['jenisprofesi'] = $this->master_m->get_jenisprofesi(); 
@@ -492,7 +505,8 @@ class Datapegawai extends CI_Controller
 		$data['title'] = " Detail Pendidikan ";
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
 		$data['detail'] = $this->master_m->get_id_pegawai($id);
 		$data['pendidikan'] = $this->master_m->get_data_pendidikan_personal2($id);
@@ -510,7 +524,8 @@ class Datapegawai extends CI_Controller
         $data['title'] = " Detail Pendidikan ";
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['detail'] = $this->master_m->get_id_pegawai($id);
         $data['pendidikan'] = $this->master_m->get_data_pendidikan_personal2($id);
@@ -527,7 +542,8 @@ class Datapegawai extends CI_Controller
 		$data['title'] = " Detail Pangkat ";
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
 		$data['detail'] = $this->master_m->get_id_pegawai($id);
 		$data['pangkat'] = $this->master_m->get_data_pangkat_personal($id);
@@ -546,6 +562,7 @@ class Datapegawai extends CI_Controller
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
 
         $data['detail'] = $this->master_m->get_id_pegawai($id);
         $data['jabatan'] = $this->master_m->get_data_jabatan_personal($id);
@@ -564,7 +581,8 @@ class Datapegawai extends CI_Controller
         $data['title'] = " Riwayat Gaji Berkala ";
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['detail'] = $this->master_m->get_id_pegawai($id);
         $data['gajiberkala'] = $this->master_m->get_data_gaji_berkala($id); 
@@ -582,7 +600,8 @@ class Datapegawai extends CI_Controller
         $data['title'] = " Data Riwayat Mutasi Ruang ";
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['detail'] = $this->master_m->get_id_pegawai($id);
         $data['mutasi'] = $this->master_m->get_data_mutasi_personal($id);
@@ -600,7 +619,8 @@ class Datapegawai extends CI_Controller
 		$data['title'] = " Detail Pasangan ";
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
 		$data['detail'] = $this->master_m->get_id_pegawai($id);
 		$data['pasangan'] = $this->master_m->get_data_pasangan_personal2($id);
@@ -618,7 +638,8 @@ class Datapegawai extends CI_Controller
         $data['title'] = " Detail Pasangan ";
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['detail'] = $this->master_m->get_id_pegawai($id);
         $data['pasangan'] = $this->master_m->get_data_pasangan_personal2($id);
@@ -636,7 +657,8 @@ class Datapegawai extends CI_Controller
 		$data['title'] = " Detail Anak ";
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
 		$data['detail'] = $this->master_m->get_id_pegawai($id);
 		$data['anak'] = $this->master_m->get_data_anak_personal2($id);
@@ -653,7 +675,8 @@ class Datapegawai extends CI_Controller
         $data['title'] = " Detail Anak ";
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['detail'] = $this->master_m->get_id_pegawai($id);
         $data['anak'] = $this->master_m->get_data_anak_personal2($id);
@@ -671,7 +694,8 @@ class Datapegawai extends CI_Controller
 		$data['title'] = " Detail Diklat ";
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
 		$data['detail'] = $this->master_m->get_id_pegawai($id);
 		$data['diklat'] = $this->master_m->get_data_diklat_personal2($id);
@@ -688,7 +712,8 @@ class Datapegawai extends CI_Controller
         $data['title'] = " Detail Diklat ";
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['detail'] = $this->master_m->get_id_pegawai($id);
         $data['diklat'] = $this->master_m->get_data_diklat_personal2($id);
@@ -706,7 +731,8 @@ class Datapegawai extends CI_Controller
 		$data['title'] = " Detail Berkas ";
 		$data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
 		$data['detail'] = $this->master_m->get_id_pegawai($id);
         $data['jenisberkas'] = $this->master_m->get_jenisberkas(); 
@@ -724,7 +750,8 @@ class Datapegawai extends CI_Controller
         $data['title'] = " Detail Berkas ";
         $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
         $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
-        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
 
         $data['detail'] = $this->master_m->get_id_pegawai($id);
         $data['berkas'] = $this->master_m->get_data_berkas_personal2($id);

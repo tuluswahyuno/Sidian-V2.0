@@ -54,7 +54,7 @@
               foreach ($pegawai as $us) : ?>
 
               <tr>
-                <td><?php echo $no++; ?></td>
+                <td style="text-align: center;"><?php echo $no++; ?></td>
                 <td ><?php echo $us->nama_lengkap ?><br>
                   <span class="badge badge-info">
                     <?php if ($us->status_pegawai == 1 || $us->status_pegawai == 2 )

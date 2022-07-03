@@ -110,7 +110,7 @@
               foreach ($gajiberkala as $us) : ?>
 
               <tr>
-                <td><?php echo $no++; ?></td>
+                <td style="text-align: center;"><?php echo $no++; ?></td>
                 <td><?php echo $us->nama_pangkat ?><br>
                   <span class="badge badge-success"><?php echo "TMT : ".date('d-M-Y', strtotime($us->tmt))  ?></span>
                 </td>

@@ -127,6 +127,12 @@ class Master_m extends CI_Model
         return $query;
     }
 
+    public function get_data_pendidikan_all()
+    {
+        $query = $this->db->query("SELECT * from data_pendidikan dp, data_pegawai dpeg, pendidikan dpen WHERE dp.nip = dpeg.nip and dp.jenjang = dpen.id_masterpendidikan and dp.pterakhir = '1' ORDER BY status_pegawai;");
+        return $query->result();
+    }
+
 	public function get_data_pegawai_personal($nip)
     {
         
@@ -538,7 +544,6 @@ class Master_m extends CI_Model
     {   
         $nilaiawal = 0;
 
-        // $query = $this->db->query("SELECT * FROM data_diklat WHERE MONTH(berlaku_sampai) = MONTH(CURDATE());");
 
         $query = $this->db->query("SELECT * from data_diklat where berlaku_sampai between date(now()) and date(date_add(now(), interval +3 month));");
         
@@ -551,6 +556,24 @@ class Master_m extends CI_Model
           return 0;
         }
     }
+
+
+    public function hitung_kompetensi()
+    {   
+        $nilaiawal = 0;
+
+        $query = $this->db->query("SELECT * from data_kompetensi where tgl_expired between date(now()) and date(date_add(now(), interval +3 month));");
+        
+        if($query->num_rows()>0)
+        {
+          return $query->num_rows();
+        }
+        else
+        {
+          return 0;
+        }
+    }
+
 
 
     public function hitung_diklat_pegawai($nip)
@@ -612,7 +635,7 @@ class Master_m extends CI_Model
     {   
         $nilaiawal = 0;
 
-        $query = $this->db->query("SELECT * FROM data_pegawai WHERE status_pegawai='1';");
+        $query = $this->db->query("SELECT * FROM data_pegawai WHERE status_pegawai='1' AND status_aktif='1';");
         
         if($query->num_rows()>0)
         {
@@ -629,7 +652,7 @@ class Master_m extends CI_Model
     {   
         $nilaiawal = 0;
 
-        $query = $this->db->query("SELECT * FROM data_pegawai WHERE status_pegawai='2';");
+        $query = $this->db->query("SELECT * FROM data_pegawai WHERE status_pegawai='2' AND status_aktif='1';");
         
         if($query->num_rows()>0)
         {
@@ -646,7 +669,7 @@ class Master_m extends CI_Model
     {   
         $nilaiawal = 0;
 
-        $query = $this->db->query("SELECT * FROM data_pegawai WHERE status_pegawai='3';");
+        $query = $this->db->query("SELECT * FROM data_pegawai WHERE status_pegawai='3' AND status_aktif='1';");
         
         if($query->num_rows()>0)
         {
