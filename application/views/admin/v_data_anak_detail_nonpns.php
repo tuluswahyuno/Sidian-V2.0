@@ -27,6 +27,10 @@
             </li>
 
             <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('admin/Datapegawai/detail_sipstr_nonpns/').$detail->nip ?>">SIP/STR</a>
+            </li>
+
+            <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url('admin/Datapegawai/detail_berkas_nonpns/').$detail->nip ?>">Berkas</a>
             </li>
 

@@ -111,7 +111,7 @@
          
           <li class="nav-header">PERLU PERPANJANG</li>
            <li class="nav-item">
-            <a href="<?php echo base_url('pns/Kompetensi/kompetensi_expired') ?>" class="nav-link">
+            <a href="<?php echo base_url('nonpns/Kompetensi/kompetensi_expired') ?>" class="nav-link">
               <i class="nav-icon fas fa-file-medical"></i>
               <p>
                 STR/SIP

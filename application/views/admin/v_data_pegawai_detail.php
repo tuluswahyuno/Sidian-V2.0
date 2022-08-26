@@ -70,6 +70,11 @@
             </li>
 
 
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="<?php echo base_url('admin/Datapegawai/detail_sipstr/').$detail->nip ?>">SIP/STR</a>
+            </li>
+
+
 
             <li class="nav-item">
 

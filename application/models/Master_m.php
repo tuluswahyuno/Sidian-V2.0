@@ -133,6 +133,16 @@ class Master_m extends CI_Model
         return $query->result();
     }
 
+
+
+    public function get_data_all()
+    {
+        $query = $this->db->query("SELECT nip,nama_lengkap,tempat_lahir,tgl_lahir,no_hp,alamat,status_pegawai from data_pegawai where status_aktif ='1' order by 
+            status_pegawai ASC,
+            nama_lengkap ASC;");
+        return $query->result();
+    }
+
 	public function get_data_pegawai_personal($nip)
     {
         
@@ -391,6 +401,13 @@ class Master_m extends CI_Model
     public function get_data_diklat_by_id($id)
     {
         $query = $this->db->query("SELECT * FROM data_diklat p where p.id_diklat = $id;");
+        return $query->row();
+    }
+
+
+    public function get_data_kompetensi_by_id($id)
+    {
+        $query = $this->db->query("SELECT * FROM data_kompetensi p where p.id_kompetensi = $id;");
         return $query->row();
     }
 

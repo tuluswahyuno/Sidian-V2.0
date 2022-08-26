@@ -234,14 +234,14 @@ class Diklat extends CI_Controller
 
     public function tambah_diklat_detail()
     {
-        $nip         = $this->input->post('nip');
-        $nama_diklat = $this->input->post('nama_diklat');
-        $institusi   = $this->input->post('institusi');
-        $nomor       = $this->input->post('nomor');
-        $tgl_mulai   = $this->input->post('tgl_mulai');
-        $tgl_selesai = $this->input->post('tgl_selesai');
-        $durasi_jp   = $this->input->post('durasi_jp');
-        $berlaku_sampai   = $this->input->post('berlaku_sampai');
+        $nip                = $this->input->post('nip');
+        $nama_diklat        = $this->input->post('nama_diklat');
+        $institusi          = $this->input->post('institusi');
+        $nomor              = $this->input->post('nomor');
+        $tgl_mulai          = $this->input->post('tgl_mulai');
+        $tgl_selesai        = $this->input->post('tgl_selesai');
+        $durasi_jp          = $this->input->post('durasi_jp');
+        $berlaku_sampai     = $this->input->post('berlaku_sampai');
 
         $file        = $_FILES['file']['name'];
         if ($file=''){}else{
@@ -254,20 +254,19 @@ class Diklat extends CI_Controller
                 // echo "File Pendukung Gagal di upload";
             }else{
                 $file=$this->upload->data('file_name');
-
             }
         }
 
         $data = array(
-            'nip'           => $nip,
-            'nama_diklat'   => $nama_diklat,
-            'institusi'     => $institusi,
-            'nomor'         => $nomor,
-            'tgl_mulai'     => $tgl_mulai,
-            'tgl_selesai'   => $tgl_selesai,
-            'durasi_jp'     => $durasi_jp,
-            'berlaku_sampai'     => $berlaku_sampai,
-            'file'        => $file,
+            'nip'               => $nip,
+            'nama_diklat'       => $nama_diklat,
+            'institusi'         => $institusi,
+            'nomor'             => $nomor,
+            'tgl_mulai'         => $tgl_mulai,
+            'tgl_selesai'       => $tgl_selesai,
+            'durasi_jp'         => $durasi_jp,
+            'berlaku_sampai'    => $berlaku_sampai,
+            'file'              => $file,
         );
 
         $this->master_m->insert_data($data,'data_diklat');

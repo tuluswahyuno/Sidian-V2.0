@@ -60,6 +60,25 @@ class Datapegawai extends CI_Controller
         $this->load->view('template/footer');
     }
 
+
+    public function All()
+    {
+        check_not_login();
+
+        $data['pegawai'] = $this->master_m->get_data_all();
+        $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
+        $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
+
+        $data['title'] = " Data All ";
+
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar',$data);
+        $this->load->view('admin/v_data_reqdir',$data);
+        $this->load->view('template/footer');
+    }
+
     public function nonpns()
     {
         check_not_login();
@@ -117,6 +136,8 @@ class Datapegawai extends CI_Controller
         $this->load->view('admin/v_data_diklat_all',$data);
         $this->load->view('template/footer');
     }
+
+
 
 
     public function kompetensi()
@@ -705,6 +726,46 @@ class Datapegawai extends CI_Controller
 		$this->load->view('admin/v_data_diklat_detail',$data);
 		$this->load->view('template/footer');
 	}
+
+
+    public function detail_sipstr($id)
+    {
+
+        $data['title'] = " Detail SIP/STR ";
+        $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
+        $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
+
+        $data['detail'] = $this->master_m->get_id_pegawai($id);
+        // $data['diklat'] = $this->master_m->get_data_diklat_personal2($id);
+        $data['kompetensi'] = $this->master_m->get_data_kompetensi_personal($id);
+
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar',$data);
+        $this->load->view('admin/v_data_kompetensi_detail',$data);
+        $this->load->view('template/footer');
+    }
+
+
+    public function detail_sipstr_nonpns($id)
+    {
+
+        $data['title'] = " Detail SIP/STR ";
+        $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
+        $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb(); 
+        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat();
+        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi(); 
+
+        $data['detail'] = $this->master_m->get_id_pegawai($id);
+        // $data['diklat'] = $this->master_m->get_data_diklat_personal2($id);
+        $data['kompetensi'] = $this->master_m->get_data_kompetensi_personal($id);
+
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar',$data);
+        $this->load->view('admin/v_data_kompetensi_detail_nonpns',$data);
+        $this->load->view('template/footer');
+    }
 
     public function detail_diklat_nonpns($id)
     {

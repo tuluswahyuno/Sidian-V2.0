@@ -27,6 +27,10 @@
             </li>
 
             <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('admin/Datapegawai/detail_sipstr_nonpns/').$detail->nip ?>">SIP/STR</a>
+            </li>
+
+            <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url('admin/Datapegawai/detail_berkas_nonpns/').$detail->nip ?>">Berkas</a>
             </li>
           </ul>
@@ -76,7 +80,7 @@
   </li>
   </ul>
   <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#update-foto"><b>Update Foto</b></a>
-  <a href="<?php echo base_url('nonpns/Dashboard/update_data') ?>" class="btn btn-danger btn-block"><b>Update Data</b></a>
+  <a href="<?php echo base_url('admin/Datapegawai/detail_pegawai_update_nonpns/').$detail->nip ?>" class="btn btn-danger btn-block"><b>Update Data</b></a>
   </div>
 
   </div>

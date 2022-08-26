@@ -13,6 +13,7 @@ class Kompetensi extends CI_Controller
         $data['pegawai'] = $this->master_m->get_data_pegawai_personal($nip); 
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat_pegawai($nip); 
         $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip); 
+        
         $data['title'] = " Sertifikat Kompetensi ";
 
         $this->load->view('template/header_pns',$data);
@@ -61,6 +62,47 @@ class Kompetensi extends CI_Controller
         $this->master_m->insert_data($data,'data_kompetensi');
         $this->session->set_flashdata('flash', 'Ditambahkan');
         redirect('pns/Kompetensi'); 
+    }
+
+
+    public function tambah_kompetensi_detail()
+    {
+        $nip                    = $this->input->post('nip');
+        $jenis_kompetensi       = $this->input->post('jenis_kompetensi');
+        $profesi                = $this->input->post('profesi');
+        $no_surat               = $this->input->post('no_surat');
+        $tgl_terbit             = $this->input->post('tgl_terbit');
+        $tgl_expired            = $this->input->post('tgl_expired');
+
+        $file        = $_FILES['file']['name'];
+        if ($file=''){}else{
+            $config ['upload_path']     =   './uploads/kompetensi';
+            $config ['allowed_types']   =   'jpg|jpeg|png|pdf|doc|docx|xls|xlsx';
+
+            $this->load->library('upload', $config); 
+
+            if (!$this->upload->do_upload('file')) {
+            }else{
+                $file=$this->upload->data('file_name');
+
+            }
+        }
+
+        $data = array(
+            'nip'               => $nip,
+            'jenis_kompetensi'  => $jenis_kompetensi,
+            'profesi'           => $profesi,
+            'no_surat'          => $no_surat,
+            'tgl_terbit'        => $tgl_terbit,
+            'tgl_expired'       => $tgl_expired,
+            'file'              => $file,
+        );
+
+
+
+        $this->master_m->insert_data($data,'data_kompetensi');
+        $this->session->set_flashdata('flash', 'Ditambahkan');
+        redirect('admin/Datapegawai/detail_sipstr/'.$nip); 
     }
 
 
@@ -117,6 +159,64 @@ class Kompetensi extends CI_Controller
 
         $this->session->set_flashdata('flash', 'Diupdate');
         redirect('pns/Kompetensi');
+    }
+
+
+
+    public function update_data_detail()
+    {
+        $id                     = $this->input->post('id_kompetensi');
+        $nip                    = $this->input->post('nip');
+        $jenis_kompetensi       = $this->input->post('jenis_kompetensi');
+        $profesi                = $this->input->post('profesi');
+        $no_surat               = $this->input->post('no_surat');
+        $tgl_terbit             = $this->input->post('tgl_terbit');
+        $tgl_expired            = $this->input->post('tgl_expired');
+        $update_at              = date('Y-m-d H:i:s');
+
+        date_default_timezone_set('Asia/Jakarta');
+
+        $file     = $_FILES['file']['name'];
+            if ($file){
+                $config ['upload_path']     =   './uploads/kompetensi';
+                $config ['allowed_types']   =   'jpg|jpeg|png|pdf|doc|docx|xls|xlsx';
+
+                $this->load->library('upload', $config); 
+
+                if($this->upload->do_upload('file')){
+
+                    $uploadfile = $this->master_m->get_file_kompetensi($id)->row();
+
+                    if($uploadfile->file != null)
+                    {
+                     $taget_file = './uploads/kompetensi/'.$uploadfile->file;
+                     unlink($taget_file);
+                    }
+                    $file=$this->upload->data('file_name');
+                    $this->db->set('file', $file);
+                }else{
+                    echo $this->upload->display_errors();
+                }
+            }
+
+        $data = array(
+            'jenis_kompetensi'  => $jenis_kompetensi,
+            'profesi'           => $profesi,
+            'no_surat'          => $no_surat,
+            'tgl_terbit'        => $tgl_terbit,
+            'tgl_expired'       => $tgl_expired,
+            'update_at'         => date('Y-m-d H:i:s')
+        );
+
+        $where = array(
+            'id_kompetensi' => $id
+        );
+
+
+        $this->master_m->update_data('data_kompetensi',$data,$where);
+
+        $this->session->set_flashdata('flash', 'Diupdate');
+        redirect('admin/Datapegawai/detail_sipstr/'.$nip); 
     }
 
 
@@ -210,6 +310,27 @@ class Kompetensi extends CI_Controller
         $this->master_m->delete_data($where, 'data_kompetensi');
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('pns/Kompetensi');
+    }
+
+
+    public function delete_data_detail($id)
+    {
+
+        $nip = $this->master_m->get_data_kompetensi_by_id($id)->nip;
+        
+        $berkas = $this->master_m->get_file_kompetensi($id)->row();
+            
+        if($berkas->file != null)
+        {
+            $taget_file = './uploads/kompetensi/'.$berkas->file;
+            unlink($taget_file);
+        }
+
+        $where = array('id_kompetensi' => $id);
+
+        $this->master_m->delete_data($where, 'data_kompetensi');
+        $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('admin/Datapegawai/detail_sipstr/'.$nip); 
     }
 
 }

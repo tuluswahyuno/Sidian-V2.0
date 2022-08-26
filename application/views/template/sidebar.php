@@ -145,6 +145,17 @@
             </a>
           </li>
 
+
+          <li class="nav-item">
+            <a href="<?php echo base_url('admin/Datapegawai/All') ?>" class="nav-link">
+              <!-- <i class="nav-icon fas fa-user-nurse"></i> -->
+              <i class="nav-icon fas fa-user-nurse"></i>
+              <p>
+                Req Dir
+              </p>
+            </a>
+          </li>
+
           <li class="nav-header">KENAIKAN PANGKAT & GAJI</li>
           <li class="nav-item">
             <a href="<?php echo base_url('admin/Datapegawai/kp') ?>" class="nav-link">

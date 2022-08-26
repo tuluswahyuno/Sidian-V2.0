@@ -36,7 +36,7 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex flex-column align-items-center">
 
-      <h1>ComingSoon</h1>
+      <h1>Under Maintenance</h1>
       <h2>We're working hard to improve our website and we'll ready to launch after</h2>
       <div class="countdown d-flex justify-content-center" data-count="2022/07/5">
         <div>
