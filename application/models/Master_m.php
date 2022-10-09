@@ -698,6 +698,54 @@ class Master_m extends CI_Model
         }
     }
 
+
+    public function pengajuan_surat($id)
+    {
+
+        $query = $this->db->query("SELECT * FROM data_pegawai dp, pangkat p, jabatan j, data_cuti du WHERE dp.pangkat = p.id_masterpangkat and dp.jabatan = j.id_masterjabatan and dp.nip = du.nip and id_cuti ='$id';");
+        return $query->row();
+    }
+
+
+    public function pengajuan_cuti($id)
+    {
+
+        $query = $this->db->query("SELECT * FROM data_pegawai dp, pangkat p, jabatan j, unitkerja u, data_cuti du WHERE dp.pangkat = p.id_masterpangkat and dp.jabatan = j.id_masterjabatan and dp.divisi = u.id_unitkerja and dp.nip = du.nip and id_cuti ='$id';");
+        return $query->row();
+    }
+
+    public function direktur()
+    {
+
+        $query = $this->db->query("SELECT * FROM direktur WHERE aktif='1';");
+        return $query->row();
+    }
+
+
+    function get_no_surat()
+    {
+        $q = $this->db->query("SELECT MAX(RIGHT(no_surat,3)) AS kd_max FROM data_surat");
+        $kd = "";
+        if($q->num_rows()>0){
+            foreach($q->result() as $k){
+                $tmp = ((int)$k->kd_max)+1;
+                $kd = sprintf("%02s", $tmp);
+            }
+        }else{
+            $kd = "1";
+        }
+        date_default_timezone_set('Asia/Jakarta');
+        return $kd;
+        // return date('ym').$kd;
+    }
+
+
+    public function get_data_surat($nip)
+    {
+        $query = $this->db->query("SELECT * FROM data_surat where nip = $nip;");
+        return $query->result();
+    }
+
 	
 
 }

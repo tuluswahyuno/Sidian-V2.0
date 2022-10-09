@@ -4,7 +4,7 @@
 	/**
 	 * 
 	 */
-	class Cuti extends CI_Controller
+	class Surat extends CI_Controller
 	{
 		
 		public function index()
@@ -13,7 +13,7 @@
 
 	        $nip = $this->session->userdata('nip');
 
-	        $data['cuti'] = $this->master_m->get_data_cuti_personal($nip); 
+	        $data['cuti'] = $this->master_m->get_data_surat($nip); 
 	        $data['pegawai'] = $this->master_m->get_data_pegawai_personal($nip); 
 	        $data['belum_dibaca'] = $this->master_m->hitung_belum_dibaca($nip);
 	        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat_pegawai($nip); 
@@ -21,16 +21,16 @@
 
 	        $data['no_surat']=$this->master_m->get_no_surat();
 
-	        $data['title'] = " Cuti Tahunan ";
+	        $data['title'] = " Pengajuan Surat ";
 
 	        $this->load->view('template/header_pns',$data);
 	        $this->load->view('template/sidebar_pns',$data);
-	        $this->load->view('pns/v_data_cuti',$data);
+	        $this->load->view('pns/v_data_surat',$data);
 	        $this->load->view('template/footer');
     	}
 
 
-    	public function tambah_cuti()
+    	public function tambah_surat()
     	{
 	        $nip           	= $this->session->userdata('nip');
 	        $keperluan      = $this->input->post('keperluan');

@@ -135,6 +135,16 @@
                   <?php }else{} ?> -->
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url('pns/Surat') ?>" class="nav-link">
+              <i class="nav-icon fas fa-file-pdf"></i>
+              <p>
+                Surat Keterangan
+              </p>
+            </a>
+
+          </li>
           <li class="nav-item">
             <a href="<?php echo base_url('admin/Mutasi/mutasiruang') ?>" class="nav-link">
               <i class="nav-icon fas fa-hospital"></i>              
@@ -146,6 +156,7 @@
                   <?php }else{} ?>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="<?php echo base_url('admin/Bankdata/datapns') ?>" class="nav-link">
               <i class="nav-icon fas fa-database"></i>

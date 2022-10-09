@@ -10,13 +10,9 @@ class Berkas extends CI_Controller
         $nip = $this->session->userdata('nip');
 
         $data['berkas'] = $this->master_m->get_data_berkas_personal($nip); 
-
         $data['pegawai'] = $this->master_m->get_data_pegawai_personal($nip); 
-
         $data['jenisberkas'] = $this->master_m->get_jenisberkas(); 
-
         $data['belum_dibaca'] = $this->master_m->hitung_belum_dibaca($nip);
-
         $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat_pegawai($nip); 
         $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip); 
 
@@ -35,9 +31,11 @@ class Berkas extends CI_Controller
         $nama_berkas = $this->input->post('nama_berkas');
 
         $file        = $_FILES['file']['name'];
+        
         if ($file=''){}else{
             $config ['upload_path']     =   './uploads/berkas_pns';
             $config ['allowed_types']   =   'jpg|jpeg|png|pdf|doc|docx|xls|xlsx';
+            $config ['max_size']        = 1024;
 
             $this->load->library('upload', $config); 
 
@@ -45,7 +43,6 @@ class Berkas extends CI_Controller
                 // echo "File Pendukung Gagal di upload";
             }else{
                 $file=$this->upload->data('file_name');
-
             }
         }
         

@@ -133,27 +133,21 @@
 		Keseluruhan masa kerja anda adalah 
 		<?php 
                   
-                  $tmt = $pegawai->tmt;
+	    $tmt = $pegawai->tmt;
 
-                  if($tmt != '0000-00-00') {
+	    if($tmt != '0000-00-00') {
 
-                  $bday = new DateTime($tmt); // Your date of birth
-                  $today = new Datetime(date('m.d.y'));
-                  $diff = $today->diff($bday);
-                  
-                  printf("<span class='badge badge-primary'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
-
-                  printf("\n");
-
-                     // echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-warning'>TMT : $pegawai->tmt</span>";
-
-                  }else{
-
-                      echo "<span class='badge badge-danger'>TMT Belum Diset</span>";
-                  }
-
-                  
-                   ?>
+	    $bday = new DateTime($tmt); // Your date of birth
+	    $today = new Datetime(date('m.d.y'));
+	    $diff = $today->diff($bday);
+	    
+	    printf("<span class='badge badge-primary'>%d Tahun, %d Bulan, %d Hari</span>", $diff->y, $diff->m, $diff->d);
+	    printf("\n");
+	       // echo "<hr style='margin-bottom:0;margin-top:0'><span class='badge badge-warning'>TMT : $pegawai->tmt</span>";
+	    }else{
+	        echo "TMT Belum Diisi";
+	    }
+		?>
 	</div>
 	
 	</div>

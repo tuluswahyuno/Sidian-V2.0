@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2>Cuti Tahunan</h2>
+            <h2>Pengajuan Surat</h2>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-              <li class="breadcrumb-item active">Cuti Tahunan</li>
+              <li class="breadcrumb-item active">Pengajuan Surat</li>
             </ol>
           </div>
         </div>
@@ -35,16 +35,15 @@
 
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambah-data">
-            <i class="fas fa-plus-square"> </i> Ajukan Cuti</a>
+            <i class="fas fa-plus-square"> </i> Tambah Surat</a>
           </button>
 
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
+              <th>No Surat</th>
+              <th>Tgl Surat</th>
               <th>Keperluan</th>
-              <th>Tgl Mulai</th>
-              <th>Tgl Selesai</th>
-              <th>Lama Cuti</th>
               <th>Status</th>
               <th style="text-align: center;">Action</th>
             </thead>
@@ -58,26 +57,10 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $us->keperluan ?></td>
-                <td style="text-align: center;">
-                  <span class="badge badge-danger">
-                  <?php echo $us->tgl_mulai ?>
-                  </span>
-                </td>
-                <td style="text-align: center;">
-                  <span class="badge badge-primary">
-                  <?php echo $us->tgl_selesai ?></span></td>
+                <td><?php echo $us->no_surat; ?></td>
+                <td><?php echo tgl_indo(date($us->tgl_surat)); ?></td>
+                <td><?php echo $us->keperluan; ?></td>
                 
-                <?php 
-                  $date1 = $us->tgl_mulai;
-                  $date2 = $us->tgl_selesai;
-                  $days = (strtotime($date2) - strtotime($date1)) / (60 * 60 * 24);
-                 ?>
-
-                <td style="text-align: center;">
-                  <span class="badge badge-success">
-                  <?php print $days." Hari"; ?></span></td>
-
                 <td style="text-align: center;">
                     
                   <?php $st = $us->status; if ($st == 0 ){ ?>
@@ -88,7 +71,7 @@
                     <span class="badge badge-danger">Ditolak</span>
                   <?php } ?>
 
-                  </td>
+                </td>
                 
                <td style="text-align: center;">
 
@@ -96,13 +79,13 @@
                   <!-- <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_cuti; ?>">
                   <i class="fas fa-eye"> </i> Detail</a> -->
 
-                  <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_cuti; ?>">
+                  <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_surat; ?>">
                   <i class="fas fa-edit"> </i> Edit</a>
 
-                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('pns/Cuti/delete_data/').$us->id_cuti ?>">
+                  <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('pns/Cuti/delete_data/').$us->id_surat ?>">
                   <i class="fas fa-trash"></i> Hapus</a>
 
-                  <a class="btn btn-sm btn-success" href="<?php echo base_url('pns/Cuti/Cetakcuti/'.$us->id_cuti) ?>" target="_blank"><i class="fas fa-print"></i> Cetak Surat</a>
+                  <a class="btn btn-sm btn-success" href="<?php echo base_url('pns/Cuti/Cetakcuti/'.$us->id_surat) ?>" target="_blank"><i class="fas fa-print"></i> Cetak Surat</a>
 
                 </td>
 
@@ -131,6 +114,34 @@
   <!-- /.content-wrapper -->
 
 
+<!-- TANGGAL FORMAT INDONESIA -->
+
+<?php
+    function tgl_indo($tanggal){
+    $bulan = array (
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $pecahkan = explode('-', $tanggal);
+
+    // variabel pecahkan 0 = tanggal
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tahun
+
+    return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+}?>
+
+<!-- END TANGGAL FORMAT INDONESIA -->
 
 
 
@@ -139,63 +150,41 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Ajukan Cuti</h5>
+                  <h5 class="modal-title">Tambah Surat</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
 
                 <div class="modal-body">
-                <form method="POST" action="<?php echo base_url('pns/Cuti/tambah_cuti') ?>" enctype="multipart/form-data">
+                <form method="POST" action="<?php echo base_url('pns/Surat/tambah_surat') ?>" enctype="multipart/form-data">
 
                     <div class="row">
-                    <!-- <div class="col-md-12">
-                    </div> -->
+
+                    <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Nomor Surat</label>
+                      <input type="text" name="no_surat" class="form-control" value="<?php echo "800 / ".$no_surat." / 05.1.2 / ".date('Y');?>" readonly>
+                    </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Tanggal Surat</label>
+                    <input type="date" name="tgl_surat" class="form-control" required>
+                    </div>
+                    </div>
 
                     <div class="col-md-12">
 
-                     <div class="form-group">
-                      <label>Jenis Cuti</label>
-                      <select class="form-control" name="jenis_cuti" required>
-                        <option value="1">Cuti Tahunan</option>
-                        <option value="2">Cuti Besar</option>
-                        <option value="3">Cuti Sakit</option>
-                        <option value="4">Cuti Melahirkan</option>
-                        <option value="5">Cuti Karena Alasan Penting</option>
-                        <option value="6">Cuti di Luar Tanggungan Negara</option>
-                      </select>
-                      </div>
-
                     <div class="form-group">
-                      <label>Keperluan</label>
-                      <textarea type="text" name="keperluan" class="form-control" placeholder="Keperluan Cuti" required></textarea> 
+                    <label>Keperluan</label>
+                      <textarea type="text" name="keperluan" class="form-control" placeholder="Keperluan Surat" required></textarea> 
                       <!-- <input type="hidden" name="no_surat" class="form-control" value="<?php echo $no_surat;?>" > -->
                     </div>
-                    
                     </div>
 
                     
-                    
-                    <!-- <div class="col-md-6">
-                    <div class="form-group">
-                    <label>Tanggal Mulai</label>
-                    <input type="date" name="tgl_mulai" class="form-control" required>
-                    </div>
-                    </div> -->
-
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Tanggal Mulai</label>
-                        <input id="date_picker" type="date" name="tgl_mulai" class="form-control" required>
-                    </div>
-                    </div>
-
-                    <div class="col-md-6">
-                    <div class="form-group">
-                    <label>Tanggal Selesai</label>
-                    <input id="date_picker" type="date" name="tgl_selesai" class="form-control" required>
-                    </div>
-                    </div>
 
                     <div class="col-md-12">
                     <div class="form-group">
@@ -221,15 +210,41 @@
           <!-- AKHIR MODAL TAMBAH DATA -->
 
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
-        <script language="javascript">
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
 
-        today = yyyy + '-' + mm + '-' + dd;
-        $('#date_picker').attr('min',today);
-      </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data-10-year-range.min.js"></script>
 
+    <script>
+        $(document).ready(function(){
+            $("#telepon").on("input", function(){
+
+            if($(this).val()[0] == "0"){
+
+                    $(this).val("");
+            }
+
+            });
+
+        });
+
+        $(document).ready(function(){
+            var d = new Date().toISOString();
+            d = moment.tz(d, "Asia/Jakarta").format();
+            var minDate = d.substring(0, 11) + "00:00";
+            console.log(minDate);
+
+            $(".datetimepicker").attr({
+                "value" : minDate,
+                "min" : minDate,
+            });
+        });
+    </script>
+    
+    
+    
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/custom.js"></script>
 
