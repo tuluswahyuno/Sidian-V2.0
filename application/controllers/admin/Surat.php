@@ -11,21 +11,20 @@
     	{
 	        check_not_login();
 
-	        $nip = $this->session->userdata('nip');
-
-	        $data['surat'] = $this->master_m->get_data_surat($nip); 
-	        $data['pegawai'] = $this->master_m->get_data_pegawai_personal($nip); 
-	        $data['belum_dibaca'] = $this->master_m->hitung_belum_dibaca($nip);
-	        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat_pegawai($nip); 
-	        $data['kompetensi_bulan_ini'] = $this->master_m->hitung_komepetensi_expired_pegawai($nip); 
+	        $data['surat'] = $this->master_m->get_pengajuan_surat(); 
+	        
+	        $data['kp_bulan_ini'] = $this->master_m->hitung_kp();
+	        $data['kgb_bulan_ini'] = $this->master_m->hitung_kgb();
+	        $data['diklat_bulan_ini'] = $this->master_m->hitung_diklat(); 
+	        $data['kompetensi_expired'] = $this->master_m->hitung_kompetensi();
 
 	        $data['no_surat']=$this->master_m->get_no_surat();
 
 	        $data['title'] = " Pengajuan Surat ";
 
-	        $this->load->view('template/header_pns',$data);
-	        $this->load->view('template/sidebar_pns',$data);
-	        $this->load->view('pns/v_data_surat',$data);
+	        $this->load->view('template/header',$data);
+	        $this->load->view('template/sidebar',$data);
+	        $this->load->view('admin/v_data_surat',$data);
 	        $this->load->view('template/footer');
     	}
 
@@ -49,7 +48,7 @@
 	        $this->master_m->insert_data($data,'data_surat');
 
 	        $this->session->set_flashdata('flash', 'Ditambahkan');
-	        redirect('pns/Surat');
+	        redirect('admin/Surat');
 	    }
 
 	    
@@ -67,6 +66,7 @@
 	        $id                 = $this->input->post('id_surat');
 	        $tgl_surat     		= $this->input->post('tgl_surat');
 		    $keperluan    		= $this->input->post('keperluan');
+		    $status    			= $this->input->post('status');
 	        $update_at          = date('Y-m-d H:i:s');
 
 	        date_default_timezone_set('Asia/Jakarta');
@@ -74,6 +74,7 @@
 	        $data = array(
 	            'tgl_surat'  	=> $tgl_surat,
 	            'keperluan'     => $keperluan,
+	            'status'     	=> $status,
 	            'update_at'     => $update_at,
 	        );
 
@@ -85,7 +86,7 @@
 	        $this->master_m->update_data('data_surat',$data,$where);
 
 	        $this->session->set_flashdata('flash', 'Diupdate');
-	        redirect('pns/Surat');
+	        redirect('admin/Surat');
 	    }
 
 
@@ -95,7 +96,7 @@
 
 	        $this->master_m->delete_data($where, 'data_surat');
 	        $this->session->set_flashdata('flash', 'Dihapus');
-	        redirect('pns/Surat'); 
+	        redirect('admin/Surat'); 
 	    }
 
 	}

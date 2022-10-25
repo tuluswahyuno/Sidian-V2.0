@@ -240,7 +240,7 @@
                 <center><p></p>
 				
                 <u><p class="judul">SURAT KETERANGAN</p></u>
-				<p class="judul">No  : 800 / <?php echo $surat->no_surat; ?> / 05.1.2 / <?php echo date('Y'); ?></p>
+				<p class="judul">No  : <?php echo $surat->display_nosurat; ?></p>
 
                 </center>
 
@@ -249,15 +249,15 @@
             <table>
             <tr>
                 <td width="180">Nama</td>
-                <td width="357">: dr. KINIK DARSONO, M.Pd.Ked</td>
+                <td width="357">: <?php echo $direktur->nama; ?></td>
             </tr>
             <tr>
                 <td>NIP</td>
-                <td>: 19710415 200903 1 001</td>
+                <td>: <?php echo $direktur->nip; ?></td>
             </tr>
             <tr>
                 <td>Pangkat / Gol Ruang</td>
-                <td>: Pembina / IVa</td>
+                <td>: <?php echo $direktur->pangkat." / ".$direktur->golongan; ?></td>
             </tr>
             <tr>
                 <td>Jabatan</td>
@@ -295,7 +295,7 @@
            
 			<table class="ttd" align="right"><tr><td>Gemolong , <?php echo tgl_indo(date('Y-m-d')); ?></td></tr><tr><td>Direktur RSUD dr. Soeratno Gemolong<br />
 Kabupaten Sragen<br />
- <br> <br> <br> <br> </td></tr><tr><td><u>dr. KINIK DARSONO M.Pd.Ked</u><br>Pembina<br> NIP. 19710415 200903 1 001</td><td></td></tr></table> </div>
+ <br> <br> <br> <br> </td></tr><tr><td><u><?php echo $direktur->nama; ?></u><br><?php echo $direktur->pangkat; ?><br> NIP. <?php echo $direktur->nip; ?></td><td></td></tr></table> </div>
 			<div style="height: 200px;"></div>
 			<!-- <p > TEMBUSAN : </P>
 			<p> Yth. Bupati Sragen (Sebagai laporan)</p> -->

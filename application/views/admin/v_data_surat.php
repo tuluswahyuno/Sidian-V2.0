@@ -41,6 +41,7 @@
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
+              <th>Nama Pemohon</th>
               <th>No Surat</th>
               <th>Tgl Surat</th>
               <th>Keperluan</th>
@@ -57,6 +58,9 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
+                <td><?php echo $us->nama_lengkap; ?><br>
+                  <span class="badge badge-primary"><?php echo $us->nip; ?></span>
+                </td>
                 <td><?php echo $us->display_nosurat; ?></td>
                 <td><?php echo tgl_indo(date($us->tgl_surat)); ?></td>
                 <td><?php echo $us->keperluan; ?></td>
@@ -75,9 +79,6 @@
                 
                <td style="text-align: center;">
 
-                  
-                  <!-- <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#detailmodal<?php echo $us->id_cuti; ?>">
-                  <i class="fas fa-eye"> </i> Detail</a> -->
 
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_surat; ?>">
                   <i class="fas fa-edit"> </i> Edit</a>
@@ -85,14 +86,14 @@
                   <?php if ($us->status == 1 ) {
                   }else{?>
 
-                   <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('pns/Surat/delete_data/').$us->id_surat ?>">
-                  <i class="fas fa-trash"></i> Hapus</a>
+                    <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('admin/Surat/delete_data/').$us->id_surat ?>">
+                    <i class="fas fa-trash"></i> Hapus</a>
 
                   <?php } ?>
 
                   
 
-                  <a class="btn btn-sm btn-success" href="<?php echo base_url('pns/Surat/Cetaksurat/'.$us->id_surat) ?>" target="_blank"><i class="fas fa-print"></i> Cetak Surat</a>
+                  <a class="btn btn-sm btn-success" href="<?php echo base_url('admin/Surat/Cetaksurat/'.$us->id_surat) ?>" target="_blank"><i class="fas fa-print"></i> Cetak Surat</a>
 
                 </td>
 
@@ -164,7 +165,7 @@
                 </div>
 
                 <div class="modal-body">
-                <form method="POST" action="<?php echo base_url('pns/Surat/tambah_surat') ?>" enctype="multipart/form-data">
+                <form method="POST" action="<?php echo base_url('admin/Surat/tambah_surat') ?>" enctype="multipart/form-data">
 
                     <div class="row">
 
@@ -223,7 +224,7 @@
                 </div>
 
                 <div class="modal-body">
-                <form method="POST" action="<?php echo base_url('pns/Surat/update_data') ?>" enctype="multipart/form-data">
+                <form method="POST" action="<?php echo base_url('admin/Surat/update_data') ?>" enctype="multipart/form-data">
 
                     <div class="row">
 
@@ -249,6 +250,15 @@
                     <label>Keperluan</label>
                       <textarea type="text" name="keperluan" class="form-control" required><?php echo $us->keperluan; ?></textarea> 
                     </div>
+
+                    <div class="form-group">
+                      <label>Status Pengajuan</label>
+                      <select class="form-control" name="status" required>
+                        <option value="1">Disetujui</option>
+                        <option value="2">Ditolak</option>
+                      </select>
+                    </div>
+
                     </div>
 
 

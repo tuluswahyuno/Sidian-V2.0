@@ -495,6 +495,13 @@ class Master_m extends CI_Model
     }
 
 
+    public function get_data_cuti()
+    {
+        $query = $this->db->query("SELECT * FROM data_cuti dc, data_pegawai dp where dc.nip = dp.nip ORDER BY dc.create_at DESC;");
+        return $query->result();
+    }
+
+
     public function get_jenispegawai(){
      $query = $this->db->get('jenis_pegawai')->result();
      return $query;
@@ -702,7 +709,7 @@ class Master_m extends CI_Model
     public function pengajuan_surat($id)
     {
 
-        $query = $this->db->query("SELECT * FROM data_pegawai dp, pangkat p, jabatan j, data_cuti du WHERE dp.pangkat = p.id_masterpangkat and dp.jabatan = j.id_masterjabatan and dp.nip = du.nip and id_cuti ='$id';");
+        $query = $this->db->query("SELECT * FROM data_pegawai dp, pangkat p, jabatan j, data_surat du WHERE dp.pangkat = p.id_masterpangkat and dp.jabatan = j.id_masterjabatan and dp.nip = du.nip and id_surat ='$id';");
         return $query->row();
     }
 
@@ -724,7 +731,7 @@ class Master_m extends CI_Model
 
     function get_no_surat()
     {
-        $q = $this->db->query("SELECT MAX(RIGHT(no_surat,3)) AS kd_max FROM data_surat");
+        $q = $this->db->query("SELECT MAX((no_surat)) AS kd_max FROM data_surat");
         $kd = "";
         if($q->num_rows()>0){
             foreach($q->result() as $k){
@@ -743,6 +750,15 @@ class Master_m extends CI_Model
     public function get_data_surat($nip)
     {
         $query = $this->db->query("SELECT * FROM data_surat where nip = $nip;");
+        return $query->result();
+    }
+
+
+    public function get_pengajuan_surat()
+    {
+
+        $query = $this->db->query("SELECT * FROM data_pegawai dp, pangkat p, jabatan j, data_surat du WHERE dp.pangkat = p.id_masterpangkat and dp.jabatan = j.id_masterjabatan and dp.nip = du.nip;");
+
         return $query->result();
     }
 

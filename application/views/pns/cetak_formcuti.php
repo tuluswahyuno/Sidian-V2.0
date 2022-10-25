@@ -97,7 +97,7 @@
                     
                         <?php 
                             $jenis = $surat->jenis_cuti; 
-                            if ($jenis == '1')
+                            if ($jenis == 'Cuti Tahunan')
                             {?>
                             (<span style="font-family:Webdings;"></span>)
                             <?php }else{}
@@ -114,7 +114,7 @@
                 <p style="margin-top:0pt; margin-left:12.6pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:'Times New Roman';">&nbsp;
 
                     <?php $jenis = $surat->jenis_cuti; 
-                        if ($jenis == '2')
+                        if ($jenis == 'Cuti Besar')
                         {?>
                         (<span style="font-family:Webdings;"></span>)
                         <?php }else{}
@@ -133,7 +133,7 @@
                 <p style="margin-top:0pt; margin-left:12.6pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:'Times New Roman';">&nbsp;
 
                     <?php $jenis = $surat->jenis_cuti; 
-                        if ($jenis == '3')
+                        if ($jenis == 'Cuti Sakit')
                         {?>
                         (<span style="font-family:Webdings;"></span>)
                         <?php }else{}
@@ -150,7 +150,7 @@
                 <p style="margin-top:0pt; margin-left:12.6pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:'Times New Roman';">&nbsp;
 
                     <?php $jenis = $surat->jenis_cuti; 
-                        if ($jenis == '4')
+                        if ($jenis == 'Cuti Melahirkan')
                         {?>
                         (<span style="font-family:Webdings;"></span>)
                         <?php }else{}
@@ -169,7 +169,7 @@
                 <p style="margin-top:0pt; margin-left:12.6pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:'Times New Roman';">&nbsp;
 
                     <?php $jenis = $surat->jenis_cuti; 
-                        if ($jenis == '5')
+                        if ($jenis == 'Cuti Karena Alasan Penting')
                         {?>
                         (<span style="font-family:Webdings;"></span>)
                         <?php }else{}
@@ -186,7 +186,7 @@
                 <p style="margin-top:0pt; margin-left:12.6pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:'Times New Roman';">&nbsp;
 
                     <?php $jenis = $surat->jenis_cuti; 
-                        if ($jenis == '6')
+                        if ($jenis == 'Cuti di Luar Tanggungan Negara')
                         {?>
                         (<span style="font-family:Webdings;"></span>)
                         <?php }else{}
@@ -484,8 +484,45 @@
                 <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                 <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                 <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:'Times New Roman';">(</span><u><span style="font-family:'Times New Roman';">&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.)</span></u></p>
-                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:'Times New Roman';">NIP &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:'Times New Roman';">
+                    
+                    <?php $jenis = $surat->nama_atasan; 
+                    if ($jenis == 'IMAS WULANDARI, S.Kom., M.Eng.')
+                    {?>
+                        (<u>IMAS WULANDARI, S.Kom., M.Eng.</u>)
+
+                    <?php }elseif ($jenis == 'TRI DARSONO, S.Sos., M.M.') {?>
+
+                        (<u>TRI DARSONO, S.Sos., M.M.</u>)
+
+                    <?php } elseif ($jenis == 'dr. MAYASARI AYU HENDRAWATI') {?>
+                            
+                        (<u>dr. MAYASARI AYU HENDRAWATI</u>)
+                        
+                    <?php } ?>
+
+
+
+                </span></u></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:'Times New Roman';">
+
+                    <?php $jenis = $surat->nama_atasan; 
+                    if ($jenis == 'IMAS WULANDARI, S.Kom., M.Eng.')
+                    {?>
+                        NIP. 19840330 200804 2 003
+
+                    <?php }elseif ($jenis == 'TRI DARSONO, S.Sos., M.M.') {?>
+
+                        NIP. 19700614 199603 1 004
+
+                    <?php } elseif ($jenis == 'dr. MAYASARI AYU HENDRAWATI') {?>
+                            
+                        NIP. 19810517 201001 2 026
+                        
+                    <?php } ?>
+
+
+                </span></p>
             </td>
         </tr>
     </tbody>

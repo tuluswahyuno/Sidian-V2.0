@@ -209,7 +209,23 @@
           </li>
 
 
-          <li class="nav-header">MUTASI RUANG</li>
+          <li class="nav-header">LAYANAN</li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('admin/Cuti') ?>" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Pengajuan Cuti
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('admin/Surat') ?>" class="nav-link">
+              <i class="nav-icon fas fa-file-pdf"></i>
+              <p>
+                Surat Keterangan
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="<?php echo base_url('admin/Mutasi') ?>" class="nav-link">
               <i class="nav-icon fas fa-hospital"></i>

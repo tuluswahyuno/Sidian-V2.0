@@ -33,14 +33,14 @@
           <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('flash'); ?>"></div>
          
 
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambah-data">
+          <!-- <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambah-data">
             <i class="fas fa-plus-square"> </i> Ajukan Cuti</a>
-          </button>
+          </button> -->
 
           <table class="table table-hover table-striped table-bordered" id="table1">
             <thead style="text-align: center;">
               <th>#</th>
+              <th>Nama Lengkap</th>
               <th>Keperluan</th>
               <th>Tgl Mulai</th>
               <th>Tgl Selesai</th>
@@ -58,6 +58,9 @@
 
               <tr>
                 <td><?php echo $no++; ?></td>
+                <td><?php echo $us->nama_lengkap ?><br>
+                  <span class="badge badge-primary"><?php echo $us->nip ?></span>
+                </td>
                 <td><?php echo $us->keperluan ?></td>
                 <td style="text-align: center;">
                   <span class="badge badge-danger">
@@ -84,6 +87,8 @@
                     <span class="badge badge-warning">Menunggu Konfirmasi</span>
                   <?php }elseif ($st == 1 ){ ?>
                     <span class="badge badge-success">Disetujui</span>
+                  <?php }elseif ($st == 2 ){ ?>
+                    <span class="badge badge-primary">Ditangguhkan</span>
                   <?php }else{ ?>
                     <span class="badge badge-danger">Ditolak</span>
                   <?php } ?>
@@ -96,18 +101,15 @@
                   <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editmodal<?php echo $us->id_cuti; ?>">
                   <i class="fas fa-edit"> </i> Edit</a>
 
-
                   <?php if ($us->status == 1 ) {
                   }else{?>
 
-                    <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('pns/Cuti/delete_data/').$us->id_cuti ?>">
+                    <a class="btn btn-sm btn-danger tombol-hapus" href="<?php echo base_url('admin/Cuti/delete_data/').$us->id_cuti ?>">
                   <i class="fas fa-trash"></i> Hapus</a>
 
                   <?php } ?>
 
-                  
-
-                  <a class="btn btn-sm btn-success" href="<?php echo base_url('pns/Cuti/Cetakcuti/'.$us->id_cuti) ?>" target="_blank"><i class="fas fa-print"></i> Cetak Surat</a>
+                  <a class="btn btn-sm btn-success" href="<?php echo base_url('admin/Cuti/Cetakcuti/'.$us->id_cuti) ?>" target="_blank"><i class="fas fa-print"></i> Cetak</a>
 
                 </td>
 
@@ -151,7 +153,7 @@
                 </div>
 
                 <div class="modal-body">
-                <form method="POST" action="<?php echo base_url('pns/Cuti/tambah_cuti') ?>" enctype="multipart/form-data">
+                <form method="POST" action="<?php echo base_url('admin/Cuti/tambah_cuti') ?>" enctype="multipart/form-data">
 
                     <div class="row">
 
@@ -242,7 +244,7 @@
                 </div>
 
                 <div class="modal-body">
-                <form method="POST" action="<?php echo base_url('pns/cuti/update_cuti') ?>" enctype="multipart/form-data">
+                <form method="POST" action="<?php echo base_url('admin/cuti/update_cuti') ?>" enctype="multipart/form-data">
 
                     <div class="row">
 
@@ -301,7 +303,17 @@
                         <option value="IMAS WULANDARI, S.Kom., M.Eng.">IMAS WULANDARI, S.Kom., M.Eng.</option>
                         <option value="dr. MAYASARI AYU HENDRAWATI">dr. MAYASARI AYU HENDRAWATI</option>
                       </select>
-                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label>Status Pengajuan</label>
+                      <select class="form-control" name="status" required>
+                        <option value="1">Disetujui</option>
+                        <option value="2">Ditangguhkan</option>
+                        <option value="3">Ditolak</option>
+                      </select>
+                    </div>
 
                     </div>
 
